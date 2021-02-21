@@ -3,6 +3,7 @@
 session_set_cookie_params(0);
 session_start();
 $no_navbar = '';
+$pageTitle = "Login";
 // if session is registered direct user to dashboard page
 if (isset($_SESSION['username'])) {
     header("Location: dashboard.php");

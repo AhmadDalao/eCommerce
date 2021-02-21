@@ -7,14 +7,46 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --mainColor: #34e780;
+  --loginColor: rgba(32, 29, 29, 0.7);
+  --bodyFontSize: 1.1rem;
+  --boxShadow: rgb(0 0 0 / 11%) 0 0 0 1px, rgb(0 0 0 / 5%) 0 10px 10px -5px;
+  --borderRadius: 0.5rem;
+  --mainPaddingHalf: 0.5rem;
+}
 
 body {
   background-color: #dedede;
+  font-size: var(--bodyFontSize);
 }
 
 .login_form {
-  color: rgba(32, 29, 29, 0.7);
+  color: var(--loginColor);
 }
-.login__form ~ h1 {
-  color: red;
+
+/*================================================
+*
+*  admin navbar 
+*
+*=================================================*/
+
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show > .nav-link {
+  color: var(--mainColor);
+}
+.navbar-expand-md .navbar-nav .dropdown-menu {
+  padding-left: var(--mainPaddingHalf);
+  padding-right: var(--mainPaddingHalf);
+  box-shadow: var(--boxShadow);
+}
+.dropdown-menu {
+  border-radius: var(--borderRadius);
+}
+.dropdown-item:focus,
+.dropdown-item:hover {
+  border-radius: var(--borderRadius);
+  background-color: var(--mainColor);
 }

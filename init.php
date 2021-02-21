@@ -24,6 +24,7 @@ include "config.php";
 */
 
 $_template = 'includes/templates/';
+$_func = "includes/functions/";
 $_css = "layout/css/";
 $_js = "layout/js/";
 $_lang = "includes/lang/";
@@ -40,6 +41,7 @@ $_navbar = "includes/templates/";
 */
 
 // language include must be top always.
+include $_func . "functions.php";
 include $_lang . "eng.php";
 include $_template . "header.php";
 // check if page doesn't have the variable no_navbar include navbar
