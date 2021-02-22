@@ -4,6 +4,8 @@
 function lang($phrase)
 {
     static $language = array(
+        // login page index.php
+        'admin_login' => 'Admin login',
         // navbar dashboard
         'brand_dashboard' => 'eCommerce',
         'home_dashboard' => 'Home',

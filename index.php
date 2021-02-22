@@ -1,12 +1,12 @@
 <?php
 // session is used to make sure the user can't access the page using different pages.
-session_set_cookie_params(0);
 session_start();
 $no_navbar = '';
 $pageTitle = "Login";
 // if session is registered direct user to dashboard page
 if (isset($_SESSION['username'])) {
     header("Location: dashboard.php");
+    exit();
 }
 
 include "init.php";
@@ -19,7 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // protect the password by censoring it it.
     $hashedPassword = sha1($password);
     // check if user exist in database
-    $stmt = $db_connect->prepare("SELECT username, password , groupID FROM users WHERE username = ? AND password = ? AND groupID = 1 ");
+    $stmt = $db_connect->prepare("SELECT username, password , groupID FROM users 
+    WHERE 
+    username = ? 
+    AND 
+    password = ? 
+    AND groupID = 1 ");
     $stmt->execute(array($username, $hashedPassword));
     $_total_row = $stmt->rowCount();
     // if the total_row > 0 it means the user does exist in the database.
@@ -52,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 ">
                 <div class="form__holder vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
-                    <h1 class="text-capitalize text-center mb-4">Admin login</h1>
+                    <h1 class="text-capitalize text-center mb-4"><?php echo lang("admin_login") ?></h1>
                     <form class="login__form w-100" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
                         <div class="form-group">
                             <input type="text" autocomplete="off" placeholder="username" name="username"
