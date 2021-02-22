@@ -16,5 +16,5 @@ session_destroy();
 // now redirect the usr to login form after deleting it's data and destroying the session.
 header('Location: index.php');
 
-// no prevent error in case the location name had an error.
+// to prevent error in case the location name had an error.
 exit();
