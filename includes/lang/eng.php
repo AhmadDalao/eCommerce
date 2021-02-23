@@ -24,6 +24,8 @@ function lang($phrase)
         'email_profile' => 'Email',
         'fullName_profile' => 'Full Name',
         'save_profile' => 'Save',
+        // update member profile form
+        'update_profile' => "Update"
 
     );
     return $language[$phrase];

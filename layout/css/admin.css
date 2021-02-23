@@ -61,6 +61,6 @@ body {
 *  edit section
 *
 *=================================================*/
-.edit_section {
+.header_color {
   color: var(--titleColor);
 }
