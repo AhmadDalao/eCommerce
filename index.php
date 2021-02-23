@@ -19,18 +19,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // protect the password by censoring it it.
     $hashedPassword = sha1($password);
     // check if user exist in database
-    $stmt = $db_connect->prepare("SELECT username, password , groupID FROM users 
+    $stmt = $db_connect->prepare("SELECT username, password , groupID , userID FROM users 
     WHERE 
     username = ? 
     AND 
     password = ? 
-    AND groupID = 1 ");
+    AND 
+    groupID = 1 
+    LIMIT 1 ");
+
     $stmt->execute(array($username, $hashedPassword));
+    // $row will be an array since fetch retrieve information as an array.
+    $row = $stmt->fetch();
+    // how many rows are there, meaning how many results exists in the database
+    // it should be one based on the limiter but just in case.
+    // rowCount return an integer
     $_total_row = $stmt->rowCount();
     // if the total_row > 0 it means the user does exist in the database.
     if ($_total_row > 0) {
         // if there is an account in the database add it to the session.
         $_SESSION["username"] = $username;
+        // register the userID taken from the array $row and save it in a session to be used later on.
+        $_SESSION['userID'] = $row['userID'];
         // redirect admin to the dashboard page
         header("Location: dashboard.php");
         exit();

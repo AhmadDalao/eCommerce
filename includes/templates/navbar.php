@@ -35,7 +35,8 @@
                         <?php echo $_SESSION['username']; ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-capitalize" href="#"><?php echo lang("edit_dashboard"); ?></a>
+                        <a class="dropdown-item text-capitalize"
+                            href="members.php?action=edit&userID=<?php echo $_SESSION['userID']; ?>"><?php echo lang("edit_dashboard"); ?></a>
                         <a class="dropdown-item text-capitalize" href="#"><?php echo lang("settings_dashboard"); ?></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-capitalize"

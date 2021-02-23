@@ -17,6 +17,14 @@ function lang($phrase)
         'edit_dashboard' => 'Edit profile',
         'settings_dashboard' => 'Settings',
         'logout_dashboard' => 'Logout',
+        // edit member\profile form
+        'Edit_profile' => 'Edit Profile',
+        'username_profile' => 'Username',
+        'password_profile' => 'Password',
+        'email_profile' => 'Email',
+        'fullName_profile' => 'Full Name',
+        'save_profile' => 'Save',
+
     );
     return $language[$phrase];
 }

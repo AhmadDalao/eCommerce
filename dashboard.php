@@ -4,11 +4,11 @@ session_start();
 $welcomeMessage = '';
 // if session is registered direct user to dashboard page
 if (isset($_SESSION['username'])) {
-    // $isUserInActive = false;
     $pageTitle = "Dashboard";
-    //    $welcomeMessage = "Welcome " .  $_SESSION['username'];
+    $welcomeMessage = "Welcome in Dashboard   " .  $_SESSION['username'] . "<br/>";
     include "init.php";
     echo $welcomeMessage;
+    echo $_SESSION['userID'];
     include $_template . "footer.php";
 } else {
     // if users attempt to enter this page
