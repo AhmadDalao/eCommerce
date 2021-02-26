@@ -23,12 +23,11 @@ include "config.php";
 * ================================================================
 */
 
-$_template = 'includes/templates/';
-$_func = "includes/functions/";
-$_css = "layout/css/";
-$_js = "layout/js/";
-$_lang = "includes/lang/";
-$_navbar = "includes/templates/";
+$template = 'includes/templates/';
+$func = "includes/functions/";
+$css = "layout/css/";
+$js = "layout/js/";
+$lang = "includes/lang/";
 
 /*
 * ================================================================
@@ -41,10 +40,10 @@ $_navbar = "includes/templates/";
 */
 
 // language include must be top always.
-include $_func . "functions.php";
-include $_lang . "eng.php";
-include $_template . "header.php";
+include $func . "functions.php";
+include $lang . "eng.php";
+include $template . "header.php";
 // check if page doesn't have the variable no_navbar include navbar
 if (!isset($no_navbar)) {
-    include $_navbar . "navbar.php";
+    include $template . "navbar.php";
 }

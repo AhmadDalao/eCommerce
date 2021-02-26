@@ -1,5 +1,5 @@
 <?php
-// manage is the main page inside the catagories.php
+// delete this page later it's only a reference.
 
 $action = isset($_GET['action']) ?  $_GET['action'] : "manage";
 

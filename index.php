@@ -34,57 +34,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // how many rows are there, meaning how many results exists in the database
     // it should be one based on the limiter but just in case.
     // rowCount return an integer
-    $_total_row = $stmt->rowCount();
+    $total_row = $stmt->rowCount();
     // if the total_row > 0 it means the user does exist in the database.
-    if ($_total_row > 0) {
+    if ($total_row > 0) {
         // if there is an account in the database add it to the session.
         $_SESSION["username"] = $username;
         // register the userID taken from the array $row and save it in a session to be used later on.
         $_SESSION['userID'] = $row['userID'];
-        // redirect admin to the dashboard page
+        //   redirect admin to the dashboard page 
         header("Location: dashboard.php");
         exit();
     } else {
-        echo "Password or username are incorrect";
+        echo "Password or username are incorrect" . "<br />";
     }
 }
 
-
-?>
-
-<!--
+/*<!--
 * ================================================================
 * ================================================================
 *
-*                       login-section
+*                       loginForm section
 *
 * ================================================================
 * ================================================================
--->
+--> */
 
-<div class="login">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 ">
-                <div class="form__holder vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
-                    <h1 class="text-capitalize text-center mb-4"><?php echo lang("admin_login") ?></h1>
-                    <form class="login__form w-100" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
-                        <div class="form-group">
-                            <input type="text" autocomplete="off" placeholder="username" name="username"
-                                class="form-control" id="username">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" autocomplete="current-password" placeholder="password"
-                                name="password" class="form-control" id="password">
-                        </div>
-                        <input type="submit" class="btn btn-primary btn-block" value="Login">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+include $template . "loginForm.php";
 
-<?php
-include $_template .  "footer.php";
-?>
+include $template .  "footer.php";

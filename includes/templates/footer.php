@@ -13,7 +13,7 @@
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
 </script>
 <!-- my backend js file  -->
-<script src="<?php echo $_js; ?>admin.js"></script>
+<script src="<?php echo $js; ?>admin.js"></script>
 </body>
 
 </html>

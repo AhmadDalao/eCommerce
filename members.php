@@ -38,11 +38,11 @@ if (isset($_SESSION['username'])) {
         // $row will be an array since fetch retrieve information as an array.
         // fetch data from database.
         $row = $stmt->fetch();
-        $_total_row = $stmt->rowCount();
+        $total_row = $stmt->rowCount();
 
-        if ($_total_row > 0) {
+        if ($total_row > 0) {
             // include the form with the data.
-            include $_template . "editMember.php";
+            include $template . "editMember.php";
         } else {
             echo "incorrect userID";
         }
@@ -51,14 +51,13 @@ if (isset($_SESSION['username'])) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //do
             $recordChange = '';
-            $id = $_POST['userID'];
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $fullName = $_POST['fullName'];
-            //  echo $id . ' ' . $username . ' ' . $email .  ' ' . $fullName;
+            $update_userID = $_POST['edit_userID'];
+            $update_username = $_POST['edit_username'];
+            $update_email = $_POST['edit_email'];
+            $update_fullName = $_POST['edit_fullName'];
             // update the data base with the data I receive from the form in edit page.
-            $stmt = $db_connect->prepare('UPDATE users SET username = ? , email=? , fullName= ? WHERE userID = ?');
-            $stmt->execute(array($username, $email, $fullName, $id));
+            $stmt = $db_connect->prepare('UPDATE users SET username = ? , email = ? , fullName = ? WHERE userID = ?');
+            $stmt->execute(array($update_username, $update_email, $update_fullName, $update_userID));
             // print this message if there was a change in the record
             $recordChange = $stmt->rowCount() . ' ' . 'Record Updated';
         } else {
@@ -66,14 +65,14 @@ if (isset($_SESSION['username'])) {
             $recordChange = "you don't access to this page !!";
         }
         // add the section to display the data.
-        include $_template . "updateMember.php";
+        include $template . "updateMember.php";
     } elseif ($action == "delete") {
         // delete page
     } else {
         echo "Error page not found";
     }
 
-    include $_template . "footer.php";
+    include $template . "footer.php";
 } else {
     // if users attempt to enter this page
     // without a registered session get him back to the login page.

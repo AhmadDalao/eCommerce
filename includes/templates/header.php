@@ -11,7 +11,7 @@
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/5a0dddbca3.js" crossorigin="anonymous"></script>
     <!-- admin stylesheet  -->
-    <link rel="stylesheet" href="<?php echo $_css; ?>admin.css">
+    <link rel="stylesheet" href="<?php echo $css; ?>admin.css">
     <title><?php getTitle(); ?></title>
 </head>
 

@@ -9,7 +9,7 @@ if (isset($_SESSION['username'])) {
     include "init.php";
     echo $welcomeMessage;
     echo $_SESSION['userID'];
-    include $_template . "footer.php";
+    include $template . "footer.php";
 } else {
     // if users attempt to enter this page
     // without a registered session get him back to the login page.
