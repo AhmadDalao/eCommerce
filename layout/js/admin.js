@@ -7,8 +7,10 @@ console.log("hello world admin");
  *
  */
 
-let inputs = document.querySelectorAll(".login__form input[placeholder]");
-console.log(inputs);
+let inputs = document.querySelectorAll("input[placeholder]");
+let edit_fields = document.querySelectorAll(".edit__form input[required]");
+
+console.log(edit_fields);
 
 for (let index = 0; index < inputs.length; index++) {
   let temp_placeHolder;
@@ -19,4 +21,16 @@ for (let index = 0; index < inputs.length; index++) {
   inputs[index].addEventListener("blur", function () {
     inputs[index].setAttribute("placeholder", temp_placeHolder);
   });
+}
+document.body.onload = addElement;
+
+function addElement() {
+  for (let index = 0; index < edit_fields.length; index++) {
+    var tree = document.createDocumentFragment();
+    var star = document.createElement("span");
+    star.className = "hidden";
+    star.appendChild(document.createTextNode("*"));
+    tree.appendChild(star);
+    edit_fields[index].parentNode.appendChild(tree);
+  }
 }

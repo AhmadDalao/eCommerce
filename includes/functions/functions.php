@@ -25,3 +25,27 @@ function getTitle()
         echo "eCommerce";
     }
 }
+
+/*
+* ================================================================
+* ================================================================
+*
+*                         formErrorsPrint function
+*
+*   this function uses an array $formErrors sent from 
+*   which is used to print the error name after the form validation
+*   this function is called in the updateMember.php
+*   and it will print the  $formError given to it after validation
+*   this function will work only in case of failure in the validation process 
+*
+* ================================================================
+* ================================================================
+*/
+
+function formErrorsPrint($formErrors)
+{
+    foreach ($formErrors as $key) {
+        // print the error message
+        echo '<p class="text-left text-danger h4 py-2 text-capitalize alert alert-danger"><i class="fas fa-times-circle mr-2"></i>' . $key . '</p>';
+    }
+}

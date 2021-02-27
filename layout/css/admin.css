@@ -64,3 +64,20 @@ body {
 .header_color {
   color: var(--titleColor);
 }
+.form-group > span {
+  color: red;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 18px;
+  transform: translate(-50%, -50%);
+  top: 70%;
+}
+
+/*================================================
+*
+*  update section
+*
+*=================================================*/
+.update_section .update_text {
+  font-size: 1.5rem;
+}

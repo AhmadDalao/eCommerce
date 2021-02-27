@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: dashboard.php");
         exit();
     } else {
-        echo "Password or username are incorrect" . "<br />";
+        echo "<div class='alter alert-danger py-3'><div class='container'><div>Password or username are incorrect" . "<br /></div></div></div>";
     }
 }
 

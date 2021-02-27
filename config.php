@@ -29,5 +29,5 @@ try {
     $db_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "you are connected to the database";
 } catch (PDOException $e) {
-    echo "failed to connect" . $e->getMessage();
+    echo "<div class='alter alert-danger py-3'><div class='container'><div class=''>failed to connect" .  $e->getMessage() . "</div></div></div>";
 }
