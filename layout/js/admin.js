@@ -26,11 +26,11 @@ document.body.onload = addElement;
 
 function addElement() {
   for (let index = 0; index < edit_fields.length; index++) {
-    var tree = document.createDocumentFragment();
+    //  var tree = document.createDocumentFragment();
     var star = document.createElement("span");
     star.className = "hidden";
     star.appendChild(document.createTextNode("*"));
-    tree.appendChild(star);
-    edit_fields[index].parentNode.appendChild(tree);
+    //  tree.appendChild(star);
+    edit_fields[index].parentNode.appendChild(star);
   }
 }

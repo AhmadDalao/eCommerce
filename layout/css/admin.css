@@ -81,3 +81,20 @@ body {
 .update_section .update_text {
   font-size: 1.5rem;
 }
+
+/*================================================
+*
+*  add member section
+*
+*=================================================*/
+
+.add_member {
+  border: 1px solid blue;
+}
+.show__eye {
+  position: absolute;
+  font-size: 1.5rem;
+  right: 25px;
+  transform: translate(-50%, -50%);
+  top: 70%;
+}
