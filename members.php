@@ -79,11 +79,12 @@ if (isset($_SESSION['username'])) {
             // if formErrors is empty connect to the database.
             if (empty($formErrors)) {
                 // insert the data base with the data I receive from the form in add page.
-                $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email,fullName) VALUES ()');
-                $stmt->execute(array($insert_username, $insert_password, $insert_email, $insert_fullName));
+                $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email,fullName) VALUES (:username, :password ,:email ,:fullName)');
+                $stmt->execute(array("username" => $insert_username, "password" => $hashPassword, "email" => $insert_email, "fullName" => $insert_fullName));
                 // print this message if there was a change in the record
                 $recordChange = $stmt->rowCount() . ' ' .  lang("inserted_recordChange");
             }
+            include $template . "insertMember.php";
         } else {
             // do
             echo "<div class='alert alert-danger'><div class='container'><div >you don't access to this page !!</div></div></div>";

@@ -43,7 +43,7 @@ function lang($phrase)
         // insert member 
         'inserted_recordChange' => 'Member added successfully',
         'insert_password_empty' => "password can\'t be <strong>empty</strong>",
-
+        'insert_profile' => "Inserted Members",
 
 
     );

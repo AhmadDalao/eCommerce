@@ -91,10 +91,14 @@ body {
 .add_member {
   border: 1px solid blue;
 }
-.show__eye {
+.form-group .show__eye {
+  color: black;
   position: absolute;
   font-size: 1.5rem;
   right: 25px;
   transform: translate(-50%, -50%);
   top: 70%;
+}
+.form-group .show__eye:hover {
+  cursor: pointer;
 }

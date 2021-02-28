@@ -14,9 +14,9 @@
             <div class="form-group col-12 col-md-9 col-lg-6">
                 <label class=" text-capitalize "
                     for="exampleInputPassword"><?php echo lang("edit_password_profile"); ?></label>
-                <input type="password" class="form-control form-control-lg" id="exampleInputPassword"
+                <input type="password" class="password form-control form-control-lg" id="exampleInputPassword"
                     autocomplete="new-password" name="add_password" required>
-                <i class="fas fa-eye show__eye"></i>
+                <span class="show__eye"><i class="fas fa-eye "></i></span>
             </div>
             <!-- email -->
             <div class="form-group position-relative  col-12 col-md-9 col-lg-6">

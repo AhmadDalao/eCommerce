@@ -6,11 +6,11 @@ console.log("hello world admin");
  *   set it back on leave
  *
  */
+document.body.onload = addElement;
 
 let inputs = document.querySelectorAll("input[placeholder]");
 let edit_fields = document.querySelectorAll(".edit__form input[required]");
-
-console.log(edit_fields);
+let eye_icon = document.querySelector(".form-group .show__eye");
 
 for (let index = 0; index < inputs.length; index++) {
   let temp_placeHolder;
@@ -22,8 +22,8 @@ for (let index = 0; index < inputs.length; index++) {
     inputs[index].setAttribute("placeholder", temp_placeHolder);
   });
 }
-document.body.onload = addElement;
 
+// add * to each field that has required as attribute
 function addElement() {
   for (let index = 0; index < edit_fields.length; index++) {
     //  var tree = document.createDocumentFragment();
@@ -34,3 +34,15 @@ function addElement() {
     edit_fields[index].parentNode.appendChild(star);
   }
 }
+
+// show password once you click on eye icon
+eye_icon.addEventListener("click", function () {
+  let password_field = document.querySelector("input.password");
+  let tempHolder = password_field.getAttribute("type");
+  if (tempHolder == "password") {
+    password_field.setAttribute("type", "text");
+  }
+  if (tempHolder == "text") {
+    password_field.setAttribute("type", "password");
+  }
+});
