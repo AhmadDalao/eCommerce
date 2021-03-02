@@ -1,4 +1,5 @@
 console.log("hello world admin");
+document.body.onload = addElement;
 
 /*
  *
@@ -6,7 +7,6 @@ console.log("hello world admin");
  *   set it back on leave
  *
  */
-document.body.onload = addElement;
 
 let inputs = document.querySelectorAll("input[placeholder]");
 let edit_fields = document.querySelectorAll(".edit__form input[required]");
@@ -34,18 +34,6 @@ function addElement() {
     edit_fields[index].parentNode.appendChild(star);
   }
 }
-
-// show password once you click on eye icon
-eye_icon.addEventListener("click", function () {
-  let password_field = document.querySelector("input.password");
-  let tempHolder = password_field.getAttribute("type");
-  if (tempHolder == "password") {
-    password_field.setAttribute("type", "text");
-  }
-  if (tempHolder == "text") {
-    password_field.setAttribute("type", "password");
-  }
-});
 
 // dynamic modal in manage member.
 let deleteButton = document.querySelectorAll("tr > td a.delete__member");
