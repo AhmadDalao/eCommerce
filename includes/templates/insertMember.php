@@ -5,5 +5,8 @@
         <div class="errorHolder">
             <?php formErrorsPrint($formErrors); ?>
         </div>
+        <div>
+            <?php redirectHome($message, 1, $pageName, $alertType); ?>
+        </div>
     </div>
 </section>

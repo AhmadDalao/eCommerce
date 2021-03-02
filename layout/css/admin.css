@@ -88,9 +88,6 @@ body {
 *
 *=================================================*/
 
-.add_member {
-  border: 1px solid blue;
-}
 .form-group .show__eye {
   color: black;
   position: absolute;
@@ -101,4 +98,22 @@ body {
 }
 .form-group .show__eye:hover {
   cursor: pointer;
+}
+
+/*================================================
+*
+*  manage member section
+*
+*=================================================*/
+
+.table.manage__table td,
+.table.manage__table th {
+  min-width: 170px;
+}
+.edit_delete_button {
+  width: 67px;
+  max-width: 67px;
+}
+
+.add__member {
 }

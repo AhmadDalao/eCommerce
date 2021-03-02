@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand text-capitalize" href="#"><?php echo lang("navbar_brand_dashboard"); ?></a>
+        <a class="navbar-brand text-capitalize" href="index.php"><?php echo lang("navbar_brand_dashboard"); ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active text-capitalize" href="#"><?php echo lang("navbar_home_dashboard"); ?></a>
+                    <a class="nav-link active text-capitalize"
+                        href="index.php"><?php echo lang("navbar_home_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-capitalize" href="#"><?php echo lang("navbar_categories_dashboard"); ?></a>

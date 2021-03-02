@@ -23,7 +23,14 @@ if (isset($_SESSION['username'])) {
     $action = isset($_GET['action']) ? $_GET['action'] : "manage";
 
     if ($action == "manage") {
-        // manage page section
+
+        // select all regular users.
+        $stmt = $db_connect->prepare("SELECT * FROM users WHERE groupID != 1");
+        // execute the SQL above
+        $stmt->execute();
+        // assign result from the SQL statement into a variable.
+        $rows = $stmt->fetchAll();
+        // loop over the $row and print all of it's data
         include $template . "manageMember.php";
     } elseif ($action == "add") {
         // add member section
@@ -83,11 +90,14 @@ if (isset($_SESSION['username'])) {
                 $stmt->execute(array("username" => $insert_username, "password" => $hashPassword, "email" => $insert_email, "fullName" => $insert_fullName));
                 // print this message if there was a change in the record
                 $recordChange = $stmt->rowCount() . ' ' .  lang("inserted_recordChange");
+                $message = "Account Created";
+                $pageName = "members.php";
+                $alertType = "alert-success";
             }
             include $template . "insertMember.php";
         } else {
-            // do
-            echo "<div class='alert alert-danger'><div class='container'><div >you don't access to this page !!</div></div></div>";
+            $error = "you don't access to this page !!";
+            redirectHome($error);
         }
         // add the section to display the data.
         //  include $template . "updateMember.php";
@@ -109,7 +119,8 @@ if (isset($_SESSION['username'])) {
             // include the form with the data.
             include $template . "editMember.php";
         } else {
-            echo "<div class='alter alert-danger py-3'><div class='container'><p>incorrect userID</p></div></div> ";
+            $message = "incorrect userID !";
+            redirectHome($message);
         }
     } elseif ($action == "update") {
         // update page section
@@ -168,17 +179,45 @@ if (isset($_SESSION['username'])) {
                 $stmt->execute(array($update_username, $update_email, $update_fullName, $update_password, $update_userID));
                 // print this message if there was a change in the record
                 $recordChange = $stmt->rowCount() . ' ' .  lang("update_recordChange");
+                $message = "Profile updated";
+                $alertType = "alert-success";
+                redirectHome($message, 2, "index.php", $alertType);
             }
             include $template . "updateMember.php";
         } else {
             // do
-            echo  "<div class='alert alert-danger'><div class='container'><div >you don't access to this page !!</div></div></div>";
+            $message = "you don't access to this page !!";
+            redirectHome($message, 2);
         }
         // add the section to display the data.
     } elseif ($action == "delete") {
-        // delete page
+        // check if userID is numeric & return the integer value of it
+        $userID = isset($_GET['userID']) && is_numeric($_GET['userID']) ?  intval($_GET['userID']) :  0;
+        // select data from database based on the userID I got from $_GET.
+        $stmt = $db_connect->prepare("SELECT * FROM users  WHERE  userID = ? LIMIT 1 ");
+        // execute query
+        $stmt->execute(array($userID));
+        // check if the account exist
+        $total_row = $stmt->rowCount();
+
+        if ($total_row > 0) {
+            // delete user
+            $stmt = $db_connect->prepare("DELETE FROM users WHERE userID = ?");
+            // $stmt->bindParam(":userID", $userID);
+            $stmt->execute(array($userID));
+            $recordChange = $stmt->rowCount() . ' ' .  lang("deleted_recordChange");
+            $message = "Account Deleted.";
+            $pageName = "members.php";
+            $alertType = "alert-success";
+            include $template . 'delete.php';
+        } else {
+            $message = "account doesn't exist";
+            redirectHome($message);
+        }
     } else {
-        echo "<div class='alert alert-danger'><div class='container'><div>Error page not found</div></div></div>";
+        // echo "<div class='alert alert-danger'><div class='container'><div>Error page not found</div></div></div>";
+        $message = "Error page not found!!";
+        redirectHome($message);
     }
 
     include $template . "footer.php";

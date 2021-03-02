@@ -35,15 +35,26 @@ function lang($phrase)
         'update_fullName_less' => 'fullName can\'t be <strong>less than 4 letters</strong>',
         'update_email_empty' => 'email can\'t be <strong>empty</strong>',
         // manage member 
-        'manageMember_title' => 'Manage Member',
+        'manageMember_title' => 'Manage Members',
         'manageMember_add' => 'Add Member',
         // add member
         'add_profile' => 'add member',
         'add_member' => 'add member',
         // insert member 
         'inserted_recordChange' => 'Member added successfully',
-        'insert_password_empty' => "password can\'t be <strong>empty</strong>",
-        'insert_profile' => "Inserted Members",
+        'insert_password_empty' => 'password can\'t be <strong>empty</strong>',
+        'insert_profile' => 'Inserted Members',
+        // table manage members
+        'table_control' => 'Control',
+        'table_registeredDate' => 'Registered Date',
+        'table_fullName' => 'Full Name',
+        'table_email' => 'Email',
+        'table_username' => 'Username',
+        'table_id' => '#ID',
+        // delete member page
+        'deleteMember_title' => 'Delete Member',
+        'deleted_recordChange' => 'Account Deleted',
+
 
 
     );
