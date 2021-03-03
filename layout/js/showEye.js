@@ -1,6 +1,7 @@
 console.log("am working");
 // show password once you click on eye icon
-document.body.onload = addEye;
+let eye_icon = document.querySelector(".form-group .show__eye");
+
 function addEye() {
   eye_icon.addEventListener("click", function () {
     let password_field = document.querySelector("input.password");
@@ -13,3 +14,4 @@ function addEye() {
     }
   });
 }
+addEye();

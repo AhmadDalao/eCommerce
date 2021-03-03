@@ -10,7 +10,6 @@ document.body.onload = addElement;
 
 let inputs = document.querySelectorAll("input[placeholder]");
 let edit_fields = document.querySelectorAll(".edit__form input[required]");
-let eye_icon = document.querySelector(".form-group .show__eye");
 
 for (let index = 0; index < inputs.length; index++) {
   let temp_placeHolder;
