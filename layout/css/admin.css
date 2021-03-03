@@ -108,10 +108,10 @@ body {
 
 .table.manage__table td,
 .table.manage__table th {
-  min-width: 170px;
+  min-width: 180px;
   vertical-align: middle;
 }
 .edit_delete_button {
-  width: 67px;
-  max-width: 67px;
+  width: 75px;
+  max-width: 75px;
 }

@@ -28,20 +28,23 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Delete Account</h5>
+                        <h5 class="modal-title"><?php echo lang("manageMember_modalTitle"); ?></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this account:<span class="ml-1 manage_modal_username"></span>
+                        <p><?php echo lang('manageMember_modalWarning'); ?><span
+                                class="ml-1 manage_modal_username"></span>
                         </p>
-                        <p>account ID:<span class="ml-1 manage_modal_userID"></span></p>
+                        <p><?php echo lang('manageMember_modalAccount'); ?> <span
+                                class="ml-1 manage_modal_userID"></span></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal"><?php echo lang('manageMember_modalClose'); ?></button>
                         <a id="modal_deleteButton" class="btn btn-danger edit_delete_button text-capitalize"
-                            href="">Delete</a>
+                            href=""><?php echo lang("manageMember_delete") ?></a>
                     </div>
                 </div>
             </div>

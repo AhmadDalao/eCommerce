@@ -37,6 +37,12 @@ function lang($phrase)
         // manage member 
         'manageMember_title' => 'Manage Members',
         'manageMember_add' => 'Add Member',
+        'manageMember_delete' => 'Delete',
+        'manageMember_edit' => 'Edit',
+        'manageMember_modalTitle' => 'Delete Account',
+        'manageMember_modalWarning' => 'Are you sure you want to delete this account:',
+        'manageMember_modalAccount' => 'account ID:',
+        'manageMember_modalClose' => 'Close',
         // add member
         'add_profile' => 'add member',
         'add_member' => 'add member',
