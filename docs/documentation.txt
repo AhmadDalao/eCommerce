@@ -1,0 +1,76 @@
+/*
+* ================================================================
+* ================================================================
+*
+*                            function lang($word)
+*
+* ================================================================
+* ================================================================
+*/
+
+the function above takes in the word and compare it to an existing array and return the value of that array 
+which gives me the word i'm looking for inside the array.
+this function is going to be main factor in changing the language later on in this project.
+
+
+/*
+* ================================================================
+* ================================================================
+*
+*                              $no_navbar
+*
+* ================================================================
+* ================================================================
+*/
+
+$no_navbar is a variable I use to decide whither I will add a navbar to the page or not.
+so if I add this variable to any page I want it means 
+the navbar will not be included in this page.
+ 
+And If I don't add this variable I will get a navbar by default.
+
+/*
+* ================================================================
+* ================================================================
+*
+*                              $pageTitle
+*
+* ================================================================
+* ================================================================
+*/
+
+is used to assign the page with a name to be printed later using the methond
+getTitle function
+
+/*
+* ================================================================
+* ================================================================
+*
+*                              getTitle function
+*
+* ================================================================
+* ================================================================
+*/
+
+this function uses global variable $pageTitle
+which is used to set the page title name in the top of each page
+this function is called in the header <title>getTitle()</title>
+and it will print the name given to the $pageTitle 
+in case the variable wasn't provided it will print eCommerce.
+
+
+/*
+* ================================================================
+* ================================================================
+*
+*                              formErrorsPrint function
+*
+* ================================================================
+* ================================================================
+*/
+
+this function uses an array $formErrors sent from 
+which is used to print the error name after the form validation
+this function is called in the updateMember.php
+and it will print the  $formError given to it after validation
+this function will work only in case of failure in the validation process 
