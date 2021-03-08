@@ -31,11 +31,11 @@ if (isset($_SESSION['username'])) {
         // assign result from the SQL statement into a variable.
         $rows = $stmt->fetchAll();
         // loop over the $row and print all of it's data
-        include $template . "manageMember.php";
+        include $memberPages . "manageMember.php";
     } elseif ($action == "add") {
         // add member section
         // include the form with the data.
-        include $template . "addMember.php";
+        include $memberPages . "addMember.php";
     } elseif ($action == "insert") {
         // insert page
 
@@ -94,7 +94,7 @@ if (isset($_SESSION['username'])) {
                 $pageName = "members.php";
                 $alertType = "alert-success";
             }
-            include $template . "insertMember.php";
+            include $memberPages . "insertMember.php";
         } else {
             $error = "you don't access to this page !!";
             redirectHome($error);
@@ -117,7 +117,7 @@ if (isset($_SESSION['username'])) {
 
         if ($total_row > 0) {
             // include the form with the data.
-            include $template . "editMember.php";
+            include $memberPages . "editMember.php";
         } else {
             $message = "incorrect userID !";
             redirectHome($message);
@@ -183,7 +183,7 @@ if (isset($_SESSION['username'])) {
                 $alertType = "alert-success";
                 redirectHome($message, 2, "index.php", $alertType);
             }
-            include $template . "updateMember.php";
+            include $memberPages . "updateMember.php";
         } else {
             // do
             $message = "you don't access to this page !!";
@@ -209,7 +209,7 @@ if (isset($_SESSION['username'])) {
             $message = "Account Deleted.";
             $pageName = "members.php";
             $alertType = "alert-success";
-            include $template . 'delete.php';
+            include $memberPages . 'deleteMember.php';
         } else {
             $message = "account doesn't exist";
             redirectHome($message);

@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($rows as $row) {
-                        include $template . "tableData.php";
+                        include $memberPages . "tableDataMember.php";
                     }
                     ?>
                 </tbody>

@@ -111,6 +111,10 @@ body {
   min-width: 180px;
   vertical-align: middle;
 }
+.table.manage__table td:first-of-type,
+.table.manage__table th:first-of-type {
+  min-width: 70px;
+}
 .edit_delete_button {
   width: 75px;
   max-width: 75px;
