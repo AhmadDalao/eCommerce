@@ -91,10 +91,10 @@ if (isset($_SESSION['username'])) {
 
                 if ($checkResult == 1) {
                     $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>Sorry!, username is already in use</div></div></div>";
-                    redirectHome($message, "members.php", 4);
+                    redirectHome($message, "back", 4);
                 } else {
                     // insert the data base with the data I receive from the form in add page.
-                    $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email,fullName) VALUES (:username, :password ,:email ,:fullName)');
+                    $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email,fullName, Date) VALUES (:username, :password ,:email ,:fullName, now())');
                     $stmt->execute(array("username" => $insert_username, "password" => $hashPassword, "email" => $insert_email, "fullName" => $insert_fullName));
                     // print this message if there was a change in the record
                     $recordChange = $stmt->rowCount() . ' ' .  lang("inserted_recordChange");
@@ -105,7 +105,7 @@ if (isset($_SESSION['username'])) {
             include $memberPages . "insertMember.php";
         } else {
             $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>you don't access to this page !!</div></div></div>";
-            redirectHome($message, null);
+            redirectHome($message);
         }
         // add the section to display the data.
         //  include $template . "updateMember.php";
@@ -201,13 +201,10 @@ if (isset($_SESSION['username'])) {
         // check if userID is numeric & return the integer value of it
         $userID = isset($_GET['userID']) && is_numeric($_GET['userID']) ?  intval($_GET['userID']) :  0;
         // select data from database based on the userID I got from $_GET.
-        $stmt = $db_connect->prepare("SELECT * FROM users  WHERE  userID = ? LIMIT 1 ");
-        // execute query
-        $stmt->execute(array($userID));
-        // check if the account exist
-        $total_row = $stmt->rowCount();
 
-        if ($total_row > 0) {
+        $checkResult = checkItem("userID", "users", $userID);
+
+        if ($checkResult > 0) {
             // delete user
             $stmt = $db_connect->prepare("DELETE FROM users WHERE userID = ?");
             // $stmt->bindParam(":userID", $userID);
@@ -218,11 +215,11 @@ if (isset($_SESSION['username'])) {
             include $memberPages . 'deleteMember.php';
         } else {
             $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>account doesn't exist</div></div></div>";
-            redirectHome($message, null);
+            redirectHome($message, "members.php");
         }
     } else {
         $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>Error page not found!!</div></div></div>";
-        redirectHome($message, null);
+        redirectHome($message);
     }
 
     include $template . "footer.php";

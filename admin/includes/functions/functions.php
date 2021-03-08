@@ -81,6 +81,7 @@ function redirectHome($errorMsg, $pageName = null, $seconds = 3,)
         }
     } else {
         $pageName = $pageName;
+        $link = "Home page";
     }
     echo "<div class='container py-5'>";
     echo  $errorMsg;
