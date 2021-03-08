@@ -6,7 +6,7 @@
             <?php formErrorsPrint($formErrors); ?>
         </div>
         <div>
-            <?php redirectHome($message, 1, $pageName, $alertType); ?>
+            <?php redirectHome($message, $pageName, 2); ?>
         </div>
     </div>
 </section>

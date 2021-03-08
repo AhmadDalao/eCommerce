@@ -66,12 +66,54 @@ function formErrorsPrint($formErrors)
 * ================================================================
 */
 
-function redirectHome($errorMsg, $seconds = 3, $pageName = "index.php", $alert_type = "alert-danger")
+function redirectHome($errorMsg, $pageName = null, $seconds = 3,)
 {
-    echo "<div class='container'>";
-    echo  "<div class='alert $alert_type'><div class='container'><div>$errorMsg</div></div></div>";
-    echo "<div class='alert alert-info'>You Will Be Redirected After $seconds Seconds.</div>";
+    if ($pageName === null) {
+        $pageName = "index.php";
+        $link = "Home page";
+    } elseif ($pageName === "back") {
+        if (isset($_SERVER['HTTP_REFERER'])  && $_SERVER['HTTP_REFERER'] !== '') {
+            $pageName =   $_SERVER['HTTP_REFERER'];
+            $link = "previous page";
+        } else {
+            $pageName = "index.php";
+            $link = "Home page";
+        }
+    } else {
+        $pageName = $pageName;
+    }
+    echo "<div class='container py-5'>";
+    echo  $errorMsg;
+    echo "<div class='alert alert-info'>You Will Be Redirected to $link After $seconds Seconds.</div>";
     echo '</div>';
     header("refresh:$seconds;url=$pageName");
     exit();
+}
+
+
+/*
+* ================================================================
+* ================================================================
+*
+*                         checkItem in database function
+*
+*  this function uses the MYSQL query.
+*  which is used to to check if the item does exist in the database or not. It it does show error otherwise keep working.
+*  @param $selectItem is the you want to select [ select username , itemName , category]
+*  @param $tableName table to select from. [from users , item , category]
+*  @param $value [WHERE value = username, groupID ....]
+*
+* ================================================================
+* ================================================================
+*/
+
+function checkItem($selectItem, $tableName, $value)
+{
+    global $db_connect;
+
+    $functionStmt = $db_connect->prepare("SELECT $selectItem FROM $tableName WHERE $selectItem = ? ");
+    $functionStmt->execute(array($value));
+    $total_row = $functionStmt->rowCount();
+
+    return $total_row;
 }

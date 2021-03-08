@@ -85,19 +85,27 @@ if (isset($_SESSION['username'])) {
             formErrorsPrint($formErrors);
             // if formErrors is empty connect to the database.
             if (empty($formErrors)) {
-                // insert the data base with the data I receive from the form in add page.
-                $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email,fullName) VALUES (:username, :password ,:email ,:fullName)');
-                $stmt->execute(array("username" => $insert_username, "password" => $hashPassword, "email" => $insert_email, "fullName" => $insert_fullName));
-                // print this message if there was a change in the record
-                $recordChange = $stmt->rowCount() . ' ' .  lang("inserted_recordChange");
-                $message = "Account Created";
-                $pageName = "members.php";
-                $alertType = "alert-success";
+
+                // check if username exist in the database before running the insert query.
+                $checkResult = checkItem("username", "users", $insert_username);
+
+                if ($checkResult == 1) {
+                    $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>Sorry!, username is already in use</div></div></div>";
+                    redirectHome($message, "members.php", 4);
+                } else {
+                    // insert the data base with the data I receive from the form in add page.
+                    $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email,fullName) VALUES (:username, :password ,:email ,:fullName)');
+                    $stmt->execute(array("username" => $insert_username, "password" => $hashPassword, "email" => $insert_email, "fullName" => $insert_fullName));
+                    // print this message if there was a change in the record
+                    $recordChange = $stmt->rowCount() . ' ' .  lang("inserted_recordChange");
+                    $message = "<div class='mb-4 alert alert-success'><div class='container'><div>Account Created</div></div></div>";
+                    $pageName = "members.php";
+                }
             }
             include $memberPages . "insertMember.php";
         } else {
-            $error = "you don't access to this page !!";
-            redirectHome($error);
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>you don't access to this page !!</div></div></div>";
+            redirectHome($message, null);
         }
         // add the section to display the data.
         //  include $template . "updateMember.php";
@@ -119,8 +127,8 @@ if (isset($_SESSION['username'])) {
             // include the form with the data.
             include $memberPages . "editMember.php";
         } else {
-            $message = "incorrect userID !";
-            redirectHome($message);
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>incorrect userID !</div></div></div>";
+            redirectHome($message, null);
         }
     } elseif ($action == "update") {
         // update page section
@@ -179,15 +187,14 @@ if (isset($_SESSION['username'])) {
                 $stmt->execute(array($update_username, $update_email, $update_fullName, $update_password, $update_userID));
                 // print this message if there was a change in the record
                 $recordChange = $stmt->rowCount() . ' ' .  lang("update_recordChange");
-                $message = "Profile updated";
-                $alertType = "alert-success";
-                redirectHome($message, 2, "index.php", $alertType);
+                $message =  "<div class='mb-4 alert alert-success'><div class='container'> <div> Profile Updated</div>  </div></div>";
+                redirectHome($message, "back", 2);
             }
             include $memberPages . "updateMember.php";
         } else {
             // do
-            $message = "you don't access to this page !!";
-            redirectHome($message, 2);
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>you don't access to this page !!</div></div></div>";
+            redirectHome($message, null, 2);
         }
         // add the section to display the data.
     } elseif ($action == "delete") {
@@ -206,18 +213,16 @@ if (isset($_SESSION['username'])) {
             // $stmt->bindParam(":userID", $userID);
             $stmt->execute(array($userID));
             $recordChange = $stmt->rowCount() . ' ' .  lang("deleted_recordChange");
-            $message = "Account Deleted.";
+            $message =  "<div class='mb-4 alert alert-success'><div class='container'><div>Account Deleted.</div></div></div>";
             $pageName = "members.php";
-            $alertType = "alert-success";
             include $memberPages . 'deleteMember.php';
         } else {
-            $message = "account doesn't exist";
-            redirectHome($message);
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>account doesn't exist</div></div></div>";
+            redirectHome($message, null);
         }
     } else {
-        // echo "<div class='alert alert-danger'><div class='container'><div>Error page not found</div></div></div>";
-        $message = "Error page not found!!";
-        redirectHome($message);
+        $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>Error page not found!!</div></div></div>";
+        redirectHome($message, null);
     }
 
     include $template . "footer.php";
