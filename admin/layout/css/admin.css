@@ -33,8 +33,7 @@ body {
 *
 *=================================================*/
 .bg-dark {
-  /* background-color: #343a40 !important; */
-  background-color: #252a34 !important;
+  background-color: #2c3e50 !important;
 }
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.active,
@@ -114,13 +113,16 @@ body {
   min-width: 180px;
   vertical-align: middle;
 }
+.table.manage__table td:last-child,
+.table.manage__table th:last-child {
+  min-width: 300px;
+}
 .table.manage__table td:first-of-type,
 .table.manage__table th:first-of-type {
   min-width: 70px;
 }
 .edit_delete_button {
-  width: 75px;
-  max-width: 75px;
+  min-width: 75px;
 }
 
 /*================================================
@@ -129,11 +131,38 @@ body {
 *
 *=================================================*/
 
-.dashboard__section .status,
-.latest__panel .card {
-  background-color: #ffe6ca;
+.dashboard__section .status {
+  color: white;
+}
+.dashboard__dataHolder {
+  overflow: hidden;
+}
+.dashboard__section .dashboard_link {
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.dashboard_link:hover {
+  transform: scale(1.4);
+  text-decoration: none;
 }
 
 .latest__panel .card-header {
-  background-color: #ffd8ad;
+  background-color: #074cbd;
+  color: white;
+}
+
+.status_members {
+  background-color: #8629ad;
+}
+
+.status_pending {
+  background-color: #074cbd;
+}
+
+.status_totalItems {
+  background-color: #9b281c;
+}
+
+.status__comments {
+  background-color: #2c3e50;
 }

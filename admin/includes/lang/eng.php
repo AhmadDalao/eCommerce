@@ -43,6 +43,7 @@ function lang($phrase)
         'manageMember_modalWarning' => 'Are you sure you want to delete this account:',
         'manageMember_modalAccount' => 'account ID:',
         'manageMember_modalClose' => 'Close',
+        'manageMember_approve' => 'Approve',
         // add member
         'add_profile' => 'add member',
         'add_member' => 'add member',
@@ -50,6 +51,9 @@ function lang($phrase)
         'inserted_recordChange' => 'Member added successfully',
         'insert_password_empty' => 'password can\'t be <strong>empty</strong>',
         'insert_profile' => 'Inserted Members',
+        // activate member 
+        'activate__title' => 'Activate Member',
+        'activate_recordChange' => 'Account Activated',
         // table manage members
         'table_control' => 'Control',
         'table_registeredDate' => 'Registered Date',

@@ -23,9 +23,14 @@ if (isset($_SESSION['username'])) {
     $action = isset($_GET['action']) ? $_GET['action'] : "manage";
 
     if ($action == "manage") {
+        $query = '';
+
+        if (isset($_GET['page']) && $_GET['page'] == "pending") {
+            $query = "AND register_status = 0";
+        }
 
         // select all regular users.
-        $stmt = $db_connect->prepare("SELECT * FROM users WHERE groupID != 1");
+        $stmt = $db_connect->prepare("SELECT * FROM users WHERE groupID != 1 $query");
         // execute the SQL above
         $stmt->execute();
         // assign result from the SQL statement into a variable.
@@ -88,13 +93,12 @@ if (isset($_SESSION['username'])) {
 
                 // check if username exist in the database before running the insert query.
                 $checkResult = checkItem("username", "users", $insert_username);
-
                 if ($checkResult == 1) {
                     $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>Sorry!, username is already in use</div></div></div>";
                     redirectHome($message, "back", 4);
                 } else {
                     // insert the data base with the data I receive from the form in add page.
-                    $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email,fullName, Date) VALUES (:username, :password ,:email ,:fullName, now())');
+                    $stmt = $db_connect->prepare('INSERT INTO users (username ,password ,email ,fullName ,register_status ,Date) VALUES (:username, :password ,:email ,:fullName, 1, now())');
                     $stmt->execute(array("username" => $insert_username, "password" => $hashPassword, "email" => $insert_email, "fullName" => $insert_fullName));
                     // print this message if there was a change in the record
                     $recordChange = $stmt->rowCount() . ' ' .  lang("inserted_recordChange");
@@ -216,6 +220,26 @@ if (isset($_SESSION['username'])) {
             $message =  "<div class='mb-4 alert alert-success'><div class='container'><div>Account Deleted.</div></div></div>";
             $pageName = "members.php";
             include $memberPages . 'deleteMember.php';
+        } else {
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>account doesn't exist</div></div></div>";
+            redirectHome($message, "members.php");
+        }
+    } elseif ($action == "activate") {
+
+        // check if userID is numeric & return the integer value of it
+        $userID = isset($_GET['userID']) && is_numeric($_GET['userID']) ?  intval($_GET['userID']) :  0;
+        // select data from database based on the userID I got from $_GET.
+
+        $checkResult = checkItem("userID", "users", $userID);
+
+        if ($checkResult > 0) {
+            // delete user
+            $stmt = $db_connect->prepare("UPDATE users SET register_status = 1 WHERE userID = ?");
+            // $stmt->bindParam(":userID", $userID);
+            $stmt->execute(array($userID));
+            $recordChange = $stmt->rowCount() . ' ' .  lang("activate_recordChange");
+            $message =  "<div class='mb-4 alert alert-success'><div class='container'><div>Account Activated successfully.</div></div></div>";
+            include $memberPages . 'activateMember.php';
         } else {
             $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>account doesn't exist</div></div></div>";
             redirectHome($message, "members.php");

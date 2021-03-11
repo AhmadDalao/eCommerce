@@ -11,6 +11,12 @@
           <a class="delete__member btn btn-danger edit_delete_button text-capitalize" data-toggle="modal"
               data-customModal="<?php echo $row['userID']; ?>" data-modalName='<?php echo $row['username']; ?>'
               data-target="#manage_member_modal<?php echo $row['userID']; ?>"
-              href="members.php?action=delete&userID=<?php echo $row['userID']; ?>"><?php echo lang('manageMember_delete'); ?></a>
+              href="members.php?action=delete&userID=<?php echo $row['userID']; ?>"><i
+                  class="fas fa-times mr-1"></i><?php echo lang('manageMember_delete'); ?></a>
+          <?php if ($row['register_status'] == 0) { ?>
+          <a class="btn btn-info edit_delete_button text-capitalize"
+              href="members.php?action=activate&userID=<?php echo $row['userID']; ?>"><i
+                  class="fas fa-check mr-1"></i><?php echo lang("manageMember_approve"); ?></a>
+          <?php  } ?>
       </td>
   </tr>
