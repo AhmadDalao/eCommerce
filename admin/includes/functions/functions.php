@@ -112,9 +112,33 @@ function checkItem($selectItem, $tableName, $value)
 {
     global $db_connect;
 
-    $functionStmt = $db_connect->prepare("SELECT $selectItem FROM $tableName WHERE $selectItem = ? ");
-    $functionStmt->execute(array($value));
-    $total_row = $functionStmt->rowCount();
+    $stmt = $db_connect->prepare("SELECT $selectItem FROM $tableName WHERE $selectItem = ? ");
+    $stmt->execute(array($value));
+    $total_row = $stmt->rowCount();
 
     return $total_row;
+}
+
+
+/*
+* ================================================================
+* ================================================================
+*
+*                         countItemsIN_DB function
+*
+*  this function uses the MYSQL query.
+*  which is used to to check if the item does exist in the database or not. And return the count of it.
+*  @param $itemToCount the table you want to count [ select Count(userID || username || items)] and so on
+*  @param $tableName table to select from. [from users , item , category]
+*
+* ================================================================
+* ================================================================
+*/
+
+function countItemsIN_DB($itemToCount, $tableName)
+{
+    global $db_connect;
+    $stmt = $db_connect->prepare("SELECT COUNT($itemToCount) FROM $tableName");
+    $stmt->execute();
+    return $stmt->fetchColumn();  // find the numbers of column
 }

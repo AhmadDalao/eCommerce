@@ -100,9 +100,12 @@ if (isset($_SESSION['username'])) {
                     $recordChange = $stmt->rowCount() . ' ' .  lang("inserted_recordChange");
                     $message = "<div class='mb-4 alert alert-success'><div class='container'><div>Account Created</div></div></div>";
                     $pageName = "members.php";
+                    include $memberPages . "insertMember.php";
                 }
+            } else {
+                $message = "<div class='mb-4 alert alert-danger'><div class='container'><div>Fix the above errors:</div></div></div>";
+                redirectHome($message, "back", 7);
             }
-            include $memberPages . "insertMember.php";
         } else {
             $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>you don't access to this page !!</div></div></div>";
             redirectHome($message);

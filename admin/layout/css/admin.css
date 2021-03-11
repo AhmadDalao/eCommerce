@@ -19,7 +19,7 @@
 }
 
 body {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   font-size: var(--bodyFontSize);
 }
 
@@ -32,7 +32,10 @@ body {
 *  admin navbar 
 *
 *=================================================*/
-
+.bg-dark {
+  /* background-color: #343a40 !important; */
+  background-color: #252a34 !important;
+}
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link.show,
@@ -118,4 +121,19 @@ body {
 .edit_delete_button {
   width: 75px;
   max-width: 75px;
+}
+
+/*================================================
+*
+*  dashboard  section
+*
+*=================================================*/
+
+.dashboard__section .status,
+.latest__panel .card {
+  background-color: #ffe6ca;
+}
+
+.latest__panel .card-header {
+  background-color: #ffd8ad;
 }

@@ -60,6 +60,12 @@ function lang($phrase)
         // delete member page
         'deleteMember_title' => 'Delete Member',
         'deleted_recordChange' => 'Account Deleted',
+        // dashboard
+        'dashboard_title' => 'dashboard',
+        'dashboard_statusMembers' => 'Total Members',
+        'dashboard_pendingMembers' => 'pending members',
+        'dashboard_items' => 'total items',
+        'dashboard_totalComments' => 'Total comments',
 
 
 
