@@ -9,20 +9,25 @@ document.body.onload = addElement;
  */
 
 let inputs = document.querySelectorAll("input[placeholder]");
-let edit_fields = document.querySelectorAll(".edit__form input[required]");
 
-for (let index = 0; index < inputs.length; index++) {
+inputs.forEach((element) => {
   let temp_placeHolder;
-  inputs[index].addEventListener("focus", function () {
-    temp_placeHolder = inputs[index].getAttribute("placeholder");
-    inputs[index].setAttribute("placeholder", "");
+  element.addEventListener("focus", function () {
+    temp_placeHolder = element.getAttribute("placeholder");
+    element.setAttribute("placeholder", "");
   });
-  inputs[index].addEventListener("blur", function () {
-    inputs[index].setAttribute("placeholder", temp_placeHolder);
+  element.addEventListener("blur", function () {
+    element.setAttribute("placeholder", temp_placeHolder);
   });
-}
+});
 
-// add * to each field that has required as attribute
+/*
+ *
+ * add * to each field that has required as attribute
+ *
+ */
+
+let edit_fields = document.querySelectorAll(".edit__form input[required]");
 function addElement() {
   for (let index = 0; index < edit_fields.length; index++) {
     //  var tree = document.createDocumentFragment();
@@ -34,7 +39,12 @@ function addElement() {
   }
 }
 
-// dynamic modal in manage member.
+/*
+ *
+ * dynamic modal in manage member.
+ *
+ */
+
 let deleteButton = document.querySelectorAll("tr > td a.delete__member");
 
 for (let index = 0; index < deleteButton.length; index++) {
