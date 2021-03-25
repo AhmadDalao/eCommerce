@@ -222,7 +222,7 @@ if (isset($_SESSION['username'])) {
             include $memberPages . 'deleteMember.php';
         } else {
             $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>account doesn't exist</div></div></div>";
-            redirectHome($message, "members.php");
+            redirectHome($message, 'back');
         }
     } elseif ($action == "activate") {
 

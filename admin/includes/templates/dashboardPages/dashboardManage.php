@@ -75,18 +75,28 @@
        <div class="container">
            <div class="row">
                <!-- newly registered users -->
-               <div class="col-sm-6">
+               <div class="col-lg-6">
                    <div class="card">
                        <div class="card-header">
-                           <span class="text-capitalize"><i class="fas fa-users mr-1"></i>newly Registered users</span>
+                           <span class="text-capitalize"><i class="fas fa-users mr-1">
+                               </i>latest <?php echo $latestUsersLimiter; ?> Registered users</span>
                        </div>
                        <div class="card-body">
-                           card body test
+                           <ul class="list-group list-group-flush">
+                               <?php
+                                foreach ($latestUsers as $user) {
+                                    echo "<li class='list-group-item'>";
+                                    echo $user['username'];
+                                    include  $dashboardPages . "buttons.php";
+                                    echo "</li>";
+                                }
+                                ?>
+                           </ul>
                        </div>
                    </div>
                </div>
                <!-- newly added items -->
-               <div class="col-sm-6">
+               <div class="col-lg-6">
                    <div class="card">
                        <div class="card-header">
                            <span class="text-capitalize"><i class="fas fa-tag mr-1"></i>newly added items</span>
@@ -99,29 +109,3 @@
            </div>
        </div>
    </section>
-
-   <!-- 
-   <select name="choice">
-       <option value="">--Please choose an option--</option>
-       <?php
-        // $stmt = $db_connect->prepare("SELECT username FROM users WHERE  username = ?");
-        // $username = "432";
-        // $stmt->execute(array($username));
-        // $row =   $stmt->fetch();
-        // if ($row['username'] == "Ahmad") {
-        ?>
-       <option value="second">i'm male</option>
-       <option value="first" selected>i'm female</option>
-       <?php
-        // } elseif ($row['username' == "AhmadTest"]) {
-        ?>
-       <option value="first" selected>i'm male</option>
-       <option value="first">i'm female</option>
-       <?php
-        // } else {
-        ?>
-       <option value="first">i'm male</option>
-       <option value="first">i'm female</option>
-       <?php // } 
-        ?>
-   </select> -->

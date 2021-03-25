@@ -142,3 +142,30 @@ function countItemsIN_DB($itemToCount, $tableName)
     $stmt->execute();
     return $stmt->fetchColumn();  // find the numbers of column
 }
+
+
+/*
+* ================================================================
+* ================================================================
+*
+*                         getLatestRecord function
+*
+*  this function uses the MYSQL query.
+*  which is used to get latest items from database [users , items ,comments].
+*  @param $select_item item to select from the database
+*  @param $table  the table to select the item from
+*  @param $order  the ORDER for the selected items
+*  @param $limiter number of items you want to get.
+*
+* ================================================================
+* ================================================================
+*/
+
+function getLatestRecord($select_item, $table, $order, $limiter = 5)
+{
+    global $db_connect;
+    $stmt = $db_connect->prepare("SELECT $select_item FROM $table WHERE groupID != 1 ORDER BY $order DESC LIMIT $limiter");
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    return $rows;
+}
