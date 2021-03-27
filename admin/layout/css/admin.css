@@ -180,3 +180,45 @@ body {
   background-color: #9aa1a8;
   color: white;
 }
+
+/*================================================
+*
+*  manage category
+*
+*=================================================*/
+.card__holder .visibility {
+  background-color: #dfe4ea;
+}
+.card__holder .allow_comment {
+  background-color: #0652dd;
+  color: white;
+}
+.card__holder .allow_ads {
+  background-color: #c0392b;
+  color: white;
+}
+
+@media (max-width: 515px) {
+  .card__holder .card__info span {
+    display: block;
+    margin-top: 1rem;
+  }
+}
+
+.card__holder .card_dots:hover {
+  cursor: pointer;
+}
+
+.card__holder .card_button--holder {
+  background: white;
+  right: -50%;
+  /* height: 100%; */
+  /* top: 18%; */
+  /* transform: translateY(-50%); */
+  transition: all 0.5s ease-in-out;
+  z-index: 5;
+}
+
+.show.card_button--holder {
+  right: 1.25rem;
+}

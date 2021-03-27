@@ -70,9 +70,29 @@ function lang($phrase)
         'dashboard_pendingMembers' => 'pending members',
         'dashboard_items' => 'total items',
         'dashboard_totalComments' => 'Total comments',
-
-
-
+        // category page
+        'add_category' => 'Add new Category',
+        'categoryName' => 'Category Name',
+        'CategoryDescription' => 'Category Description',
+        'CategoryOrdering' => 'Category Order',
+        'CategoryVisibility' => 'Category Visibility',
+        'isVisible' => "Category is visible to anyone",
+        'isInVisible' => "Category is invisible to everyone",
+        'commentingAllowed' => 'Allow Comments',
+        'commentYes' => 'anyone can comment',
+        'commentNo' => 'nobody can comment',
+        'advertisementAllowed' => 'Allow advertisement',
+        'adsYes' => 'show advertisement',
+        'adsNo' => 'Disable advertisement',
+        'add_category' => 'Add Category',
+        // insert category
+        'insert_category' => 'insert category',
+        'insert_category_name' => 'category name can\'t be <strong>more than 25 letters</strong>',
+        'insert_category_name_less' => 'category name can\'t be <strong>less than 4 letters</strong>',
+        'insert_category_empty' => 'category name  can\'t be <strong>empty</strong>',
+        'inserted_recordChangeCategory' => 'Category added successfully',
+        // add category
+        'category_title' => 'Manage Categories',
     );
     return $language[$phrase];
 }

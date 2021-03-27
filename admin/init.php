@@ -26,6 +26,7 @@ include "config.php";
 $template = 'includes/templates/';
 $memberPages = 'includes/templates/membersPages/';
 $dashboardPages = 'includes/templates/dashboardPages/';
+$categoryPages = 'includes/templates/categoryPages/';
 $func = "includes/functions/";
 $css = "layout/css/";
 $js = "layout/js/";
