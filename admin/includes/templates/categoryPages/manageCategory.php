@@ -16,7 +16,8 @@
                                     } ?>" href="?orderby=name">name</a>
         </div>
         <div class="categoryAdd_button-holder text-right mb-3">
-            <a class="btn btn-primary " href="?action=add"><?php echo lang("Add_category"); ?></a>
+            <a class="add__member btn btn-lg btn-primary mt-3" href="?action=add"><i
+                    class="fas fa-plus mr-1"></i><?php echo lang("Add_category"); ?></a>
         </div>
         <div class="categories__holder">
             <div class="row">

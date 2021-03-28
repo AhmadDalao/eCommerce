@@ -96,7 +96,14 @@ function lang($phrase)
         'Add_category' => 'Add Category',
         // manage categories 
         'order_by' => 'Order by',
-
+        // edit category
+        'edit_category' => 'Edit Category',
+        // update category 
+        'category_update' => 'Update Category',
+        // delete category
+        'deleteCategory' => 'Delete Category',
+        // deleted Category recordChange
+        'deleted_recordChangeCategory' => "Category Deleted",
     );
     return $language[$phrase];
 }

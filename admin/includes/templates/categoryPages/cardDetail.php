@@ -7,10 +7,10 @@
         <div class=" card-body position-relative overflow-hidden">
             <div class="card_button--holder position-absolute ">
                 <a class="btn btn-success edit_delete_button text-capitalize"
-                    href="members.php?action=edit&userID=<?php echo $row['userID']; ?>"><i
+                    href="categories.php?action=edit&cateID=<?php echo $category['ID']; ?>"><i
                         class="fas fa-edit mr-1"></i><?php echo lang("manageMember_edit"); ?></a>
                 <a class="delete__member btn btn-danger edit_delete_button text-capitalize"
-                    href="members.php?action=delete&userID=<?php echo $row['userID']; ?>"><i
+                    href="categories.php?action=delete&cateID=<?php echo $category['ID']; ?>"><i
                         class="fas fa-times mr-1"></i><?php echo lang('manageMember_delete'); ?></a>
             </div>
             <h5 class="card-title"><?php echo $category['name']; ?></h5>

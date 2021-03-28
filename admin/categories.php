@@ -102,14 +102,96 @@ if (isset($_SESSION['username'])) {
             redirectHome($message);
         }
     } elseif ($action == "edit") {
-        // do
-        echo "welcome edit";
+        // edit page section
+        // check if cateID is numeric & return the integer value of it
+        $cateID = isset($_GET['cateID']) && is_numeric($_GET['cateID']) ?  intval($_GET['cateID']) :  0;
+        // select data from database based on the cateID I got from $_GET.
+        $stmt = $db_connect->prepare("SELECT * FROM categories  WHERE  ID = ? LIMIT 1 ");
+        // execute query
+        $stmt->execute(array($cateID));
+        // $row will be an array since fetch retrieve information as an array.
+        // fetch data from database.
+        $row = $stmt->fetch();
+        $total_row = $stmt->rowCount();
+
+        if ($total_row > 0) {
+            // include the form with the data.
+            include $categoryPages . "editCategory.php";
+        } else {
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>incorrect category ID !</div></div></div>";
+            redirectHome($message, null);
+        }
     } elseif ($action == "update") {
-        // do
-        echo "welcome update";
+
+        // update page section
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            $recordChange = '';
+            $cateID = $_POST['cateID'];
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $ordering = $_POST['ordering'];
+            $visibility = $_POST['visibility'];
+            $commenting = $_POST['commenting'];
+            $advertisement = $_POST['advertisement'];
+
+            // validate the form before updating the database
+            $formErrors = array();
+            if (strlen($name) > 25) {
+                // adding form error to array so I can show it later to user.
+                $formErrors[] = lang("insert_category_name");
+            }
+
+            if (empty($name)) {
+                // adding form error to array so I can show it later to user.
+                $formErrors[] = lang("update_username_empty");
+            }
+
+            // if formErrors is empty connect to the database.
+            if (empty($formErrors)) {
+                // update the data base with the data I receive from the form in edit page.
+                $stmt = $db_connect->prepare('UPDATE
+                categories
+                SET
+                    name = ? ,
+                    description = ? , 
+                    ordering = ? ,
+                    visibility = ? ,
+                    allow_comment = ? ,
+                    allow_ads = ?
+                WHERE ID = ?');
+                $stmt->execute(array($name, $description, $ordering, $visibility, $commenting, $advertisement, $cateID));
+                // print this message if there was a change in the record
+                $recordChange = $stmt->rowCount() . ' ' .  lang("update_recordChange");
+                $message =  "<div class='mb-4 alert alert-success'><div class='container'> <div> Category Updated</div>  </div></div>";
+                redirectHome($message, "back", 2);
+            }
+            include $categoryPages . "categoryUpdate.php";
+        } else {
+            // do
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>you don't access to this page !!</div></div></div>";
+            redirectHome($message, null, 2);
+        }
     } elseif ($action == "delete") {
-        // do
-        echo "welcome delete";
+        // check if userID is numeric & return the integer value of it
+        $cateID = isset($_GET['cateID']) && is_numeric($_GET['cateID']) ?  intval($_GET['cateID']) :  0;
+        // select data from database based on the cateID I got from $_GET.
+
+        $checkResult = checkItem("ID", "categories", $cateID);
+
+        if ($checkResult > 0) {
+            // delete user
+            $stmt = $db_connect->prepare("DELETE FROM categories WHERE ID = ?");
+            // $stmt->bindParam(":userID", $userID);
+            $stmt->execute(array($cateID));
+            $recordChange = $stmt->rowCount() . ' ' .  lang("deleted_recordChangeCategory");
+            $message =  "<div class='mb-4 alert alert-success'><div class='container'><div class='text-capitalize'>Category Deleted.</div></div></div>";
+            $pageName = "categories.php";
+            include $categoryPages . 'categoryDelete.php';
+        } else {
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div class='text-capitalize'>Category doesn't exist</div></div></div>";
+            redirectHome($message, 'back');
+        };
     }
 ?>
 <script src="<?php echo $js; ?>showButtons.js"></script>
