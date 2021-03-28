@@ -96,6 +96,9 @@ function lang($phrase)
         'Add_category' => 'Add Category',
         // manage categories 
         'order_by' => 'Order by',
+        'manageCategory_modalTitle' => 'Delete Category',
+        'manageCategory_modalWarning' => 'Are you sure you want to delete this Category:',
+        'manageCategory_modalAccount' => 'Category ID:',
         // edit category
         'edit_category' => 'Edit Category',
         // update category 
@@ -104,6 +107,8 @@ function lang($phrase)
         'deleteCategory' => 'Delete Category',
         // deleted Category recordChange
         'deleted_recordChangeCategory' => "Category Deleted",
+        //     
+
     );
     return $language[$phrase];
 }

@@ -45,39 +45,35 @@ function addElement() {
  *
  */
 
-let deleteButton = document.querySelectorAll("tr > td a.delete__member");
-
+let deleteButton = document.querySelectorAll("a.delete__item");
 for (let index = 0; index < deleteButton.length; index++) {
   deleteButton[index].addEventListener("click", function () {
-    let deleteAttribute = deleteButton[index].getAttribute("data-customModal");
-    let modalName = deleteButton[index].getAttribute("data-modalName");
+    let delete_id = deleteButton[index].getAttribute("data-delete_id");
+    let delete_name = deleteButton[index].getAttribute("data-delete_name");
 
     // modal in manage member;
-    let manage_member_modal = document.querySelector(".manage_member_modal");
-    manage_member_modal.setAttribute(
-      "id",
-      "manage_member_modal" + deleteAttribute
-    );
+    let manage__modal = document.querySelector("[data-targetedModal]");
+    manage__modal.setAttribute("id", delete_name + delete_id);
 
-    // manage_modal_userID span add user id text to it.
-    let manage_modal_userID = document.querySelector(".manage_modal_userID");
-    let myTextNode = document.createTextNode(deleteAttribute);
-    manage_modal_userID.textContent = "";
-    manage_modal_userID.appendChild(myTextNode);
+    // manage_modal_ID span add user id text to it.
+    let manage_modal_ID = document.querySelector(".manage_modal_ID");
+    let myTextNode = document.createTextNode(delete_id);
+    manage_modal_ID.textContent = "";
+    manage_modal_ID.appendChild(myTextNode);
 
-    // manage_modal_userID span add user id text to it.
+    // manage_modal_username span add user name text to it.
     let manage_modal_username = document.querySelector(
       ".manage_modal_username"
     );
-    let myUserNameNode = document.createTextNode(modalName);
+    let myUserNameNode = document.createTextNode(delete_name);
     manage_modal_username.textContent = "";
     manage_modal_username.appendChild(myUserNameNode);
 
     // members.php?action=delete&userID=
     let modalDeleteButton = document.querySelector("#modal_deleteButton");
-    modalDeleteButton.setAttribute(
-      "href",
-      "members.php?action=delete&userID=" + deleteAttribute
-    );
+    let url = document
+      .querySelector("[data-page_url]")
+      .getAttribute("data-page_url");
+    modalDeleteButton.setAttribute("href", url + delete_id);
   });
 }

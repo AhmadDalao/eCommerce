@@ -9,7 +9,10 @@
                 <a class="btn btn-success edit_delete_button text-capitalize"
                     href="categories.php?action=edit&cateID=<?php echo $category['ID']; ?>"><i
                         class="fas fa-edit mr-1"></i><?php echo lang("manageMember_edit"); ?></a>
-                <a class="delete__member btn btn-danger edit_delete_button text-capitalize"
+                <a class="delete__item btn btn-danger edit_delete_button text-capitalize" data-toggle="modal"
+                    data-delete_id="<?php echo $category['ID']; ?>" data-delete_name='<?php echo $category['name']; ?>'
+                    data-target="#<?php echo $category['name'];
+                                                                                                                                                                                                                                echo $category['ID']; ?>"
                     href="categories.php?action=delete&cateID=<?php echo $category['ID']; ?>"><i
                         class="fas fa-times mr-1"></i><?php echo lang('manageMember_delete'); ?></a>
             </div>
@@ -37,10 +40,6 @@
                 }
                 ?>
             </div>
-            <!-- <div class="category__linkHolder mt-4">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div> -->
         </div>
     </div>
 </div>
