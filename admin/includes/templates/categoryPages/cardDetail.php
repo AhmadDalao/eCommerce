@@ -27,13 +27,13 @@
                                                             } ?>">
                 <?php
                 if ($category['visibility'] == 1) {
-                    echo '<span class="visibility p-2 m-1 rounded text-capitalize"><i class="fas fa-eye-slash mr-1 ml-0"></i>Hidden</span>';
+                    echo '<span class="visibility p-2 m-1 rounded text-capitalize bg-light"><i class="fas fa-eye-slash mr-1 ml-0"></i>Hidden</span>';
                 }
                 if ($category['allow_comment'] == 1) {
-                    echo '<span class="allow_comment p-2 m-1 rounded text-capitalize"><i class="fas fa-comment-slash mr-1 ml-0"></i>Comments Disabled</span>';
+                    echo '<span class="allow_comment p-2 m-1 rounded text-capitalize bg-primary"><i class="fas fa-comment-slash mr-1 ml-0"></i>Comments Disabled</span>';
                 }
                 if ($category['allow_ads'] == 1) {
-                    echo '<span class="allow_ads p-2 m-1 ml-0 rounded text-capitalize p-2 m-1"><i class="fas fa-ad mr-1"></i>Ads Disabled</span>';
+                    echo '<span class="allow_ads p-2 m-1 ml-0 rounded text-capitalize p-2 m-1 bg-danger"><i class="fas fa-ad mr-1"></i>Ads Disabled</span>';
                 }
                 ?>
             </div>

@@ -25,9 +25,17 @@ if (isset($_SESSION['username'])) {
 
     if ($action == "manage") {
         //do 
-        $stmt = $db_connect->prepare("SELECT * FROM categories");
-        $stmt->execute();
-        $categories = $stmt->fetchAll();
+        $sort = 'ASC';
+        $orderingItem = "ordering";
+        $sort_array = array("ASC", "DESC", "ordering", "name");
+        if (isset($_GET['sort']) && in_array($_GET['sort'], $sort_array)) {
+            $sort = $_GET['sort'];
+        }
+        if (isset($_GET['orderby']) && in_array($_GET['orderby'], $sort_array)) {
+            $orderingItem = $_GET['orderby'];
+        }
+
+        $categories =  orderBy("*", "categories", $orderingItem, $sort);
 
         include $categoryPages . "manageCategory.php";
     } elseif ($action == "add") {

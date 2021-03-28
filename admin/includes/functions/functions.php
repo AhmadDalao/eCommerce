@@ -169,3 +169,30 @@ function getLatestRecord($select_item, $table, $order, $limiter = 5)
     $rows = $stmt->fetchAll();
     return $rows;
 }
+
+
+/*
+* ================================================================
+* ================================================================
+*
+*                         orderBy order items based on query
+*
+*  this function uses the MYSQL query.
+*  which is used to make a query to order and order it according to the user request.
+*  @param $selectItem is the you want to select [ select username , itemName , category]
+*  @param $tableName table to select from. [from users , item , category]
+*  @param $ordering [WHERE ordering = username, groupID ....]
+*  @param $sort [WHERE sort = ASC , DESC]
+*
+* ================================================================
+* ================================================================
+*/
+
+function orderBy($selectItem, $tableName, $ordering, $sort)
+{
+    global $db_connect;
+    $stmt = $db_connect->prepare("SELECT $selectItem FROM $tableName ORDER BY $ordering $sort");
+    $stmt->execute();
+    $categories = $stmt->fetchAll();
+    return $categories;
+}

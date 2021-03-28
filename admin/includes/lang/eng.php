@@ -93,6 +93,10 @@ function lang($phrase)
         'inserted_recordChangeCategory' => 'Category added successfully',
         // add category
         'category_title' => 'Manage Categories',
+        'Add_category' => 'Add Category',
+        // manage categories 
+        'order_by' => 'Order by',
+
     );
     return $language[$phrase];
 }
