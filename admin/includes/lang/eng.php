@@ -96,9 +96,15 @@ function lang($phrase)
         'Add_category' => 'Add Category',
         // manage categories 
         'order_by' => 'Order by',
+        'categoryView' => 'View',
         'manageCategory_modalTitle' => 'Delete Category',
         'manageCategory_modalWarning' => 'Are you sure you want to delete this Category:',
         'manageCategory_modalAccount' => 'Category ID:',
+        'categoryClassic' => 'Classic',
+        'categoryCompact' => 'Compact',
+        "CategoryASC" => "ASC",
+        "CategoryDESC" => "DESC",
+        "CategoryOrderByName" => "Name",
         // edit category
         'edit_category' => 'Edit Category',
         // update category 

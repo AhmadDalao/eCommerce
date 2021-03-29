@@ -194,7 +194,7 @@ if (isset($_SESSION['username'])) {
         };
     }
 ?>
-<script src="<?php echo $js; ?>showButtons.js"></script>
+    <script src="<?php echo $js; ?>showButtons.js"></script>
 <?php
     include $template . "footer.php";
 } else {

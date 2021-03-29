@@ -213,6 +213,7 @@ body {
   right: 1.25rem;
 }
 
-.order_holder > span {
+.order_holder > span,
+.categoriesView .view_title {
   vertical-align: middle;
 }

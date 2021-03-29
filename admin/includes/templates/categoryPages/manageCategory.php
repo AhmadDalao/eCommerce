@@ -3,17 +3,24 @@
         <h1 class='text-center header_color text-capitalize my-5'>
             <?php echo lang("category_title"); ?>
         </h1>
-        <div class="order_holder mb-4">
-            <span class="text-left text-capitalize font-weight-bold mr-2"><?php echo lang("order_by"); ?></span>
+        <div class="order_holder mb-3">
+            <span class="text-left text-capitalize font-weight-bold text-muted mr-2"><i
+                    class="fas fa-sort mr-1"></i><?php echo lang("order_by"); ?></span>
             <a class="btn btn-dark <?php if ($sort == "ASC") {
                                         echo "bg-secondary";
-                                    } ?>" href="?sort=ASC">ASC</a>
+                                    } ?>" href="?sort=ASC"><?php echo lang("CategoryASC"); ?></a>
             <a class="btn btn-dark <?php if ($sort == "DESC") {
                                         echo "bg-secondary";
-                                    } ?>" href="?sort=DESC">DESC</a>
+                                    } ?>" href="?sort=DESC"><?php echo lang("CategoryDESC"); ?></a>
             <a class="btn btn-dark <?php if ($orderingItem == "name") {
                                         echo "bg-secondary";
-                                    } ?>" href="?orderby=name">name</a>
+                                    } ?>" href="?orderby=name"><?php echo lang("CategoryOrderByName"); ?></a>
+        </div>
+        <div class="categoriesView">
+            <span class="view_title text-left text-capitalize font-weight-bold mr-2 text-muted"><i
+                    class="fas fa-eye mr-1"></i><?php echo lang("categoryView"); ?></span>
+            <span class="spanClassic btn btn-dark bg-secondary "><?php echo lang("categoryClassic"); ?></span>
+            <span class="spanCompact btn btn-dark"><?php echo lang("categoryCompact"); ?></span>
         </div>
         <div class="categoryAdd_button-holder text-right mb-3">
             <a class="add__member btn btn-lg btn-primary mt-3" href="?action=add"><i
