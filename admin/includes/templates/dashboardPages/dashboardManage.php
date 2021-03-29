@@ -6,66 +6,67 @@
            <div class="row">
                <!-- total members  -->
                <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
-                   <div class="status shadow-sm rounded-lg status_members">
-                       <h4 class="text-center text-capitalize p-3 pt-5 mb-0">
-                           <?php echo lang("dashboard_statusMembers"); ?>
-                       </h4>
-                       <div class="dashboard__dataHolder text-center p-3 pb-5">
-                           <a class="dashboard_link d-block" href="members.php" target="_blank" rel="noreferrer">
+                   <a class="dashboard_link d-block" href="members.php" target="_blank" rel="noreferrer">
+                       <div class="status shadow-sm rounded-lg status_members">
+                           <h4 class="text-center text-capitalize p-3 pt-5 mb-0">
+                               <?php echo lang("dashboard_statusMembers"); ?>
+                           </h4>
+                           <div class="dashboard__dataHolder text-center p-3 pb-5">
                                <p class="dashboard__numbers py-3 mb-0 display-4 font-weight-bold">
                                    <?php echo countItemsIN_DB("userID", "users"); ?>
                                </p>
-                           </a>
+                           </div>
                        </div>
-                   </div>
+                   </a>
                </div>
                <!-- total pending members  -->
                <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
-                   <div class="status shadow-sm rounded-lg status_pending">
-                       <h4 class="text-center text-capitalize p-3 pt-5 mb-0">
-                           <?php echo lang("dashboard_pendingMembers"); ?>
-                       </h4>
-                       <div class="dashboard__dataHolder text-center p-3 pb-5">
-                           <a class="dashboard_link d-block" href="members.php?action=manage&page=pending"
-                               target="_blank" rel="noreferrer">
+                   <a class="dashboard_link d-block" href="members.php?action=manage&page=pending" target="_blank"
+                       rel="noreferrer">
+                       <div class="status shadow-sm rounded-lg status_pending">
+                           <h4 class="text-center text-capitalize p-3 pt-5 mb-0">
+                               <?php echo lang("dashboard_pendingMembers"); ?>
+                           </h4>
+                           <div class="dashboard__dataHolder text-center p-3 pb-5">
+
                                <p class="dashboard__numbers py-3 mb-0 display-4 font-weight-bold">
                                    <?php echo checkItem("register_status", "users", 0); ?>
                                </p>
-                           </a>
+                           </div>
                        </div>
-                   </div>
+                   </a>
                </div>
                <!-- total items members  -->
                <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
-                   <div class="status shadow-sm rounded-lg status_totalItems">
-                       <h4 class="text-center text-capitalize p-3  pt-5 mb-0">
-                           <?php echo lang("dashboard_items"); ?>
-                       </h4>
-                       <div class="dashboard__dataHolder text-center p-3 pb-5">
-                           <a class="dashboard_link d-block" href="members.php" target="_blank" rel="noreferrer">
+                   <a class="dashboard_link d-block" href="members.php" target="_blank" rel="noreferrer">
+                       <div class="status shadow-sm rounded-lg status_totalItems">
+                           <h4 class="text-center text-capitalize p-3  pt-5 mb-0">
+                               <?php echo lang("dashboard_items"); ?>
+                           </h4>
+                           <div class="dashboard__dataHolder text-center p-3 pb-5">
                                <p class="dashboard__numbers py-3 mb-0 display-4 font-weight-bold">
                                    170
                                </p>
-                           </a>
+                           </div>
                        </div>
-
-                   </div>
+                   </a>
                </div>
                <!-- total comments from members  -->
                <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
-                   <div class="status shadow-sm rounded-lg status__comments">
-                       <h4 class="text-center text-capitalize p-3  pt-5 mb-0">
-                           <?php echo lang("dashboard_totalComments"); ?>
-                       </h4>
-                       <div class="dashboard__dataHolder text-center p-3 pb-5">
-                           <a class="dashboard_link d-block" href="members.php" target="_blank" rel="noreferrer">
+                   <a class="dashboard_link d-block" href="members.php" target="_blank" rel="noreferrer">
+                       <div class="status shadow-sm rounded-lg status__comments">
+                           <h4 class="text-center text-capitalize p-3  pt-5 mb-0">
+                               <?php echo lang("dashboard_totalComments"); ?>
+                           </h4>
+                           <div class="dashboard__dataHolder text-center p-3 pb-5">
                                <p class="dashboard__numbers py-3 mb-0 display-4 font-weight-bold">
                                    150
                                </p>
-                           </a>
+                           </div>
                        </div>
-                   </div>
+                   </a>
                </div>
+               <!-- end of row -->
            </div>
        </div>
    </section>

@@ -139,9 +139,12 @@ body {
 }
 .dashboard__section .dashboard_link {
   color: white;
+  text-decoration: none;
+}
+.dashboard_link .dashboard__numbers {
   transition: all 0.3s ease-in-out;
 }
-.dashboard_link:hover {
+.dashboard_link:hover .dashboard__numbers {
   transform: scale(1.4);
   text-decoration: none;
 }
