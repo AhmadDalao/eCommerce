@@ -27,6 +27,7 @@ $template = 'includes/templates/';
 $memberPages = 'includes/templates/membersPages/';
 $dashboardPages = 'includes/templates/dashboardPages/';
 $categoryPages = 'includes/templates/categoryPages/';
+$itemsPages = 'includes/templates/itemsPages/';
 $func = "includes/functions/";
 $css = "layout/css/";
 $js = "layout/js/";

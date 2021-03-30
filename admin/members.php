@@ -14,10 +14,10 @@
 
 // session is used to make sure the user can't access the page using different pages.
 session_start();
+$pageTitle = "Members";
 // if session is registered direct user to dashboard page
 if (isset($_SESSION['username'])) {
 
-    $pageTitle = "Members";
     include "init.php";
 
     $action = isset($_GET['action']) ? $_GET['action'] : "manage";

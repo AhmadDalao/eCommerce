@@ -1,9 +1,9 @@
 <?php
 // session is used to make sure the user can't access the page using different pages.
 session_start();
+$pageTitle = "Dashboard";
 // if session is registered direct user to dashboard page
 if (isset($_SESSION['username'])) {
-    $pageTitle = "Dashboard";
     include "init.php";
     $latestUsersLimiter = 6;
     $latestUsers = getLatestRecord("*", "users", "userID", $latestUsersLimiter);

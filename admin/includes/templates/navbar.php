@@ -17,7 +17,8 @@
                         href="categories.php"><?php echo lang("navbar_categories_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize" href="#"><?php echo lang("navbar_items_dashboard"); ?></a>
+                    <a class="nav-link text-capitalize"
+                        href="items.php"><?php echo lang("navbar_items_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-capitalize"

@@ -5,6 +5,7 @@ function lang($phrase)
 {
     static $language = array(
         // login page index.php
+        'login_pageTitle' => "Login",
         'admin_login' => 'Admin login',
         // navbar dashboard
         'navbar_brand_dashboard' => 'eCommerce',
@@ -30,11 +31,12 @@ function lang($phrase)
         'update_recordChange' => 'Record Updated',
         'update_username_greater' => 'username can\'t be <strong>more than 15 letters</strong>',
         'update_username_less' => 'username can\'t be <strong>less than 4 letters</strong>',
-        'update_username_empty' => '"username can\'t be <strong>empty</strong>',
+        'update_username_empty' => 'username can\'t be <strong>empty</strong>',
         'update_fullName_empty' => 'fullName can\'t be <strong>empty</strong>',
         'update_fullName_less' => 'fullName can\'t be <strong>less than 4 letters</strong>',
         'update_email_empty' => 'email can\'t be <strong>empty</strong>',
         // manage member 
+        'members_pageTitle' => 'Members',
         'manageMember_title' => 'Manage Members',
         'manageMember_add' => 'Add Member',
         'manageMember_delete' => 'Delete',
@@ -65,12 +67,14 @@ function lang($phrase)
         'deleteMember_title' => 'Delete Member',
         'deleted_recordChange' => 'Account Deleted',
         // dashboard
+        'Dashboard_pageTitle' => 'Dashboard',
         'dashboard_title' => 'dashboard',
         'dashboard_statusMembers' => 'Total Members',
         'dashboard_pendingMembers' => 'pending members',
         'dashboard_items' => 'total items',
         'dashboard_totalComments' => 'Total comments',
         // category page
+        'Categories_pageTitle' => "Categories",
         'add_category' => 'Add new Category',
         'categoryName' => 'Category Name',
         'CategoryDescription' => 'Category Description',
@@ -113,8 +117,46 @@ function lang($phrase)
         'deleteCategory' => 'Delete Category',
         // deleted Category recordChange
         'deleted_recordChangeCategory' => "Category Deleted",
-        //     
-
+        //    items page
+        'items_pageTitle' => 'Items',
+        // manageItems
+        'items__title' => 'Manage Items',
+        // add item
+        'add_itemTitle' => 'Add Item',
+        'add_item' => 'Add item',
+        'itemName' => 'Item Name',
+        'itemDescription' => 'Item Description',
+        'itemPrice' => 'item Price',
+        'itemMadeIn' => 'country of origin',
+        'itemStatus' => 'item status',
+        'itemNew' => ' New ',
+        'itemSelect' => '--- Select Status ---',
+        'itemLikeNew' => 'Like new',
+        'itemSecondHand' => 'Second hand',
+        'itemOld' => 'Old',
+        'itemRating'     => 'item rating',
+        'itemSelectRating' => '--- Select Rating ---',
+        'itemRating1' => '1',
+        'itemRating2' => '2',
+        'itemRating3' => '3',
+        'itemRating4' => '4',
+        'itemRating5' => '5',
+        'itemSelectMember' => '--- Select Member ---',
+        'itemMember' => 'Add item to Member',
+        'itemCategory' => 'Add item to Category',
+        'itemSelectCategory' => '--- Select Category ---',
+        // insert item
+        'insert_item' => 'Insert Item',
+        'inserted_recordChangeItem' => 'Item Inserted',
+        'itemName_greater' => 'item name can\'t be <strong>more than 15 letters</strong>',
+        'itemName_less' => 'item name can\'t be <strong>less than 4 letters</strong>',
+        'itemName_empty' => 'name can\'t be <strong>empty</strong>',
+        'itemDescriptionEmpty' => 'Description can\'t be <strong>empty</strong>',
+        'itemPriceEmpty' => 'Price can\'t be <strong>empty</strong>',
+        'itemMadeInEmpty' => 'Country of origin can\'t be <strong>empty</strong>',
+        'itemStatusEmpty' => 'item status can\'t be <strong>empty</strong>',
+        'itemMemberEmpty' => 'Member can\'t be <strong>empty</strong>',
+        'itemCategoryEmpty' => 'Category can\'t be <strong>empty</strong>',
     );
     return $language[$phrase];
 }

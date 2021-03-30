@@ -18,9 +18,7 @@ $pageTitle = "Categories";
 
 // if session is registered direct user to dashboard page
 if (isset($_SESSION['username'])) {
-
     include "init.php";
-
     $action = isset($_GET['action']) ? $_GET['action'] : "manage";
 
     if ($action == "manage") {
