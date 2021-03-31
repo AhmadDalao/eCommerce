@@ -36,16 +36,16 @@
                        </div>
                    </a>
                </div>
-               <!-- total items members  -->
+               <!-- total items   -->
                <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
-                   <a class="dashboard_link d-block" href="members.php" target="_blank" rel="noreferrer">
+                   <a class="dashboard_link d-block" href="items.php" target="_blank" rel="noreferrer">
                        <div class="status shadow-sm rounded-lg status_totalItems">
                            <h4 class="text-center text-capitalize p-3  pt-5 mb-0">
                                <?php echo lang("dashboard_items"); ?>
                            </h4>
                            <div class="dashboard__dataHolder text-center p-3 pb-5">
                                <p class="dashboard__numbers py-3 mb-0 display-4 font-weight-bold">
-                                   170
+                                   <?php echo countItemsIN_DB("item_id", "items"); ?>
                                </p>
                            </div>
                        </div>
@@ -100,10 +100,20 @@
                <div class="col-lg-6">
                    <div class="card">
                        <div class="card-header">
-                           <span class="text-capitalize"><i class="fas fa-tag mr-1"></i>newly added items</span>
+                           <span class="text-capitalize"><i class="fas fa-tag mr-1"></i>latest
+                               <?php echo $latestUsersLimiter; ?> added items</span>
                        </div>
                        <div class="card-body">
-                           card body test
+                           <ul class="list-group list-group-flush">
+                               <?php
+                                foreach ($latestItem as $item) {
+                                    echo "<li class='list-group-item'>";
+                                    echo $item['name'];
+                                    include  $dashboardPages . "itemButtons.php";
+                                    echo "</li>";
+                                }
+                                ?>
+                           </ul>
                        </div>
                    </div>
                </div>

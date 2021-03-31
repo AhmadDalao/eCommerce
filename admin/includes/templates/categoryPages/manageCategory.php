@@ -23,7 +23,7 @@
             <span class="spanCompact btn btn-dark"><?php echo lang("categoryCompact"); ?></span>
         </div>
         <div class="categoryAdd_button-holder text-right mb-3">
-            <a class="add__member btn btn-lg btn-primary mt-3" href="?action=add"><i
+            <a class="add__member btn btn-primary mt-3" href="?action=add"><i
                     class="fas fa-plus mr-1"></i><?php echo lang("Add_category"); ?></a>
         </div>
         <div class="categories__holder">

@@ -121,6 +121,19 @@ function lang($phrase)
         'items_pageTitle' => 'Items',
         // manageItems
         'items__title' => 'Manage Items',
+        'item_id' => '#ID',
+        'item_name' => 'Item name',
+        'item_description' => 'Description',
+        'item_price' => 'Price',
+        'item_addDate' => 'Add Date',
+        'item_category' => 'Category',
+        'item_username' => 'username',
+        'item_madeIn' => "Made in",
+        'item_status' => "item status",
+        'item_control' => 'Control',
+        'manageItem_modalTitle' => 'Delete Item',
+        'manageItem_modalWarning' => 'Are you sure you want to delete this item:',
+        'manageItem_modalAccount' => 'Item ID: ',
         // add item
         'add_itemTitle' => 'Add Item',
         'add_item' => 'Add item',
@@ -157,6 +170,17 @@ function lang($phrase)
         'itemStatusEmpty' => 'item status can\'t be <strong>empty</strong>',
         'itemMemberEmpty' => 'Member can\'t be <strong>empty</strong>',
         'itemCategoryEmpty' => 'Category can\'t be <strong>empty</strong>',
+        // edit item
+        'edit_itemTitle' => 'Edit item',
+        'save_item' => "Save",
+        // update item
+        'item_update' => 'Update Item',
+        'update_recordChangeItem' => 'Item has been updated',
+        // delete item
+        'deleteItem' => 'Delete item',
+        'deleted_recordChangeItem' => 'Item has been deleted',
+
+
     );
     return $language[$phrase];
 }

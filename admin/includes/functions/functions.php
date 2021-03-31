@@ -164,7 +164,8 @@ function countItemsIN_DB($itemToCount, $tableName)
 function getLatestRecord($select_item, $table, $order, $limiter = 5)
 {
     global $db_connect;
-    $stmt = $db_connect->prepare("SELECT $select_item FROM $table WHERE groupID != 1 ORDER BY $order DESC LIMIT $limiter");
+    // $stmt = $db_connect->prepare("SELECT $select_item FROM $table WHERE groupID != 1 ORDER BY $order DESC LIMIT $limiter");
+    $stmt = $db_connect->prepare("SELECT $select_item FROM $table  ORDER BY $order DESC LIMIT $limiter");
     $stmt->execute();
     $rows = $stmt->fetchAll();
     return $rows;
