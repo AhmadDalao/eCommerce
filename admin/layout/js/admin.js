@@ -1,4 +1,3 @@
-console.log("hello world admin");
 document.body.onload = addElement;
 
 /*
@@ -80,37 +79,32 @@ for (let index = 0; index < deleteButton.length; index++) {
 
 /*
  *
- * view classic and compact in manageCategory.
+ * dashboard plus and minus icon to hide latest section.
  *
  */
 
-let spanCompact = document.querySelector(".manage_category .spanCompact");
-let spanClassic = document.querySelector(".manage_category .spanClassic");
+let hideListSpan = document.querySelectorAll("span.hideList");
+for (let index = 0; index < hideListSpan.length; index++) {
+  hideListSpan[index].addEventListener("click", function () {
+    let bodyToHide = document.querySelectorAll(".card-body.hideItem");
+    hideListSpan[index].firstChild.className = " fas fa-minus fa-lg fa-fw";
 
-spanCompact.addEventListener("click", function () {
-  spanClassic.setAttribute("style", "background: #343a40 !important");
-  spanCompact.setAttribute("style", "background: #6c757d !important");
-
-  let card_details_wrapper = document.querySelectorAll(".card_details-wrapper");
-  card_details_wrapper.forEach((element) => {
-    element.style.opacity = "0";
-    element.style.transition = "all 0.4s";
-    setTimeout(function () {
-      element.style.display = "none";
-    }, 300);
+    if (
+      bodyToHide[index].classList.contains("hidden_item_transition") == true
+    ) {
+      bodyToHide[index].classList.toggle("hidden_item_transition");
+      bodyToHide[index].style.display = "block";
+      setTimeout(function () {
+        bodyToHide[index].style.opacity = "1";
+        bodyToHide[index].style.transition = "all 0.4s";
+      }, 200);
+    } else {
+      bodyToHide[index].classList.toggle("hidden_item_transition");
+      bodyToHide[index].style.opacity = "0";
+      bodyToHide[index].style.transition = "all 0.4s";
+      setTimeout(function () {
+        bodyToHide[index].style.display = "none";
+      }, 200);
+    }
   });
-});
-
-spanClassic.addEventListener("click", function () {
-  spanCompact.setAttribute("style", "background: #343a40 !important");
-  spanClassic.setAttribute("style", "background: #6c757d !important");
-
-  let card_details_wrapper = document.querySelectorAll(".card_details-wrapper");
-  card_details_wrapper.forEach((element) => {
-    element.style.display = "block";
-    setTimeout(function () {
-      element.style.opacity = "1";
-      element.style.transition = "all 0.4s";
-    }, 200);
-  });
-});
+}

@@ -131,6 +131,24 @@ body {
 *
 *=================================================*/
 
+.hideList:hover {
+  color: #ddd;
+  cursor: pointer;
+}
+
+.hidden_item {
+  display: none;
+}
+
+.hidden_item_transition {
+  display: block;
+}
+
+.hidden_item_transition_back {
+  transition: all 0.4s ease-in-out;
+  opacity: 1;
+}
+
 .dashboard__section .status {
   color: white;
 }
