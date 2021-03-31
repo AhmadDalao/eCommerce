@@ -17,5 +17,10 @@
                                                                                                                                                                                                                         echo $row['item_id']; ?>"
               href="items.php?action=delete&item_id=<?php echo $row['item_id']; ?>"><i
                   class="fas fa-times mr-1"></i><?php echo lang('manageMember_delete'); ?></a>
+          <?php if ($row['approve'] == 0) { ?>
+          <a class="btn btn-info edit_delete_button text-capitalize"
+              href="items.php?action=approve&item_id=<?php echo $row['item_id']; ?>"><i
+                  class="fas fa-check mr-1"></i><?php echo lang("manageMember_approve"); ?></a>
+          <?php  } ?>
       </td>
   </tr>

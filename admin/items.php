@@ -218,7 +218,27 @@ if (isset($_SESSION['username'])) {
         }
     } elseif ($action == "approve") {
         // approve the request to add an item to the item page.
-        echo "welcome approve";
+        // check if userID is numeric & return the integer value of it
+        $item_id = isset($_GET['item_id']) && is_numeric($_GET['item_id']) ?  intval($_GET['item_id']) :  0;
+        // select data from database based on the item_id I got from $_GET.
+
+        $checkResult = checkItem("item_id", "items", $item_id);
+
+        if ($checkResult > 0) {
+            // delete user
+            $stmt = $db_connect->prepare("UPDATE items SET approve = 1 WHERE item_id = ?");
+            // $stmt->bindParam(":userID", $item_id);
+            $stmt->execute(array($item_id));
+            $recordChange = $stmt->rowCount() . ' ' .  lang("activate_recordChangeItem");
+            $message =  "<div class='mb-4 alert alert-success'><div class='container'><div>Item Activated successfully.</div></div></div>";
+            include $itemsPages . 'approveItem.php';
+        } else {
+            $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>item doesn't exist</div></div></div>";
+            redirectHome($message, "back");
+        }
+    } else {
+        $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>Error page not found!!</div></div></div>";
+        redirectHome($message);
     }
     include $template . "footer.php";
 } else {

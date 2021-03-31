@@ -242,7 +242,7 @@ if (isset($_SESSION['username'])) {
             include $memberPages . 'activateMember.php';
         } else {
             $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>account doesn't exist</div></div></div>";
-            redirectHome($message, "members.php");
+            redirectHome($message, "back");
         }
     } else {
         $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div>Error page not found!!</div></div></div>";

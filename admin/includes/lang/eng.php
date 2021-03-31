@@ -13,6 +13,7 @@ function lang($phrase)
         'navbar_items_dashboard' => 'items',
         'navbar_members_dashboard' => 'members',
         'navbar_categories_dashboard' => 'Categories',
+        'navbar_comments_dashboard' => 'Comments',
         'navbar_statistic_dashboard' => 'Statistics',
         'navbar_logs_dashboard' => 'Logs',
         'navbar_edit_dashboard' => 'Edit profile',
@@ -179,8 +180,9 @@ function lang($phrase)
         // delete item
         'deleteItem' => 'Delete item',
         'deleted_recordChangeItem' => 'Item has been deleted',
-
-
+        // activate item
+        'activate_item' => 'Item activated',
+        'activate_recordChangeItem' => 'Item Activated',
     );
     return $language[$phrase];
 }
