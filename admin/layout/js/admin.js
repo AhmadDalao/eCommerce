@@ -84,14 +84,22 @@ for (let index = 0; index < deleteButton.length; index++) {
  */
 
 let hideListSpan = document.querySelectorAll("span.hideList");
+let hideListSpanIcon = document.querySelectorAll("span.hideList > i");
 for (let index = 0; index < hideListSpan.length; index++) {
   hideListSpan[index].addEventListener("click", function () {
     let bodyToHide = document.querySelectorAll(".card-body.hideItem");
-    hideListSpan[index].firstChild.className = " fas fa-minus fa-lg fa-fw";
+    let iconMinus = document.createElement("i");
+    let iconPlus = document.createElement("i");
+    iconMinus.className = "fas fa-minus fa-lg fa-fw";
+    iconPlus.className = "fas fa-plus fa-lg fa-fw";
 
     if (
       bodyToHide[index].classList.contains("hidden_item_transition") == true
     ) {
+      while (hideListSpan[index].firstChild) {
+        hideListSpan[index].removeChild(hideListSpan[index].firstChild);
+      }
+      hideListSpan[index].append(iconPlus);
       bodyToHide[index].classList.toggle("hidden_item_transition");
       bodyToHide[index].style.display = "block";
       setTimeout(function () {
@@ -99,6 +107,10 @@ for (let index = 0; index < hideListSpan.length; index++) {
         bodyToHide[index].style.transition = "all 0.4s";
       }, 200);
     } else {
+      while (hideListSpan[index].firstChild) {
+        hideListSpan[index].removeChild(hideListSpan[index].firstChild);
+      }
+      hideListSpan[index].append(iconMinus);
       bodyToHide[index].classList.toggle("hidden_item_transition");
       bodyToHide[index].style.opacity = "0";
       bodyToHide[index].style.transition = "all 0.4s";
