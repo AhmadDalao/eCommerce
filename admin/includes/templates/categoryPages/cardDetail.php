@@ -6,9 +6,14 @@
         </div>
         <div class=" card-body position-relative overflow-hidden">
             <div class="card_button--holder position-absolute ">
-                <a class="btn btn-success edit_delete_button text-capitalize" href="categories.php?action=edit&cateID=<?php echo $category['ID']; ?>"><i class="fas fa-edit mr-1"></i><?php echo lang("manageMember_edit"); ?></a>
-                <a class="delete__item btn btn-danger edit_delete_button text-capitalize" data-toggle="modal" data-delete_id="<?php echo $category['ID']; ?>" data-delete_name='<?php echo $category['name']; ?>' data-target="#<?php echo $category['name'];
-                                                                                                                                                                                                                                echo $category['ID']; ?>" href="categories.php?action=delete&cateID=<?php echo $category['ID']; ?>"><i class="fas fa-times mr-1"></i><?php echo lang('manageMember_delete'); ?></a>
+                <a class="btn btn-success edit_delete_button text-capitalize"
+                    href="categories.php?action=edit&cateID=<?php echo $category['ID']; ?>"><i
+                        class="fas fa-edit mr-1"></i><?php echo lang("manageMember_edit"); ?></a>
+                <a class="delete__item btn btn-danger edit_delete_button text-capitalize" data-toggle="modal"
+                    data-delete_id="<?php echo $category['ID']; ?>" data-delete_name='<?php echo $category['name']; ?>'
+                    data-target="#<?php echo $category['name']; ?><?php echo $category['ID']; ?>"
+                    href="categories.php?action=delete&cateID=<?php echo $category['ID']; ?>"><i
+                        class="fas fa-times mr-1"></i><?php echo lang('manageMember_delete'); ?></a>
             </div>
             <h5 class="card-title"><?php echo $category['name']; ?></h5>
             <div class="card_details-wrapper">

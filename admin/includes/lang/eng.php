@@ -183,6 +183,33 @@ function lang($phrase)
         // activate item
         'activate_item' => 'Item activated',
         'activate_recordChangeItem' => 'Item Activated',
+        // manage comments
+        'manageComments_title' => 'Manage Comments',
+        'comment_id' => '#ID',
+        'comment_text' => 'Comment',
+        'comment_itemName' => 'item Name',
+        'comment_userName' => 'username',
+        'comment_date' => 'comment Date',
+        'comment_control' => 'Control',
+        'manageComment_modalTitle' => 'Delete Comment',
+        'manageComment_modalWarning' => 'Are you sure you want to delete ',
+        'manageComment_modalAccount' => 'comment ID:',
+        // edit comment
+        'edit_comment' => 'Edit comment',
+        'comment_edit' => 'user Comment',
+        'edit_comment' => 'Edit comment',
+        // update comment
+        'update_comment' => 'Update Comment',
+        'updateComment_recordChange' => 'Comment Updated',
+        // delete comment
+        'deleteComment_title' => 'Delete Comment',
+        'deletedComment_recordChange' => 'Comment Deleted',
+        // approve comment
+        'commentApprove_recordChange' => 'Comment Approved',
+        'activateComment__title' => 'Approve Comment',
+
+
+
     );
     return $language[$phrase];
 }

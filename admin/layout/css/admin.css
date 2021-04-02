@@ -183,14 +183,16 @@ body {
 *  dashboard  latest section
 *
 *=================================================*/
-
+.card-body {
+  background-color: #e3e3e3;
+}
 .latest__panel ul li:nth-child(odd) {
-  background-color: #343a40;
-  color: white;
+  background-color: white;
+  color: var(--titleColor);
 }
 .latest__panel ul li:nth-child(even) {
-  background-color: #9aa1a8;
   color: white;
+  background-color: #074cbd;
 }
 
 /*================================================

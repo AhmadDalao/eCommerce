@@ -28,6 +28,7 @@ $memberPages = 'includes/templates/membersPages/';
 $dashboardPages = 'includes/templates/dashboardPages/';
 $categoryPages = 'includes/templates/categoryPages/';
 $itemsPages = 'includes/templates/itemsPages/';
+$commentsPages = 'includes/templates/commentsPages/';
 $func = "includes/functions/";
 $css = "layout/css/";
 $js = "layout/js/";

@@ -25,7 +25,8 @@
                         href="members.php"><?php echo lang("navbar_members_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize" href="#"><?php echo lang("navbar_comments_dashboard"); ?></a>
+                    <a class="nav-link text-capitalize"
+                        href="comments.php"><?php echo lang("navbar_comments_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-capitalize" href="#"><?php echo lang("navbar_statistic_dashboard"); ?></a>
