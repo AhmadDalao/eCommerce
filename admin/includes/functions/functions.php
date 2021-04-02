@@ -156,16 +156,20 @@ function countItemsIN_DB($itemToCount, $tableName)
 *  @param $table  the table to select the item from
 *  @param $order  the ORDER for the selected items
 *  @param $limiter number of items you want to get.
+*  @param $whereCondition is the condition you use such as [Where groupID != 0]
 *
 * ================================================================
 * ================================================================
 */
 
-function getLatestRecord($select_item, $table, $order, $limiter = 5)
+function getLatestRecord($select_item, $table, $order, $limiter = 5, $whereCondition = Null)
 {
     global $db_connect;
-    // $stmt = $db_connect->prepare("SELECT $select_item FROM $table WHERE groupID != 1 ORDER BY $order DESC LIMIT $limiter");
-    $stmt = $db_connect->prepare("SELECT $select_item FROM $table  ORDER BY $order DESC LIMIT $limiter");
+    if ($whereCondition == Null) {
+        $stmt = $db_connect->prepare("SELECT $select_item FROM $table  ORDER BY $order DESC LIMIT $limiter");
+    } else {
+        $stmt = $db_connect->prepare("SELECT $select_item FROM $table WHERE $whereCondition ORDER BY $order DESC LIMIT $limiter");
+    }
     $stmt->execute();
     $rows = $stmt->fetchAll();
     return $rows;

@@ -16,7 +16,8 @@ if (isset($_SESSION['username'])) {
                                         users.username 
                                     FROM items
                                     INNER JOIN categories ON categories.ID = items.cate_id
-                                    INNER JOIN users ON users.userID = items.user_id;");
+                                    INNER JOIN users ON users.userID = items.user_id
+                                    ORDER BY item_id DESC");
         // execute the SQL above
         $stmt->execute();
         // assign result from the SQL statement into a variable.

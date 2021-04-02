@@ -103,7 +103,7 @@
                                         users.username As username
                                     FROM comments
                                     INNER JOIN users ON users.userID = comments.user_id
-                                    WHERE item_id = ?");
+                                    WHERE item_id = ? ORDER BY comment_id DESC");
             // execute the SQL above
             $stmt->execute(array($item_id));
             // assign result from the SQL statement into a variable.

@@ -1,3 +1,4 @@
+<?php if (!empty($categories)) { ?>
 <section class="manage_category py-5">
     <div class="container">
         <h1 class='text-center header_color text-capitalize my-5'>
@@ -7,14 +8,14 @@
             <span class="text-left text-capitalize font-weight-bold text-muted mr-2"><i
                     class="fas fa-sort mr-1"></i><?php echo lang("order_by"); ?></span>
             <a class="btn btn-dark <?php if ($sort == "ASC") {
-                                        echo "bg-secondary";
-                                    } ?>" href="?sort=ASC"><?php echo lang("CategoryASC"); ?></a>
+                                            echo "bg-secondary";
+                                        } ?>" href="?sort=ASC"><?php echo lang("CategoryASC"); ?></a>
             <a class="btn btn-dark <?php if ($sort == "DESC") {
-                                        echo "bg-secondary";
-                                    } ?>" href="?sort=DESC"><?php echo lang("CategoryDESC"); ?></a>
+                                            echo "bg-secondary";
+                                        } ?>" href="?sort=DESC"><?php echo lang("CategoryDESC"); ?></a>
             <a class="btn btn-dark <?php if ($orderingItem == "name") {
-                                        echo "bg-secondary";
-                                    } ?>" href="?orderby=name"><?php echo lang("CategoryOrderByName"); ?></a>
+                                            echo "bg-secondary";
+                                        } ?>" href="?orderby=name"><?php echo lang("CategoryOrderByName"); ?></a>
         </div>
         <div class="categoriesView">
             <span class="view_title text-left text-capitalize font-weight-bold mr-2 text-muted"><i
@@ -29,10 +30,10 @@
         <div class="categories__holder">
             <div class="row">
                 <?php
-                foreach ($categories as $category) {
-                    include $categoryPages . "cardDetail.php";
-                }
-                ?>
+                    foreach ($categories as $category) {
+                        include $categoryPages . "cardDetail.php";
+                    }
+                    ?>
             </div>
         </div>
         <!-- Modal -->
@@ -67,3 +68,12 @@
     </div>
     </div>
 </section>
+<?php } else {
+    echo "<div class='container'>
+        <p class='alert alert-info'>there are no categories to display</p>
+            <div class='categoryAdd_button-holder text-right mb-3'>
+            <a class='add__member btn btn-primary mt-3 float-left' href='?action=add'><i
+                    class='fas fa-plus mr-1'></i>" ?> <?php echo lang('Add_category'); ?></a> <?php
+                                                                                                "</div>
+</div>";
+                                                                                            } ?>

@@ -162,7 +162,8 @@
                                         users.username As username,
                                         users.userID As userID
                                     FROM comments
-                                    INNER JOIN users ON users.userID = comments.user_id");
+                                    INNER JOIN users ON users.userID = comments.user_id
+                                    ORDER BY comment_id DESC LIMIT $latestUsersLimiter");
                                 // execute the SQL above
                                 $stmt->execute(array());
                                 // assign result from the SQL statement into a variable.

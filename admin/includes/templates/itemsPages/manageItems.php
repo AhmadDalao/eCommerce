@@ -1,3 +1,4 @@
+<?php if (!empty($rows)) { ?>
 <section class="manage_item py-5">
     <div class="container">
         <h1 class='text-center header_color text-capitalize my-5'>
@@ -20,9 +21,9 @@
                 </thead>
                 <tbody>
                     <?php foreach ($rows as $row) {
-                        include $itemsPages . "tableDataItem.php";
-                    }
-                    ?>
+                            include $itemsPages . "tableDataItem.php";
+                        }
+                        ?>
                 </tbody>
             </table>
         </div>
@@ -59,3 +60,10 @@
                 class="fas fa-plus mr-1"></i><?php echo lang("add_item"); ?></a>
     </div>
 </section>
+<?php } else {
+    echo "<div class='container'>
+        <p class='alert alert-info'>there are no items to display</p>" ?>
+<a class="add__member btn  btn-primary mt-3" href="items.php?action=add"><i
+        class="fas fa-plus mr-1"></i><?php echo lang("add_item"); ?></a>
+<?php "</div>";
+} ?>

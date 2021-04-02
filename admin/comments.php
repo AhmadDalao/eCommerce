@@ -31,7 +31,7 @@ if (isset($_SESSION['username'])) {
                                         users.username As username
                                     FROM comments
                                     INNER JOIN items ON items.item_id = comments.item_id
-                                    INNER JOIN users ON users.userID = comments.user_id;");
+                                    INNER JOIN users ON users.userID = comments.user_id ORDER BY comment_id DESC");
         // execute the SQL above
         $stmt->execute();
         // assign result from the SQL statement into a variable.

@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
         }
 
         // select all regular users.
-        $stmt = $db_connect->prepare("SELECT * FROM users WHERE groupID != 1 $query");
+        $stmt = $db_connect->prepare("SELECT * FROM users WHERE groupID != 1 ORDER BY userID DESC $query");
         // execute the SQL above
         $stmt->execute();
         // assign result from the SQL statement into a variable.
@@ -189,13 +189,24 @@ if (isset($_SESSION['username'])) {
 
             // if formErrors is empty connect to the database.
             if (empty($formErrors)) {
-                // update the data base with the data I receive from the form in edit page.
-                $stmt = $db_connect->prepare('UPDATE users SET username = ? , email = ? , fullName = ? , password = ? WHERE userID = ?');
-                $stmt->execute(array($update_username, $update_email, $update_fullName, $update_password, $update_userID));
-                // print this message if there was a change in the record
-                $recordChange = $stmt->rowCount() . ' ' .  lang("update_recordChange");
-                $message =  "<div class='mb-4 alert alert-success'><div class='container'> <div> Profile Updated</div>  </div></div>";
-                redirectHome($message, "back", 2);
+
+                $stmt2 = $db_connect->prepare('SELECT * FROM users WHERE username = ? AND userID != ? ');
+                $stmt2->execute(array($update_username, $update_userID));
+                $count = $stmt2->rowCount();
+
+                if ($count == 1) {
+                    echo '<div class="container mt-5"><p class="alert alert-danger">user already exist</p></div>';
+                    $message = "";
+                    redirectHome($message, "back", 2);
+                } else {
+                    // update the data base with the data I receive from the form in edit page.
+                    $stmt = $db_connect->prepare('UPDATE users SET username = ? , email = ? , fullName = ? , password = ? WHERE userID = ?');
+                    $stmt->execute(array($update_username, $update_email, $update_fullName, $update_password, $update_userID));
+                    // print this message if there was a change in the record
+                    $recordChange = $stmt->rowCount() . ' ' .  lang("update_recordChange");
+                    $message =  "<div class='mb-4 alert alert-success'><div class='container'> <div> Profile Updated</div>  </div></div>";
+                    redirectHome($message, "back", 2);
+                }
             }
             include $memberPages . "updateMember.php";
         } else {

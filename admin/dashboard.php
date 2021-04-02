@@ -6,7 +6,7 @@ $pageTitle = "Dashboard";
 if (isset($_SESSION['username'])) {
     include "init.php";
     $latestUsersLimiter = 6;
-    $latestUsers = getLatestRecord("*", "users", "userID", $latestUsersLimiter);
+    $latestUsers = getLatestRecord("*", "users", "userID", $latestUsersLimiter, "groupID != 1");
     $latestItem = getLatestRecord("*", "items", "item_id", $latestUsersLimiter);
     include  $dashboardPages . 'dashboardManage.php';
 

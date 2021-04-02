@@ -1,3 +1,4 @@
+<?php if (!empty($rows)) { ?>
 <section class="manage_comments py-5">
     <div class="container">
         <h1 class='text-center header_color text-capitalize my-5'>
@@ -17,9 +18,9 @@
                 </thead>
                 <tbody>
                     <?php foreach ($rows as $row) {
-                        include $commentsPages . "tableDataComments.php";
-                    }
-                    ?>
+                            include $commentsPages . "tableDataComments.php";
+                        }
+                        ?>
                 </tbody>
             </table>
         </div>
@@ -55,3 +56,8 @@
         <!-- Modal -->
     </div>
 </section>
+<?php } else {
+    echo "<div class='container'>
+        <p class='alert alert-info'>there are no comments to display</p>
+    </div>";
+} ?>
