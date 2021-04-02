@@ -194,6 +194,13 @@ body {
   color: white;
   background-color: #074cbd;
 }
+.latest__panel ul li:nth-child(odd) .dashboardComment_username {
+  color: var(--titleColor);
+}
+
+.latest__panel ul li:nth-child(even) .dashboardComment_username {
+  color: white;
+}
 
 /*================================================
 *

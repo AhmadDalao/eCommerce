@@ -71,7 +71,7 @@
                            </h4>
                            <div class="dashboard__dataHolder text-center pb-5">
                                <p class="dashboard__numbers py-3 mb-0 display-4 font-weight-bold">
-                                   150
+                                   <?php echo countItemsIN_DB("comment_id", "comments"); ?>
                                </p>
                            </div>
                        </div>
@@ -87,7 +87,7 @@
        <div class="container">
            <div class="row">
                <!-- newly registered users -->
-               <div class="col-lg-6 mb-4 mb-lg-0">
+               <div class="col-lg-6 mb-4">
                    <div class="card">
                        <div class="card-header">
                            <span class="text-capitalize"><i class="fas fa-users mr-1">
@@ -99,19 +99,24 @@
                        <div class="card-body hideItem">
                            <ul class="list-group list-group-flush">
                                <?php
-                                foreach ($latestUsers as $user) {
-                                    echo "<li class='list-group-item'>";
-                                    echo $user['username'];
-                                    include  $dashboardPages . "buttons.php";
-                                    echo "</li>";
+                                if (!empty($latestUsers)) {
+                                    foreach ($latestUsers as $user) {
+                                        echo "<li class='list-group-item'>";
+                                        echo $user['username'];
+                                        include  $dashboardPages . "buttons.php";
+                                        echo "</li>";
+                                    }
+                                } else {
+                                    echo "There are no new users";
                                 }
                                 ?>
                            </ul>
                        </div>
                    </div>
                </div>
+
                <!-- newly added items -->
-               <div class="col-lg-6 mb-4 mb-lg-0">
+               <div class="col-lg-6 mb-4">
                    <div class="card">
                        <div class="card-header">
                            <span class="text-capitalize"><i class="fas fa-tag mr-1"></i>latest
@@ -123,11 +128,55 @@
                        <div class="card-body hideItem">
                            <ul class="list-group list-group-flush">
                                <?php
-                                foreach ($latestItem as $item) {
-                                    echo "<li class='list-group-item'>";
-                                    echo $item['name'];
-                                    include  $dashboardPages . "itemButtons.php";
-                                    echo "</li>";
+                                if (!empty($latestItem)) {
+                                    foreach ($latestItem as $item) {
+                                        echo "<li class='list-group-item'>";
+                                        echo $item['name'];
+                                        include  $dashboardPages . "itemButtons.php";
+                                        echo "</li>";
+                                    }
+                                } else {
+                                    echo "there is no items to display";
+                                }
+                                ?>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- newly added comments -->
+               <div class="col-lg-6 mb-4">
+                   <div class="card">
+                       <div class="card-header">
+                           <span class="text-capitalize"><i class="fas fa-comments mr-1"></i>latest
+                               <?php echo $latestUsersLimiter; ?> added comments</span>
+                           <span class="hideList float-right px-3">
+                               <i class="fas fa-plus fa-lg fa-fw"></i>
+                           </span>
+                       </div>
+                       <div class="card-body hideItem">
+                           <ul class="list-group list-group-flush">
+                               <?php
+                                // select all comments.
+                                $stmt = $db_connect->prepare("SELECT comments.* ,
+                                        users.username As username,
+                                        users.userID As userID
+                                    FROM comments
+                                    INNER JOIN users ON users.userID = comments.user_id");
+                                // execute the SQL above
+                                $stmt->execute(array());
+                                // assign result from the SQL statement into a variable.
+                                $rows = $stmt->fetchAll();
+                                // loop over the $row and print all of it's data
+                                if (!empty($rows)) {
+                                    foreach ($rows as $comment) {
+                                        echo "<li class='list-group-item'>";
+                                        include  $dashboardPages . "commentsMedia.php";
+                                        include  $dashboardPages . "commentsButtons.php";
+                                        echo "</li>";
+                                    }
+                                } else {
+                                    echo "There are no comments";
                                 }
                                 ?>
                            </ul>
