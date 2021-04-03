@@ -9,30 +9,46 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active text-capitalize"
+                    <a class="nav-link text-capitalize <?php if ($activePage == "dashboard") {
+                                                            echo "active";
+                                                        } ?>"
                         href="dashboard.php"><?php echo lang("navbar_home_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize"
+                    <a class="nav-link text-capitalize <?php if ($activePage == "categories") {
+                                                            echo "active";
+                                                        } ?>"
                         href="categories.php"><?php echo lang("navbar_categories_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize"
+                    <a class="nav-link text-capitalize <?php if ($activePage == "items") {
+                                                            echo "active";
+                                                        } ?>"
                         href="items.php"><?php echo lang("navbar_items_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize"
+                    <a class="nav-link text-capitalize <?php if ($activePage == "members") {
+                                                            echo "active";
+                                                        } ?>"
                         href="members.php"><?php echo lang("navbar_members_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize"
+                    <a class="nav-link text-capitalize <?php if ($activePage == "comments") {
+                                                            echo "active";
+                                                        } ?>"
                         href="comments.php"><?php echo lang("navbar_comments_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize" href="#"><?php echo lang("navbar_statistic_dashboard"); ?></a>
+                    <a class="nav-link text-capitalize <?php if ($activePage == "statistic") {
+                                                            echo "active";
+                                                        } ?>"
+                        href="statistic.php"><?php echo lang("navbar_statistic_dashboard"); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize" href="#"><?php echo lang("navbar_logs_dashboard"); ?></a>
+                    <a class="nav-link text-capitalize <?php if ($activePage == "logs") {
+                                                            echo "active";
+                                                        } ?>"
+                        href="logs.php"><?php echo lang("navbar_logs_dashboard"); ?></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

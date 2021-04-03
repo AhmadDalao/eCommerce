@@ -120,3 +120,19 @@ for (let index = 0; index < hideListSpan.length; index++) {
     }
   });
 }
+
+/*
+ *
+ *  add active links to the navbar on click and remove the active from the siblings
+ *
+ */
+
+// let navbarLinks = document.querySelectorAll(
+//   "#navbar_nav .nav-item > a.nav-link"
+// );
+// navbarLinks.forEach((element, index) => {
+//   element.addEventListener("click", () => {
+//     console.log("you clicked me", index);
+//     element.classList.className = "active";
+//   });
+// });
