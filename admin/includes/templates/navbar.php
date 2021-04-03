@@ -58,6 +58,8 @@
                         <?php echo $_SESSION['username']; ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-capitalize" target="_blank" rel="noopener"
+                            href="../index.php"><?php echo lang("navbar_visitWebsite_dashboard"); ?></a>
                         <a class="dropdown-item text-capitalize"
                             href="members.php?action=edit&userID=<?php echo $_SESSION['userID']; ?>"><?php echo lang("navbar_edit_dashboard"); ?></a>
                         <a class="dropdown-item text-capitalize"

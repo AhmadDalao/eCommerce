@@ -1,3 +1,5 @@
+console.log("am index from front end");
+
 document.body.onload = addElement;
 
 /*

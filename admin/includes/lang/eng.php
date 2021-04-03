@@ -17,6 +17,7 @@ function lang($phrase)
         'navbar_statistic_dashboard' => 'Statistics',
         'navbar_logs_dashboard' => 'Logs',
         'navbar_edit_dashboard' => 'Edit profile',
+        'navbar_visitWebsite_dashboard' => 'Visit Website',
         'navbar_settings_dashboard' => 'Settings',
         'navbar_logout_dashboard' => 'Logout',
         // edit member\profile form
