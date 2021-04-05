@@ -74,6 +74,14 @@ body {
   transform: translate(-50%, -50%);
   top: 70%;
 }
+.form-group > span.textarea {
+  color: red;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 18px;
+  transform: translate(-50%, -50%);
+  top: 18%;
+}
 
 /*================================================
 *
@@ -178,6 +186,17 @@ body {
 .status__comments {
   background-color: #2c3e50;
 }
+
+.item__description {
+}
+.table.item__description td:nth-of-type(2) {
+  min-width: 450px;
+}
+.table.manage__table td > p {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
 /*================================================
 *
 *  dashboard  latest section

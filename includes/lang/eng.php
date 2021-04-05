@@ -19,6 +19,7 @@ function lang($phrase)
         'navbar_edit_dashboard' => 'Edit profile',
         'navbar_settings_dashboard' => 'Settings',
         'navbar_logout_dashboard' => 'Logout',
+        'navbar_login_dashboard' => 'Login',
     );
     return $language[$phrase];
 }

@@ -1,7 +1,9 @@
   <tr>
       <th scope="row"><?php echo $row['item_id']; ?></th>
       <td colspan='1' class="text-capitalize"><?php echo $row['name']; ?></td>
-      <td class="text-capitalize "><?php echo $row['description'] ?></td>
+      <td class="text-capitalize ">
+          <p class="m-0 p-0"><?php echo $row['description'] ?></p>
+      </td>
       <td class="text-capitalize "><?php echo $row['price']; ?></td>
       <td class="text-capitalize "><?php echo $row['add_date']; ?></td>
       <td class="text-capitalize "><?php echo $row['category_name']; ?></td>

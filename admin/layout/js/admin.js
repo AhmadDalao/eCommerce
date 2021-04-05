@@ -1,5 +1,9 @@
-document.body.onload = addElement;
-
+// document.body.onload = addElement;
+// document.body.onload = textArea;
+window.onload = function () {
+  addElement();
+  addStarToTextArea();
+};
 /*
  *
  *   find the inputs in login form with placeholder attribute and remove it on focus,
@@ -35,6 +39,17 @@ function addElement() {
     star.appendChild(document.createTextNode("*"));
     //  tree.appendChild(star);
     edit_fields[index].parentNode.appendChild(star);
+  }
+}
+
+let textArea = document.querySelectorAll(".edit__form textarea[required]");
+
+function addStarToTextArea() {
+  for (let index = 0; index < textArea.length; index++) {
+    var star = document.createElement("span");
+    star.className = "textarea";
+    star.appendChild(document.createTextNode("*"));
+    textArea[index].parentNode.appendChild(star);
   }
 }
 

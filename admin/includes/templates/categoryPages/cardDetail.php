@@ -15,9 +15,9 @@
                     href="categories.php?action=delete&cateID=<?php echo $category['ID']; ?>"><i
                         class="fas fa-times mr-1"></i><?php echo lang('manageMember_delete'); ?></a>
             </div>
-            <h5 class="card-title"><?php echo $category['name']; ?></h5>
+            <h5 class="card-title text-capitalize"><?php echo $category['name']; ?></h5>
             <div class="card_details-wrapper">
-                <h6 class="card-subtitle mb-3 text-muted">
+                <h6 class="card-subtitle text-capitalize mb-3 text-muted">
                     <?php if ($category['description'] == '') {
                         echo "information not provided";
                     } else {

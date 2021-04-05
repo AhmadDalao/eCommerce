@@ -21,3 +21,26 @@
 body {
   font-size: var(--bodyFontSize);
 }
+
+.header_color {
+  color: var(--titleColor);
+}
+
+/* 
+*================================================================
+*
+*
+*     categories page
+*
+*
+* ================================================================  */
+.user_card-description {
+  min-height: 100px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.category_price {
+  font-size: 27px;
+  font-weight: 500;
+}

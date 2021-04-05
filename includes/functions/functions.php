@@ -5,6 +5,53 @@
 * ================================================================
 * ================================================================
 *
+*                         getCategories function
+*
+*  this function uses the MYSQL query.
+*  which is used to get latest categories from database
+*
+* ================================================================
+* ================================================================
+*/
+
+function getCategories()
+{
+    global $db_connect;
+    $stmt = $db_connect->prepare("SELECT * FROM categories  ORDER BY ID ASC");
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    return $rows;
+}
+/*
+* ================================================================
+* ================================================================
+*
+*                         getItems function
+*
+*  this function uses the MYSQL query.
+*  which is used to get latest items from database
+*  @param $cate_id is the cate_id we are receiving from the URL from the navbar links
+*
+* ================================================================
+* ================================================================
+*/
+
+function getItems($cate_id)
+{
+    global $db_connect;
+    $stmt = $db_connect->prepare("SELECT * FROM items  WHERE cate_id = ? AND approve = 1 ORDER BY item_id DESC");
+    $stmt->execute(array($cate_id));
+    $rows = $stmt->fetchAll();
+    return $rows;
+}
+
+
+
+
+/*
+* ================================================================
+* ================================================================
+*
 *                              title function
 *
 *   this function uses global variable $pageTitle

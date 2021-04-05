@@ -1,4 +1,5 @@
 <?php
+ob_start();
 
 /*
 * ================================================================
@@ -132,5 +133,7 @@ if (isset($_SESSION['username'])) {
     header("Location: index.php");
     exit();
 }
+ob_end_flush();
+
 ?>
 <!--  end of php tag -->

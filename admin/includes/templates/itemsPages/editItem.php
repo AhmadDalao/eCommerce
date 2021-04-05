@@ -15,8 +15,10 @@
             <!-- description -->
             <div class="form-group col-12 col-md-9 col-lg-6">
                 <label class=" text-capitalize " for="description"><?php echo lang("itemDescription"); ?></label>
-                <input type="text" class="password form-control form-control-lg" id="description" name="description"
-                    value="<?php echo $row['description'] ?>" required>
+                <!-- <input type="text" class="password form-control form-control-lg" id="description" name="description"
+                    value="<?php echo $row['description'] ?>" required> -->
+                <textarea required class="form-control  form-control-lg" name="description" id="description" cols="30"
+                    rows="10"><?php echo $row['description'] ?></textarea>
             </div>
 
             <!-- price  -->

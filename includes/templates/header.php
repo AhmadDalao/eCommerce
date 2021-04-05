@@ -26,35 +26,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-capitalize <?php if ($activePage == "dashboard") {
-                                                                echo "active";
-                                                            } ?>"
-                            href=""><?php echo lang("navbar_home_dashboard"); ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-capitalize <?php if ($activePage == "categories") {
-                                                                echo "active";
-                                                            } ?>"
-                            href=""><?php echo lang("navbar_categories_dashboard"); ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-capitalize <?php if ($activePage == "items") {
-                                                                echo "active";
-                                                            } ?>"
-                            href=""><?php echo lang("navbar_items_dashboard"); ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-capitalize <?php if ($activePage == "members") {
-                                                                echo "active";
-                                                            } ?>"
-                            href=""><?php echo lang("navbar_members_dashboard"); ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-capitalize <?php if ($activePage == "comments") {
-                                                                echo "active";
-                                                            } ?>"
-                            href=""><?php echo lang("navbar_comments_dashboard"); ?></a>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-capitalize  <?php if ($activePage == "categories") {
+                                                                                echo "active";
+                                                                            } ?>" href="#" id="categoriesDropDown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo lang("navbar_categories_dashboard"); ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="categoriesDropDown">
+                            <?php
+                            foreach (getCategories() as $category) { ?>
+                            <a class="dropdown-item text-capitalize"
+                                href="categories.php?cateID=<?php echo $category["ID"]; ?>&cateName=<?php echo str_replace(" ", "-", $category['name']); ?>">
+                                <?php echo $category['name'] ?></a>
+                            <?php   }  ?>
+                        </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -72,6 +58,8 @@
                             <a class="dropdown-item text-capitalize"
                                 href="#"><?php echo lang("navbar_settings_dashboard"); ?></a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-capitalize"
+                                href="login.php"><?php echo lang("navbar_login_dashboard") ?></a>
                             <a class="dropdown-item text-capitalize"
                                 href="logout.php"><?php echo lang("navbar_logout_dashboard") ?></a>
                         </div>

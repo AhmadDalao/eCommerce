@@ -1,4 +1,5 @@
 <?php
+ob_start();
 
 /*
 * ================================================================
@@ -184,7 +185,6 @@ if (isset($_SESSION['username'])) {
             $stmt->execute(array($cateID));
             $recordChange = $stmt->rowCount() . ' ' .  lang("deleted_recordChangeCategory");
             $message =  "<div class='mb-4 alert alert-success'><div class='container'><div class='text-capitalize'>Category Deleted.</div></div></div>";
-            $pageName = "categories.php";
             include $categoryPages . 'categoryDelete.php';
         } else {
             $message =  "<div class='mb-4 alert alert-danger'><div class='container'><div class='text-capitalize'>Category doesn't exist</div></div></div>";
@@ -202,5 +202,6 @@ if (isset($_SESSION['username'])) {
     header("Location: index.php");
     exit();
 }
+ob_end_flush();
 ?>
 <!--  end of php tag -->

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // session is used to make sure the user can't access the page using different pages.
 session_start();
 $pageTitle = "Dashboard";
@@ -18,3 +19,4 @@ if (isset($_SESSION['username'])) {
     header("Location: index.php");
     exit();
 }
+ob_end_flush();
