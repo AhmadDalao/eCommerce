@@ -122,3 +122,17 @@ for (let index = 0; index < hideListSpan.length; index++) {
     }
   });
 }
+/*
+ *
+ *  remove the activation message on the header page.
+ *
+ */
+
+document.querySelector("button.close").addEventListener(
+  "click",
+  function (e) {
+    e.preventDefault();
+    this.parentNode.style.display = "none";
+  },
+  false
+);

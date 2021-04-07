@@ -16,6 +16,7 @@
   --mainPaddingHalf: 0.5rem;
   --mainPaddingOne: 1rem;
   --titleColor: rgba(0, 0, 0, 0.7);
+  --backgroundDark: #343a40;
 }
 
 body {
@@ -43,4 +44,55 @@ body {
 .category_price {
   font-size: 27px;
   font-weight: 500;
+}
+
+/* 
+*================================================================
+*
+*
+*     login page
+*
+*
+* ================================================================  */
+
+.login-section {
+  height: calc(100vh - 54px);
+}
+.login-section .container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-group .show__eye {
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  font-size: 1.4rem;
+  right: 25px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+.form-group .show__eye:hover {
+  cursor: pointer;
+}
+
+.form-group > span {
+  color: red;
+  font-size: 1.3rem;
+  position: absolute;
+  right: 10px;
+  transform: translate(-50%, -50%);
+  top: 55%;
+}
+
+.nav-pills .nav-link {
+  background: var(--backgroundDark);
+  color: white;
+  border-radius: 0;
+  border: none;
+}
+
+.nav-pills .nav-link.active.sign-up,
+.nav-pills .show > .nav-link {
+  background-color: #28a745;
 }

@@ -45,7 +45,28 @@ function getItems($cate_id)
     return $rows;
 }
 
+/*
+* ================================================================
+* ================================================================
+*
+*                         checkUserStatus function
+*
+*  this function uses the MYSQL query.
+*  to check if the user is registered and activated or not
+*  @param $user to check if the user exist in database or not.
+*
+* ================================================================
+* ================================================================
+*/
 
+function checkUserStatus($user)
+{
+    global $db_connect;
+    $stmt = $db_connect->prepare("SELECT username, register_status  FROM users  WHERE  username = ?   AND  register_status = 0 ");
+    $stmt->execute(array($user));
+    $total_row = $stmt->rowCount();
+    return $total_row;
+}
 
 
 /*
