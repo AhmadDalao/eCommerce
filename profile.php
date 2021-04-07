@@ -11,7 +11,7 @@ if (isset($_SESSION['userFront'])) {
 ?>
 <section class="profile-info py-5">
     <div class="container">
-        <h1 class="text-center mb-4 text-capitalize header_color"><?php echo $row['username'] ?> Profile</h1>
+        <h1 class="text-center mb-4 text-capitalize header_color"><?php echo $row['username'] ?>'s Profile</h1>
         <div class="row">
             <div class="userInfo col-12 mb-5">
                 <div class="card">
