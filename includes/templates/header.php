@@ -69,7 +69,7 @@
         </div>
     </nav>
     <?php if (isset($_SESSION['userFront'])) {
-        if (checkUserStatus(isset($_SESSION['userFront'])) == 1) {   ?>
+        if (checkUserStatus($_SESSION['userFront']) == 1) {   ?>
     <p class="activation alert alert-info">Welcome, <?php echo $_SESSION['userFront'] ?> your account need to be
         activated
         <button type="button" class="close" aria-label="Close">

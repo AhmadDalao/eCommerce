@@ -51,12 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-12 col-md-8 col-lg-6 ">
                         <form class="login mt-5" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
                             <div class="form-group position-relative">
-                                <input class="form-control form-control-lg text-capitalize" type="text"
-                                    autocomplete="off" name="username" placeholder="username">
+                                <input class="form-control form-control-lg" type="text" autocomplete="off"
+                                    name="username" placeholder="username">
                             </div>
                             <div class="form-group position-relative ">
-                                <input class="form-control form-control-lg text-capitalize password" type="password"
-                                    autocomplete="off" name="password" placeholder="password">
+                                <input class="form-control form-control-lg password" type="password" autocomplete="off"
+                                    name="password" placeholder="password">
                                 <span class="show__eye"><i class="fas fa-eye "></i></span>
                             </div>
                             <input class="btn btn-lg btn-primary text-capitalize" name="login" type="submit"

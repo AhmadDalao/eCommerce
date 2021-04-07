@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
         }
 
         // select all regular users.
-        $stmt = $db_connect->prepare("SELECT * FROM users WHERE groupID != 1 ORDER BY userID DESC $query");
+        $stmt = $db_connect->prepare("SELECT * FROM users WHERE groupID != 1 $query ORDER BY userID DESC");
         // execute the SQL above
         $stmt->execute();
         // assign result from the SQL statement into a variable.
