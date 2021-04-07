@@ -44,13 +44,11 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <?php if (!isset($_SESSION['userFront'])) { ?>
-                    <a class="nav-link text-capitalize" href="login.php">Login | Signup</a>
-                    <?php } else {  ?>
+                    <?php if (isset($_SESSION['userFront'])) { ?>
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle text-capitalize" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $_SESSION['userFront']; ?>
+                            <?php echo $userSession; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-capitalize" href="profile.php">Profile</a>
@@ -63,14 +61,16 @@
                                 href="logout.php"><?php echo lang("navbar_logout_dashboard") ?></a>
                         </div>
                     </li>
+                    <?php } else {  ?>
+                    <a class="nav-link text-capitalize" href="login.php">Login | Signup</a>
                     <?php } ?>
                 </ul>
             </div>
         </div>
     </nav>
     <?php if (isset($_SESSION['userFront'])) {
-        if (checkUserStatus($_SESSION['userFront']) == 1) {   ?>
-    <p class="activation alert alert-info">Welcome, <?php echo $_SESSION['userFront']; ?> your account need to be
+        if (checkUserStatus(isset($_SESSION['userFront'])) == 1) {   ?>
+    <p class="activation alert alert-info">Welcome, <?php echo $userSession; ?> your account need to be
         activated
         <button type="button" class="close" aria-label="Close">
             <span aria-hidden="true">&times;</span>

@@ -1,5 +1,10 @@
 <?php
 
+// display error messages for debugging
+
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+
 /*
 * ================================================================
 * ================================================================
@@ -22,6 +27,12 @@ include "admin/config.php";
 * ================================================================
 * ================================================================
 */
+
+$userSession = '';
+if (isset($_SESSION['userFront'])) {
+    $userSession = $_SESSION['userFront'];
+}
+
 
 $template = 'includes/templates/';
 $memberPages = 'includes/templates/membersPages/';

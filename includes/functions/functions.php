@@ -30,17 +30,20 @@ function getCategories()
 *
 *  this function uses the MYSQL query.
 *  which is used to get latest items from database
-*  @param $cate_id is the cate_id we are receiving from the URL from the navbar links
-*
+*  @param $where the condition to select
+*  @param $value is the value of the where which is going to be executed
 * ================================================================
 * ================================================================
 */
 
-function getItems($cate_id)
+function getItems($where, $value, $and = null)
 {
+    if ($and === null) {
+        $and = '';
+    }
     global $db_connect;
-    $stmt = $db_connect->prepare("SELECT * FROM items  WHERE cate_id = ? AND approve = 1 ORDER BY item_id DESC");
-    $stmt->execute(array($cate_id));
+    $stmt = $db_connect->prepare("SELECT * FROM items  WHERE $where = ? $and  ORDER BY item_id DESC");
+    $stmt->execute(array($value));
     $rows = $stmt->fetchAll();
     return $rows;
 }

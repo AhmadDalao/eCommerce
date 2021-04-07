@@ -1,4 +1,8 @@
-<?php include "init.php"; ?>
+<?php
+ob_start();
+session_start();
+$pageTitle = "Categories";
+include "init.php"; ?>
 
 
 <section class="userCategory py-5">
@@ -9,7 +13,8 @@
         <div class="card-holder">
             <div class="row">
                 <?php
-                foreach (getItems($_GET['cateID']) as $item) { ?>
+                if (!empty(getItems("cate_id", $_GET['cateID'], "AND approve = 1"))) {
+                    foreach (getItems("cate_id", $_GET['cateID'], "AND approve = 1") as $item) { ?>
                 <!-- echo $item['name']; -->
                 <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
                     <div class="card ">
@@ -26,10 +31,14 @@
                         </div>
                     </div>
                 </div>
+                <?php }
+                } else { ?>
+                <div class="col-12 alert alert-info">There are no items to show</div>
                 <?php } ?>
             </div>
         </div>
 </section>
 
 
-<?php include $template .  "footer.php"; ?>
+<?php include $template .  "footer.php";
+ob_end_flush(); ?>
