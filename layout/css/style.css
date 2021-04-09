@@ -96,3 +96,62 @@ body {
 .nav-pills .show > .nav-link {
   background-color: #28a745;
 }
+
+/* 
+*================================================================
+*
+*
+*     index page
+*
+*
+* ================================================================  */
+
+/* .main {
+  padding-top: 54px;
+}
+@media (max-width: 768px) {
+  .main {
+    padding-top: 52px;
+  }
+} */
+
+#carouselExampleControls .carousel-item {
+  height: calc(100vh - 55px);
+}
+#carouselExampleControls .carousel-item > img {
+  height: 100%;
+  background-size: cover;
+}
+/* .hero-section {
+  position: relative;
+  height: calc(100vh - 55px);
+} */
+/* .hero-section .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-bottom: 55px;
+} */
+/* @media (min-width: 992px) {
+  .hero-section .container {
+    padding-bottom: 54px;
+  }
+} */
+
+/* .hero-section .heading {
+  color: var(--titleColor);
+}
+
+.hero-section .hero__more {
+  background-color: #343a40;
+  color: white;
+  border-radius: 4px;
+  transition: 0.4s;
+}
+
+.hero-section .hero__more:hover {
+  background-color: #364b5f;
+  color: white;
+  text-decoration: none;
+} */
