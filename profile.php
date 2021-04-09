@@ -11,7 +11,7 @@ if (isset($_SESSION['userFront'])) {
 ?>
 <section class="profile-info py-5">
     <div class="container">
-        <h1 class="text-center mb-4 text-capitalize header_color"><?php echo $row['username'] ?>'s Profile</h1>
+        <h1 class="text-center mb-4 text-capitalize header_color"><?php echo $row['username'] . '\'s'; ?> Profile</h1>
         <div class="row">
             <div class="userInfo col-12 mb-5">
                 <div class="card">
@@ -21,12 +21,42 @@ if (isset($_SESSION['userFront'])) {
                             <i class="fas fa-plus fa-lg fa-fw"></i>
                         </span>
                     </div>
-                    <div class="card-body hideItem">
-                        <p><?php echo $row['username']; ?></p>
-                        <p><?php echo $row['email']; ?></p>
-                        <p><?php echo $row['fullName']; ?></p>
-                        <p><?php echo $row['Date']; ?></p>
-                        <p>favorite to be added later </p>
+                    <div class="card-body py-5 hideItem">
+                        <div class=" card  mx-auto profile__data position-relative overflow-hidden <?php if ($row['register_status'] == 1) {
+                                                                                                            echo "strapProfile";
+                                                                                                        } else {
+                                                                                                            echo "strapProfileNotActive";
+                                                                                                        } ?>"
+                            data-register="<?php if ($row['register_status'] == 1) {
+                                                                                                                                                                                                                                    echo "Active";
+                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                    echo "Not Active";
+                                                                                                                                                                                                                                } ?>"
+                            style="max-width: 18rem;">
+                            <div class="profile-header-img">
+                                <img class="img-fluid position-relative" src="layout/images/avatar5.png" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="text-center">
+                                    <p class="mb-0"><?php echo $row['username']; ?></p>
+                                </h5>
+                                <h6 class="card-subtitle mb-3 text-center text-muted">
+                                    <?php echo $row['fullName']; ?>
+                                </h6>
+
+                                <div class="dataContainer text-center card-text">
+                                    <?php echo $row['email']; ?>
+                                    <p class="mb-0">Member Since <span class="ml-1"><?php echo $row['Date']; ?></span>
+                                    </p>
+                                </div>
+                                <!-- <p class="mb-0">favorite to be added later </p> -->
+                            </div>
+                            <a class="editProfile-link text-capitalize d-inline-block" href="">
+                                <div class="edit-profile text-center py-3">
+                                    <p class="text-capitalize mb-0">Edit profile</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
