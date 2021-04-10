@@ -42,7 +42,7 @@ function getItems($where, $value, $and = null)
         $and = '';
     }
     global $db_connect;
-    $stmt = $db_connect->prepare("SELECT * FROM items  WHERE $where = ? $and  ORDER BY item_id DESC");
+    $stmt = $db_connect->prepare("SELECT items.* , categories.name AS category_name , categories.ID AS category_id FROM items INNER JOIN categories ON categories.ID = items.cate_id  WHERE $where = ? $and  ORDER BY item_id DESC");
     $stmt->execute(array($value));
     $rows = $stmt->fetchAll();
     return $rows;

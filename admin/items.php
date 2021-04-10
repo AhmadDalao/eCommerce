@@ -62,6 +62,12 @@ if (isset($_SESSION['username'])) {
                 // adding form error to array so I can show it later to user.
                 $formErrors[] = lang("itemDescriptionEmpty");
             }
+
+            if (strlen($description) < 10) {
+                // adding form error to array so I can show it later to user.
+                $formErrors[] = "Description must be at least <strong>10 Characters</strong>'";
+            }
+
             if (empty($price)) {
                 // adding form error to array so I can show it later to user.
                 $formErrors[] = lang("itemPriceEmpty");
@@ -72,6 +78,11 @@ if (isset($_SESSION['username'])) {
                 $formErrors[] =  lang("itemMadeInEmpty");
             }
 
+            if (strlen($made_in) < 2) {
+                // adding form error to array so I can show it later to user.
+                $formErrors[] =  "Country Of origin can't be less than <strong>2 Characters</strong>";
+            }
+
             if ($status == 0) {
                 // adding form error to array so I can show it later to user.
                 $formErrors[] =  lang("itemStatusEmpty");
@@ -80,6 +91,7 @@ if (isset($_SESSION['username'])) {
                 // adding form error to array so I can show it later to user.
                 $formErrors[] =  lang("itemMemberEmpty");
             }
+
             if ($cate_id == 0) {
                 // adding form error to array so I can show it later to user.
                 $formErrors[] =  lang("itemCategoryEmpty");

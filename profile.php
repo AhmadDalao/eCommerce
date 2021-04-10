@@ -28,10 +28,10 @@ if (isset($_SESSION['userFront'])) {
                                                                                                             echo "strapProfileNotActive";
                                                                                                         } ?>"
                             data-register="<?php if ($row['register_status'] == 1) {
-                                                                                                                                                                                                                                    echo "Active";
-                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                    echo "Not Active";
-                                                                                                                                                                                                                                } ?>"
+                                                                                                                                    echo "Active";
+                                                                                                                                } else {
+                                                                                                                                    echo "Not Active";
+                                                                                                                                } ?>"
                             style="max-width: 18rem;">
                             <div class="profile-header-img">
                                 <img class="img-fluid position-relative" src="layout/images/avatar5.png" />
@@ -73,7 +73,6 @@ if (isset($_SESSION['userFront'])) {
                             <?php
                                 if (!empty(getItems("user_id", $row['userID']))) {
                                     foreach (getItems("user_id", $row['userID']) as $item) { ?>
-                            <!-- echo $item['name']; -->
                             <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
                                 <div class="card ">
                                     <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid"
@@ -87,7 +86,13 @@ if (isset($_SESSION['userFront'])) {
                                             <span
                                                 class="d-d-inline-block category_price"><?php echo $item['price']; ?></span>
                                         </div>
-                                        <p class="card-text text-right"><?php echo $item['add_date']; ?></p>
+                                        <p class="card-text">Add Date:<span
+                                                class="ml-1"><?php echo $item['add_date']; ?></span></p>
+                                        <p class="card-text text-left ">Category
+                                            <a class="font-weight-bold text-capitalize"
+                                                href="categories.php?cateID=<?php echo $item["category_id"]; ?>&cateName=<?php echo str_replace(" ", "-", $item['category_name']); ?>">
+                                                <?php echo $item['category_name'] ?></a>
+                                        </p>
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
@@ -115,13 +120,16 @@ if (isset($_SESSION['userFront'])) {
                             $stmt->execute(array($row['userID']));
                             // assign result from the SQL statement into a variable.
                             $comments = $stmt->fetchAll();
-                            if (!empty($comments)) {
+                            if (!empty($comments)) { ?>
+                        <ul class="comments-list list-group list-group-flush">
+                            <?php
                                 foreach ($comments as $comment) {
-                                    echo "<p>" . $comment['comment'] . "</p>";
+                                    echo "<li class='list-group-item'>" . $comment['comment'] . "</li>";
                                 }
                             } else {
                                 echo "<p class='alert alert-info'>No comments to show</p>";
                             } ?>
+                        </ul>
                     </div>
                 </div>
             </div>

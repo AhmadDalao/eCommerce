@@ -21,12 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // protect the password by censoring it it.
         $hashedPassword = sha1($password);
         // check if user exist in database
-        $stmt = $db_connect->prepare("SELECT username, password  FROM users  WHERE  username = ?   AND  password = ?  LIMIT 1 ");
+        $stmt = $db_connect->prepare("SELECT username, userID , password  FROM users  WHERE  username = ?   AND  password = ?  LIMIT 1 ");
 
         $stmt->execute(array($username, $hashedPassword));
+        $row = $stmt->fetch();
         $total_row = $stmt->rowCount();
         if ($total_row > 0) {
             $_SESSION["userFront"] = $username;
+            $_SESSION['frontUserID'] = $row['userID'];
             header("Location: index.php");
             exit();
         } else {

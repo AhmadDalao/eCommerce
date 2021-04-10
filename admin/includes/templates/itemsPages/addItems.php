@@ -1,7 +1,8 @@
 <section class="category_add_section py-5">
     <div class="container">
         <h1 class="text-center header_color text-capitalize mb-5"><?php echo lang("add_itemTitle"); ?></h1>
-        <form method="POST" action="?action=insert" class="edit__form row flex-column align-items-center justify-content-center">
+        <form method="POST" action="?action=insert"
+            class="edit__form row flex-column align-items-center justify-content-center">
             <!-- itemName -->
             <div class="form-group position-relative  col-12 col-md-9 col-lg-6 ">
                 <label class=" text-capitalize" for="itemName"><?php echo lang("itemName"); ?></label>
@@ -11,7 +12,8 @@
             <!-- description -->
             <div class="form-group col-12 col-md-9 col-lg-6">
                 <label class=" text-capitalize " for="description"><?php echo lang("itemDescription"); ?></label>
-                <textarea required class="form-control  form-control-lg" name="description" id="description" cols="30" rows="10"></textarea>
+                <textarea required class="form-control  form-control-lg" name="description" id="description" cols="30"
+                    rows="10"></textarea>
             </div>
 
             <!-- price  -->
@@ -72,9 +74,9 @@
                 </select>
             </div>
 
-
             <div class="form-group col-12 col-md-9 col-lg-6">
-                <input type="submit" class="btn btn-primary btn-lg text-capitalize" value="<?php echo lang("add_item"); ?>">
+                <input type="submit" class="btn btn-primary btn-lg text-capitalize"
+                    value="<?php echo lang("add_item"); ?>">
             </div>
         </form>
     </div>

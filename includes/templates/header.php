@@ -52,8 +52,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-capitalize" href="profile.php">Profile</a>
-                            <a class="dropdown-item text-capitalize"
-                                href="members.php?action=edit&userID="><?php echo lang("navbar_edit_dashboard"); ?></a>
+                            <a class="dropdown-item text-capitalize" href="newAdd.php">Add Item</a>
                             <a class="dropdown-item text-capitalize"
                                 href="#"><?php echo lang("navbar_settings_dashboard"); ?></a>
                             <div class="dropdown-divider"></div>

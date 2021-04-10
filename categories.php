@@ -26,7 +26,7 @@ include "init.php"; ?>
                                 <i class="fas fa-tags  fa-xs mr-1"></i>
                                 <span class="d-d-inline-block category_price"><?php echo $item['price']; ?></span>
                             </div>
-                            <p class="card-text text-right"><?php echo $item['add_date']; ?></p>
+                            <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span></p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>

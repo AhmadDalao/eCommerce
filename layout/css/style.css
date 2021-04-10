@@ -156,6 +156,15 @@ body {
   text-decoration: none;
 } */
 
+/* 
+*================================================================
+*
+*
+*     profile page
+*
+*
+* ================================================================  */
+
 .strapProfile::before,
 .strapProfileNotActive::before {
   position: absolute;
@@ -222,4 +231,33 @@ body {
 .editProfile-link:hover {
   background-color: rgb(234 234 234);
   text-decoration: none;
+}
+
+/* 
+*================================================================
+*
+*
+*     profile page
+*
+*
+* ================================================================  */
+.comments-list li:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+/* 
+*================================================================
+*
+*
+*     new advertisement page
+*
+*
+* ================================================================  */
+
+.form-group > span {
+  color: red;
+  font-size: 1.3rem;
+  position: absolute;
+  right: 20px;
+  transform: translate(-50%, -50%);
+  top: 70%;
 }
