@@ -20,14 +20,17 @@ include "init.php"; ?>
                     <div class="card ">
                         <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid" alt="placeHolder">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $item['name']; ?></h5>
+                            <h5 class="card-title"><a
+                                    href="items.php?item_id=<?php echo $item['item_id'] ?>"><?php echo $item['name']; ?>
+                                </a></h5>
                             <p class="card-text user_card-description"><?php echo $item['description']; ?></p>
                             <div class="mb-3 d-flex align-items-center price_holder">
                                 <i class="fas fa-tags  fa-xs mr-1"></i>
                                 <span class="d-d-inline-block category_price"><?php echo $item['price']; ?></span>
                             </div>
                             <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a class="btn btn-primary" href="items.php?item_id=<?php echo $item['item_id'] ?>">Read More
+                            </a>
                         </div>
                     </div>
                 </div>

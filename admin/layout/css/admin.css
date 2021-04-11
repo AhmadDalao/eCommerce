@@ -138,6 +138,9 @@ body {
 *  dashboard  section
 *
 *=================================================*/
+.hideList {
+  transition: all 0.3s ease;
+}
 
 .hideList:hover {
   color: #ddd;

@@ -78,7 +78,9 @@ if (isset($_SESSION['userFront'])) {
                                     <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid"
                                         alt="placeHolder">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo $item['name']; ?></h5>
+                                        <h5 class="card-title"><a
+                                                href="items.php?item_id=<?php echo $item['item_id'] ?>"><?php echo $item['name']; ?>
+                                            </a></h5>
                                         <p class="card-text user_card-description"><?php echo $item['description']; ?>
                                         </p>
                                         <div class="mb-3 d-flex align-items-center price_holder">
@@ -93,7 +95,9 @@ if (isset($_SESSION['userFront'])) {
                                                 href="categories.php?cateID=<?php echo $item["category_id"]; ?>&cateName=<?php echo str_replace(" ", "-", $item['category_name']); ?>">
                                                 <?php echo $item['category_name'] ?></a>
                                         </p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <a class="btn btn-primary"
+                                            href="items.php?item_id=<?php echo $item['item_id'] ?>">Read More
+                                        </a>
                                     </div>
                                 </div>
                             </div>

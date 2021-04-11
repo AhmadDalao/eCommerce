@@ -27,6 +27,15 @@ body {
   color: var(--titleColor);
 }
 
+.hideList {
+  transition: all 0.3s ease;
+}
+
+.hideList:hover {
+  color: #ddd;
+  cursor: pointer;
+}
+
 /* 
 *================================================================
 *
@@ -241,9 +250,12 @@ body {
 *
 *
 * ================================================================  */
-.comments-list li:nth-of-type(even) {
+
+.comments-list li:nth-of-type(even),
+.items_details-list li:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.03);
 }
+
 /* 
 *================================================================
 *
@@ -260,4 +272,23 @@ body {
   right: 20px;
   transform: translate(-50%, -50%);
   top: 70%;
+}
+
+/* 
+*================================================================
+*
+*
+*     items page
+*
+*
+* ================================================================  */
+
+.comment-img {
+  flex-basis: 100px;
+}
+.user-comment {
+  flex: 1;
+}
+.user-comment > p {
+  background-color: rgba(0, 0, 0, 0.03);
 }
