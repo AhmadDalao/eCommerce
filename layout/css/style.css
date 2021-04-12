@@ -284,11 +284,11 @@ body {
 * ================================================================  */
 
 .comment-img {
-  flex-basis: 100px;
+  flex-basis: 42px;
+  height: 42px;
+  width: 42px;
 }
-.user-comment {
+.user-comment,
+.comment-details {
   flex: 1;
-}
-.user-comment > p {
-  background-color: rgba(0, 0, 0, 0.03);
 }

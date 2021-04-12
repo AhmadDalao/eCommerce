@@ -54,21 +54,100 @@ if ($total_row > 0) {
             </div>
         </div>
         <hr>
+        <?php if (isset($_SESSION['userFront'])) {
+            ?>
+        <div class="comments_form-holder">
+            <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] . "?item_id=" . $row['item_id']; ?>"
+                class="edit__form row flex-column align-items-center justify-content-center">
+                <!-- comment -->
+                <div class="form-group col-12 col-lg-9 offset-lg-3">
+                    <h3 class="py-4">Add a comment</h3>
+                    <textarea required class="form-control  form-control-lg" name="comment" id="comment"
+                        rows="4"></textarea>
+                </div>
+                <div class="form-group col-12  col-lg-9 offset-lg-3">
+                    <input type="submit" class="btn btn-primary btn-lg text-capitalize" value="Comment">
+                </div>
+            </form>
+            <?php
+                    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                        $comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
+                        $item_id = $row['item_id'];
+                        $user_id = $_SESSION['frontUserID'];
+
+                        if (!empty($comment)) {
+
+                            $stmt = $db_connect->prepare("INSERT INTO
+                             comments (comment , status , comment_date, item_id , user_id)
+                              VALUES (:comment , 0, NOW(),:item_id, :user_id )");
+
+                            $stmt->execute(array(
+                                "comment" => $comment,
+                                "item_id" => $item_id,
+                                "user_id" => $user_id,
+                            ));
+
+                            if ($stmt) {
+                                echo '<div class="row  align-items-center justify-content-center">
+                                            <div class=" col-12 col-lg-9 offset-lg-3">
+                                                <p class="alert alert-success font-weight-bold">Your comment has been added successfully.</p>
+                                            </div>
+                                    </div>';
+                            }
+                        } else {
+                            echo '<div class="row  align-items-center justify-content-center">
+                                            <div class=" col-12 col-lg-9 offset-lg-3">
+                                                <p class="alert alert-danger font-weight-bold">Comment should not be empty</p>
+                                            </div>
+                                    </div>';
+                        }
+                    }
+                    ?>
+        </div>
+        <?php } else {
+
+                echo '<div class="row align-items-center justify-content-center">
+                        <div class="col-12 col-lg-9 offset-lg-3">
+                            <h3 class="py-4">Add a comment</h3>
+                            <p class="alert alert-info font-weight-bold"><a href="login.php">Login or register</a> to add comment.</p>
+                        </div>
+                    </div>';
+            } ?>
+        <hr>
         <h2 class="text-center">Comments</h2>
-        <div class="row py-5">
-            <div class="comment-img">
-                <img src="./layout/images/placeHolder.png" class="img-fluid img-thumbnail" alt="placeHolder">
-            </div>
-            <div class="user-comment">
-                <p class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, iste. Cupiditate
-                    ea
-                    molestiae
-                    sunt,
-                    velit magnam amet accusantium sit est dolorum quae perferendis doloribus, ad iusto ex dolore
-                    facere.
-                    Veritatis?</p>
+        <div class="container no-gutters">
+            <div class="comments-wrapper no-gutters py-5">
+                <?php
+
+                    // select all comments.
+                    $stmt = $db_connect->prepare("SELECT comments.* ,
+                                        users.username As username
+                                    FROM comments
+                                    INNER JOIN users ON users.userID = comments.user_id
+                                    WHERE item_id = ? AND status = 1  ORDER BY comment_id DESC");
+                    // execute the SQL above
+                    $stmt->execute(array($row['item_id']));
+                    // assign result from the SQL statement into a variable.
+                    $rows = $stmt->fetchAll();
+
+
+                    foreach ($rows as $comment) { ?>
+                <div class="comment-holder my-3 d-flex">
+                    <img class="comment-img  My-2" src="./layout/images/avatar5.png" class="img-fluid"
+                        alt="placeHolder">
+                    <div class="comment-details">
+                        <h6 id="name" class="pl-2 mb-0 text-capitalize"><?php echo $comment['username']; ?></h6>
+                        <small id="name"
+                            class="pl-2 form-text text-muted"><?php echo $comment['comment_date']; ?></small>
+                        <p class="px-2 mb-0 user-comment"><?php echo $comment['comment']; ?></p>
+                    </div>
+                </div>
+                <hr>
+                <?php   } ?>
+
             </div>
         </div>
+    </div>
 
     </div>
 </section>
