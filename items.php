@@ -11,7 +11,7 @@ $stmt = $db_connect->prepare("SELECT items.* , users.username AS username ,
                                 categories.name AS category_name,
                                 categories.ID AS category_id FROM items 
                                 INNER JOIN users ON users.userID = items.user_id
-                                INNER JOIN categories ON categories.ID = items.cate_id   WHERE item_id = ? LIMIT 1 ");
+                                INNER JOIN categories ON categories.ID = items.cate_id   WHERE item_id = ? AND approve = 1 LIMIT 1 ");
 // execute query
 $stmt->execute(array($item_id));
 // $row will be an array since fetch retrieve information as an array.
@@ -25,6 +25,9 @@ if ($total_row > 0) {
 
 <section class="items-info py-5">
     <div class="container">
+        <?php if ($row['approve'] == 0) {
+                echo '<p class="alert alert-warning font-weight-bold">Item Waiting Admin Approval.</p>';
+            } ?>
         <div class="row py-5">
             <div class="col-12 mb-4 mb-md-0 col-sm-6 mx-auto col-md-3">
                 <img src="./layout/images/placeHolder.png" class="img-fluid img-thumbnail" alt="placeHolder">
@@ -129,8 +132,6 @@ if ($total_row > 0) {
                     $stmt->execute(array($row['item_id']));
                     // assign result from the SQL statement into a variable.
                     $rows = $stmt->fetchAll();
-
-
                     foreach ($rows as $comment) { ?>
                 <div class="comment-holder my-3 d-flex">
                     <img class="comment-img  My-2" src="./layout/images/avatar5.png" class="img-fluid"
@@ -154,7 +155,7 @@ if ($total_row > 0) {
 
 <?php } else { ?>
 <div class="container py-5">
-    <div class="col-12 alert alert-info">There is no item to show</div>
+    <div class="col-12 alert alert-warning text-capitalize">item has not been approved or does not exist.</div>
 </div>
 
 <?php } ?>

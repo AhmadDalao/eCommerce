@@ -26,7 +26,7 @@ include "init.php"; ?>
                             <p class="card-text user_card-description"><?php echo $item['description']; ?></p>
                             <div class="mb-3 d-flex align-items-center price_holder">
                                 <i class="fas fa-tags  fa-xs mr-1"></i>
-                                <span class="d-d-inline-block category_price"><?php echo $item['price']; ?></span>
+                                <span class="d-d-inline-block category_price"><?php echo $item['price']; ?>$</span>
                             </div>
                             <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span></p>
                             <a class="btn btn-primary" href="items.php?item_id=<?php echo $item['item_id'] ?>">Read More

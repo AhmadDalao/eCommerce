@@ -5,6 +5,27 @@
 * ================================================================
 * ================================================================
 *
+*                         getAllFrom function
+*
+*  this function uses the MYSQL query.
+*  which is used to get latest items from any database table
+*
+* ================================================================
+* ================================================================
+*/
+
+function getAllFrom($tableName)
+{
+    global $db_connect;
+    $stmt = $db_connect->prepare("SELECT * FROM $tableName");
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    return $rows;
+}
+/*
+* ================================================================
+* ================================================================
+*
 *                         getCategories function
 *
 *  this function uses the MYSQL query.
@@ -22,6 +43,7 @@ function getCategories()
     $rows = $stmt->fetchAll();
     return $rows;
 }
+
 /*
 * ================================================================
 * ================================================================

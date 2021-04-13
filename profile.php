@@ -60,10 +60,10 @@ if (isset($_SESSION['userFront'])) {
                     </div>
                 </div>
             </div>
-            <div class="userAds col-12 mb-5">
+            <div class="userAds col-12 mb-5" id="userAds">
                 <div class="card">
                     <div class="card-header">
-                        <span class="text-capitalize"><i class="fas fa-ad mr-2"></i>User Advertisements</span>
+                        <span class="text-capitalize"><i class="fas fa-ad mr-2"></i>User items</span>
                         <span class="hideList float-right px-3">
                             <i class="fas fa-plus fa-lg fa-fw"></i>
                         </span>
@@ -74,7 +74,12 @@ if (isset($_SESSION['userFront'])) {
                                 if (!empty(getItems("user_id", $row['userID']))) {
                                     foreach (getItems("user_id", $row['userID']) as $item) { ?>
                             <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
-                                <div class="card ">
+                                <div class="card position-relative overflow-hidden <?php if ($item['approve'] == 0) {
+                                                                                                    echo "strapItem";
+                                                                                                } ?>"
+                                    data-itemIsApprove="<?php if ($item['approve'] == 0) {
+                                                                                                                                echo "Waiting Approval";
+                                                                                                                            } ?>">
                                     <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid"
                                         alt="placeHolder">
                                     <div class="card-body">
@@ -86,7 +91,7 @@ if (isset($_SESSION['userFront'])) {
                                         <div class="mb-3 d-flex align-items-center price_holder">
                                             <i class="fas fa-tags  fa-xs mr-1"></i>
                                             <span
-                                                class="d-d-inline-block category_price"><?php echo $item['price']; ?></span>
+                                                class="d-d-inline-block category_price"><?php echo $item['price']; ?>$</span>
                                         </div>
                                         <p class="card-text">Add Date:<span
                                                 class="ml-1"><?php echo $item['add_date']; ?></span></p>

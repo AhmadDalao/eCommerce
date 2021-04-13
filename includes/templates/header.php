@@ -48,11 +48,16 @@
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle text-capitalize" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar-holder d-inline-block mr-1">
+                                <img class="img-fluid position-relative rounded-circle "
+                                    src="layout/images/avatar5.png" />
+                            </div>
                             <?php echo $userSession; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-capitalize" href="profile.php">Profile</a>
                             <a class="dropdown-item text-capitalize" href="newAdd.php">Add Item</a>
+                            <a class="dropdown-item text-capitalize" href="profile.php#userAds">My Items</a>
                             <a class="dropdown-item text-capitalize"
                                 href="#"><?php echo lang("navbar_settings_dashboard"); ?></a>
                             <div class="dropdown-divider"></div>

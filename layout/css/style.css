@@ -40,6 +40,20 @@ body {
 *================================================================
 *
 *
+*     header page
+*
+*
+* ================================================================  */
+
+.avatar-holder {
+  width: 25px;
+  height: 25px;
+}
+
+/* 
+*================================================================
+*
+*
 *     categories page
 *
 *
@@ -181,6 +195,7 @@ body {
   width: 100%;
   color: white;
   left: -35%;
+  padding: 5px;
   top: 7%;
   display: inline-block;
   text-align: center;
@@ -189,7 +204,22 @@ body {
 .strapProfile::before {
   background-color: #34e780;
 }
-.strapProfileNotActive::before {
+
+.strapItem::before {
+  position: absolute;
+  content: attr(data-itemIsApprove);
+  width: 100%;
+  padding: 5px;
+  color: white;
+  left: -29%;
+  top: 8%;
+  display: inline-block;
+  text-align: center;
+  transform: rotate(-45deg);
+}
+
+.strapProfileNotActive::before,
+.strapItem::before {
   background-color: violet;
 }
 

@@ -80,7 +80,6 @@ if (isset($_SESSION['userFront'])) {
 
             if ($stmt) {
                 $message = "<div class='mb-4 alert alert-success'><div class='container'><div>Item Created</div></div></div>";
-                redirectHome($message, "back", 2);
             }
         }
         // find errors in the form sent to you by add member page.
@@ -106,16 +105,17 @@ if (isset($_SESSION['userFront'])) {
                             <!-- itemName -->
                             <div class="form-group position-relative  col-12 col-md-9 col-lg-6 no-gutters">
                                 <label class=" text-capitalize" for="itemName"><?php echo lang("itemName"); ?></label>
-                                <input required type="text" class="form-control form-control-lg" name="name"
-                                    id="itemName">
+                                <input pattern=".{4,}" title="item name must be at least 4 characters in length"
+                                    required type="text" class="form-control form-control-lg" name="name" id="itemName">
                             </div>
 
                             <!-- description -->
                             <div class="form-group position-relative  col-12 col-md-9 col-lg-6">
                                 <label class=" text-capitalize "
                                     for="description"><?php echo lang("itemDescription"); ?></label>
-                                <textarea required class="form-control  form-control-lg" name="description"
-                                    id="description" cols="30" rows="10"></textarea>
+                                <textarea title="Description must be at least 10 Characters" required
+                                    class="form-control  form-control-lg" name="description" id="description" cols="30"
+                                    rows="10"></textarea>
                             </div>
 
                             <!-- price  -->
@@ -128,14 +128,14 @@ if (isset($_SESSION['userFront'])) {
                             <!-- country of origin( made in)  -->
                             <div class="form-group  position-relative  col-12 col-md-9 col-lg-6">
                                 <label class=" text-capitalize " for="made_in"><?php echo lang("itemMadeIn"); ?></label>
-                                <input required type="text" class=" form-control form-control-lg" id="made_in"
-                                    name="made_in">
+                                <input required pattern=".{2,}" title="Country of origin must be at least 2 characters"
+                                    type="text" class=" form-control form-control-lg" id="made_in" name="made_in">
                             </div>
 
                             <!-- item status -->
                             <div class="form-group col-12 col-md-9 col-lg-6">
                                 <label class="text-capitalize" for="status"><?php echo lang("itemStatus"); ?></label>
-                                <select class="form-control" name="status">
+                                <select required class="form-control" name="status">
                                     <option class="text-capitalize" value="0">
                                         <?php echo lang("itemSelect") ?> </option>
                                     <option class="text-capitalize" value="1">
@@ -152,14 +152,11 @@ if (isset($_SESSION['userFront'])) {
                             <!-- add item to category -->
                             <div class="form-group col-12 col-md-9 col-lg-6">
                                 <label class="text-capitalize" for="cate_id"><?php echo lang("itemCategory"); ?></label>
-                                <select class="form-control" name="cate_id">
+                                <select required class="form-control" name="cate_id">
                                     <option class="text-capitalize" value="0">
                                         <?php echo lang("itemSelectCategory") ?> </option>
                                     <?php
-                                        $stmt = $db_connect->prepare('SELECT * FROM categories ');
-                                        $stmt->execute();
-                                        $categories = $stmt->fetchAll();
-                                        foreach ($categories as $category) {
+                                        foreach (getAllFrom("categories") as $category) {
                                             echo "<option value='" .  $category['ID'] . "'>" .  $category['name']  . "</option>";
                                         }
                                         ?>
@@ -170,9 +167,10 @@ if (isset($_SESSION['userFront'])) {
                                     value="<?php echo lang("add_item"); ?>">
                             </div>
                         </form>
-
+                        <?php if (isset($message)) {
+                                echo $message;
+                            } ?>
                     </div>
-
                     <?php if (!empty($formErrors)) {
                             formErrorsPrint($formErrors);
                         } ?>

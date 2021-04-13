@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-$pageTitle = "Login";
+$pageTitle = "Home page";
 include "init.php"; // if session is registered direct user to dashboard page
 // if (isset($_SESSION['userFront'])) {
 // header("Location: index.php");
