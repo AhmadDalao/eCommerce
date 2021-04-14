@@ -8,6 +8,7 @@ include "init.php";
 $item_id = isset($_GET['item_id']) && is_numeric($_GET['item_id']) ?  intval($_GET['item_id']) :  0;
 // select data from database based on the item_id I got from $_GET.
 $stmt = $db_connect->prepare("SELECT items.* , users.username AS username ,
+                                users.groupID AS g_id ,
                                 categories.name AS category_name,
                                 categories.ID AS category_id FROM items 
                                 INNER JOIN users ON users.userID = items.user_id
@@ -51,7 +52,8 @@ if ($total_row > 0) {
 
                     </li>
                     <li class="list-group-item"><i class="fas fa-user fa-xs mr-2"></i>
-                        Added by:<span class="ml-2 font-weight-bold"><?php echo $row['username']; ?></span>
+                        Seller:<span class="ml-2 font-weight-bold"><a
+                                href="profile.php?profileName=<?php echo $row['username']; ?>"><?php echo $row['username']; ?></a></span>
                     </li>
                 </ul>
             </div>
@@ -161,11 +163,13 @@ if ($total_row > 0) {
 </section>
 
 <?php } else { ?>
-<div class="container py-5">
+<div class="container pt-5">
     <div class="col-12 alert alert-warning text-capitalize">item has not been approved or does not exist.</div>
 </div>
 
-<?php } ?>
+<?php
+    redirectHome("", "back", 4);
+} ?>
 
 
 <?php

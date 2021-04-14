@@ -55,7 +55,8 @@
                             <?php echo $userSession; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-capitalize" href="profile.php">Profile</a>
+                            <a class="dropdown-item text-capitalize"
+                                href="profile.php?profileName=<?php echo $_SESSION['userFront']; ?>">Profile</a>
                             <?php if (isset($_SESSION['userFrontGroupID']) && ($_SESSION['userFrontGroupID'] == 2 || $_SESSION['userFrontGroupID'] == 1)) { ?>
                             <a class="dropdown-item text-capitalize" href="newAdd.php">Add Item</a>
                             <a class="dropdown-item text-capitalize" href="profile.php#userAds">My Items</a>

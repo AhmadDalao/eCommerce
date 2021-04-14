@@ -29,6 +29,9 @@ include "init.php"; ?>
                                 <span class="d-d-inline-block category_price"><?php echo $item['price']; ?>$</span>
                             </div>
                             <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span></p>
+                            <p class="card-text">Seller<span class="ml-1 text-capitalize"><a class=""
+                                        href="profile.php?profileName=<?php echo $item['username']; ?>"><?php echo $item['username']; ?></a></span>
+                            </p>
                             <a class="btn btn-primary" href="items.php?item_id=<?php echo $item['item_id'] ?>">Read More
                             </a>
                         </div>
