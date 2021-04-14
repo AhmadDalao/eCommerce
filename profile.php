@@ -7,7 +7,8 @@ if (isset($_SESSION['userFront'])) {
     $stat = $db_connect->prepare("SELECT * FROM users WHERE username = ?");
     $stat->execute(array($userSession));
     $row = $stat->fetch();
-
+    $user_id = $row['userID'];
+    echo $user_id;
 ?>
 <section class="profile-info py-5">
     <div class="container">
@@ -71,7 +72,7 @@ if (isset($_SESSION['userFront'])) {
                     <div class="card-body hideItem">
                         <div class="row">
                             <?php
-                                if (!empty(getItems("user_id", $row['userID']))) {
+                                if (!empty(getItems("user_id", $user_id))) {
                                     foreach (getItems("user_id", $row['userID']) as $item) { ?>
                             <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
                                 <div class="card position-relative overflow-hidden <?php if ($item['approve'] == 0) {
@@ -124,11 +125,7 @@ if (isset($_SESSION['userFront'])) {
                     </div>
                     <div class="card-body hideItem">
                         <?php
-                            $stmt = $db_connect->prepare("SELECT comment FROM comments  WHERE user_id = ?");
-                            // execute the SQL above
-                            $stmt->execute(array($row['userID']));
-                            // assign result from the SQL statement into a variable.
-                            $comments = $stmt->fetchAll();
+                            $comments = getRecordFrom("comment", "comments", "comment_id", "WHERE user_id = $user_id ", "");
                             if (!empty($comments)) { ?>
                         <ul class="comments-list list-group list-group-flush">
                             <?php

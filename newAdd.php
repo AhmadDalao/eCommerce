@@ -156,7 +156,7 @@ if (isset($_SESSION['userFront'])) {
                                     <option class="text-capitalize" value="0">
                                         <?php echo lang("itemSelectCategory") ?> </option>
                                     <?php
-                                        foreach (getAllFrom("categories") as $category) {
+                                        foreach (getRecordFrom("*", "categories", "ID", "", "", "ASC") as $category) {
                                             echo "<option value='" .  $category['ID'] . "'>" .  $category['name']  . "</option>";
                                         }
                                         ?>

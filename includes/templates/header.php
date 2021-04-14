@@ -35,7 +35,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="categoriesDropDown">
                             <?php
-                            foreach (getCategories() as $category) { ?>
+                            foreach (getRecordFrom("*", "categories", "ID", "", "", "ASC") as $category) { ?>
                             <a class="dropdown-item text-capitalize"
                                 href="categories.php?cateID=<?php echo $category["ID"]; ?>&cateName=<?php echo str_replace(" ", "-", $category['name']); ?>">
                                 <?php echo $category['name'] ?></a>

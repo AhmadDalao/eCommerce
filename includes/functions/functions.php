@@ -1,44 +1,31 @@
 <?php
 
-
 /*
 * ================================================================
 * ================================================================
 *
-*                         getAllFrom function
+*                         getRecordFrom function
 *
 *  this function uses the MYSQL query.
-*  which is used to get latest items from any database table
+*  which is used to get latest items from any database table with flexible query
+*
+*  @param $field is the field you want to select like [username, userID .... description]
+*  @param $table is the table you want to select the data from such as [users, categories .... items]
+*  @param $where is the condition you want to add to the data during the selection such as [approve = 1 , status = 1 .... groupID = 1]
+*  @param $orderingByField is the field you want to use to order your query such as [username, userID .... description]
+*  @param $ordering the order method whether is is ASC or DESC
+*
 *
 * ================================================================
 * ================================================================
 */
 
-function getAllFrom($tableName)
+function getRecordFrom($field,  $table,  $orderingByField, $where = null, $and = null, $ordering = "DESC")
 {
-    global $db_connect;
-    $stmt = $db_connect->prepare("SELECT * FROM $tableName");
-    $stmt->execute();
-    $rows = $stmt->fetchAll();
-    return $rows;
-}
-/*
-* ================================================================
-* ================================================================
-*
-*                         getCategories function
-*
-*  this function uses the MYSQL query.
-*  which is used to get latest categories from database
-*
-* ================================================================
-* ================================================================
-*/
+    // SELECT comment FROM comments WHERE user_id = 62 ORDER BY comment_id DESC
 
-function getCategories()
-{
     global $db_connect;
-    $stmt = $db_connect->prepare("SELECT * FROM categories  ORDER BY ID ASC");
+    $stmt = $db_connect->prepare("SELECT $field FROM $table $where $and ORDER BY  $orderingByField  $ordering");
     $stmt->execute();
     $rows = $stmt->fetchAll();
     return $rows;
@@ -210,87 +197,4 @@ function checkItem($selectItem, $tableName, $value)
     $total_row = $stmt->rowCount();
 
     return $total_row;
-}
-
-
-/*
-* ================================================================
-* ================================================================
-*
-*                         countItemsIN_DB function
-*
-*  this function uses the MYSQL query.
-*  which is used to to check if the item does exist in the database or not. And return the count of it.
-*  @param $itemToCount the table you want to count [ select Count(userID || username || items)] and so on
-*  @param $tableName table to select from. [from users , item , category]
-*
-* ================================================================
-* ================================================================
-*/
-
-function countItemsIN_DB($itemToCount, $tableName)
-{
-    global $db_connect;
-    $stmt = $db_connect->prepare("SELECT COUNT($itemToCount) FROM $tableName");
-    $stmt->execute();
-    return $stmt->fetchColumn();  // find the numbers of column
-}
-
-
-/*
-* ================================================================
-* ================================================================
-*
-*                         getLatestRecord function
-*
-*  this function uses the MYSQL query.
-*  which is used to get latest items from database [users , items ,comments].
-*  @param $select_item item to select from the database
-*  @param $table  the table to select the item from
-*  @param $order  the ORDER for the selected items
-*  @param $limiter number of items you want to get.
-*  @param $whereCondition is the condition you use such as [Where groupID != 0]
-*
-* ================================================================
-* ================================================================
-*/
-
-function getLatestRecord($select_item, $table, $order, $limiter = 5, $whereCondition = Null)
-{
-    global $db_connect;
-    if ($whereCondition == Null) {
-        $stmt = $db_connect->prepare("SELECT $select_item FROM $table  ORDER BY $order DESC LIMIT $limiter");
-    } else {
-        $stmt = $db_connect->prepare("SELECT $select_item FROM $table WHERE $whereCondition ORDER BY $order DESC LIMIT $limiter");
-    }
-    $stmt->execute();
-    $rows = $stmt->fetchAll();
-    return $rows;
-}
-
-
-/*
-* ================================================================
-* ================================================================
-*
-*                         orderBy order items based on query
-*
-*  this function uses the MYSQL query.
-*  which is used to make a query to order and order it according to the user request.
-*  @param $selectItem is the you want to select [ select username , itemName , category]
-*  @param $tableName table to select from. [from users , item , category]
-*  @param $ordering [WHERE ordering = username, groupID ....]
-*  @param $sort [WHERE sort = ASC , DESC]
-*
-* ================================================================
-* ================================================================
-*/
-
-function orderBy($selectItem, $tableName, $ordering, $sort)
-{
-    global $db_connect;
-    $stmt = $db_connect->prepare("SELECT $selectItem FROM $tableName ORDER BY $ordering $sort");
-    $stmt->execute();
-    $categories = $stmt->fetchAll();
-    return $categories;
 }
