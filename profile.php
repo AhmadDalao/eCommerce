@@ -8,7 +8,6 @@ if (isset($_SESSION['userFront'])) {
     $stat->execute(array($userSession));
     $row = $stat->fetch();
     $user_id = $row['userID'];
-    echo $user_id;
 ?>
 <section class="profile-info py-5">
     <div class="container">
@@ -61,6 +60,8 @@ if (isset($_SESSION['userFront'])) {
                     </div>
                 </div>
             </div>
+
+            <?php if (isset($_SESSION['userFrontGroupID']) && ($_SESSION['userFrontGroupID'] == 2 || $_SESSION['userFrontGroupID'] == 1)) { ?>
             <div class="userAds col-12 mb-5" id="userAds">
                 <div class="card">
                     <div class="card-header">
@@ -72,15 +73,15 @@ if (isset($_SESSION['userFront'])) {
                     <div class="card-body hideItem">
                         <div class="row">
                             <?php
-                                if (!empty(getItems("user_id", $user_id))) {
-                                    foreach (getItems("user_id", $row['userID']) as $item) { ?>
+                                    if (!empty(getItems("user_id", $user_id))) {
+                                        foreach (getItems("user_id", $row['userID']) as $item) { ?>
                             <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
                                 <div class="card position-relative overflow-hidden <?php if ($item['approve'] == 0) {
-                                                                                                    echo "strapItem";
-                                                                                                } ?>"
+                                                                                                        echo "strapItem";
+                                                                                                    } ?>"
                                     data-itemIsApprove="<?php if ($item['approve'] == 0) {
-                                                                                                                                echo "Waiting Approval";
-                                                                                                                            } ?>">
+                                                                                                                                    echo "Waiting Approval";
+                                                                                                                                } ?>">
                                     <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid"
                                         alt="placeHolder">
                                     <div class="card-body">
@@ -108,13 +109,15 @@ if (isset($_SESSION['userFront'])) {
                                 </div>
                             </div>
                             <?php }
-                                } else { ?>
+                                    } else { ?>
                             <div class="col-12 alert alert-info">There are no items to show</div>
                             <?php } ?>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php } ?>
+
             <div class="userComments col-12">
                 <div class="card">
                     <div class="card-header">

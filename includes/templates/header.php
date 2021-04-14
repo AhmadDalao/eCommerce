@@ -56,8 +56,10 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-capitalize" href="profile.php">Profile</a>
+                            <?php if (isset($_SESSION['userFrontGroupID']) && ($_SESSION['userFrontGroupID'] == 2 || $_SESSION['userFrontGroupID'] == 1)) { ?>
                             <a class="dropdown-item text-capitalize" href="newAdd.php">Add Item</a>
                             <a class="dropdown-item text-capitalize" href="profile.php#userAds">My Items</a>
+                            <?php } ?>
                             <a class="dropdown-item text-capitalize"
                                 href="#"><?php echo lang("navbar_settings_dashboard"); ?></a>
                             <div class="dropdown-divider"></div>

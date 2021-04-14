@@ -39,7 +39,7 @@ if ($total_row > 0) {
                     <li class="list-group-item"><i class="far fa-calendar-alt mr-2"></i><?php echo $row['add_date']; ?>
                     </li>
                     <li class="list-group-item">
-                        <i class="far fa-money-bill-alt fa-xs mr-2"></i><?php echo $row['price']; ?>
+                        <i class="far fa-money-bill-alt fa-xs mr-2"></i><?php echo $row['price']; ?>$
                     </li>
                     <li class="list-group-item">
                         <i class="fas fa-building fa-xs mr-2"></i>Made In:<span
@@ -132,7 +132,9 @@ if ($total_row > 0) {
                     $stmt->execute(array($row['item_id']));
                     // assign result from the SQL statement into a variable.
                     $rows = $stmt->fetchAll();
-                    foreach ($rows as $comment) { ?>
+                    $total_row = $stmt->rowCount();
+                    if ($total_row > 0) {
+                        foreach ($rows as $comment) { ?>
                 <div class="comment-holder my-3 d-flex">
                     <img class="comment-img  My-2" src="./layout/images/avatar5.png" class="img-fluid"
                         alt="placeHolder">
@@ -144,7 +146,12 @@ if ($total_row > 0) {
                     </div>
                 </div>
                 <hr>
-                <?php   } ?>
+                <?php  }
+                    } else { ?>
+                <div class="col-12 col-lg-9 offset-lg-3">
+                    <p class="alert alert-primary font-weight-bold">There are no comments on this item.</p>
+                </div>
+                <?php  } ?>
 
             </div>
         </div>

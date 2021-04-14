@@ -87,7 +87,17 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .form-group .show__eye {
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  font-size: 1.4rem;
+  right: 10px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.form-group.star-fix .show__eye {
   color: rgba(0, 0, 0, 0.8);
   position: absolute;
   font-size: 1.4rem;
@@ -95,11 +105,12 @@ body {
   transform: translate(-50%, -50%);
   top: 50%;
 }
+
 .form-group .show__eye:hover {
   cursor: pointer;
 }
 
-.form-group > span {
+.form-group.star-fix > span {
   color: red;
   font-size: 1.3rem;
   position: absolute;
@@ -295,7 +306,7 @@ body {
 *
 * ================================================================  */
 
-.form-group > span {
+.form-group.star-item > span {
   color: red;
   font-size: 1.3rem;
   position: absolute;

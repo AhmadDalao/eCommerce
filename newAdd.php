@@ -103,14 +103,14 @@ if (isset($_SESSION['userFront'])) {
                         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>"
                             class="edit__form row flex-column align-items-center justify-content-center">
                             <!-- itemName -->
-                            <div class="form-group position-relative  col-12 col-md-9 col-lg-6 no-gutters">
+                            <div class="form-group star-item position-relative  col-12 col-md-9 col-lg-6 no-gutters">
                                 <label class=" text-capitalize" for="itemName"><?php echo lang("itemName"); ?></label>
                                 <input pattern=".{4,}" title="item name must be at least 4 characters in length"
                                     required type="text" class="form-control form-control-lg" name="name" id="itemName">
                             </div>
 
                             <!-- description -->
-                            <div class="form-group position-relative  col-12 col-md-9 col-lg-6">
+                            <div class="form-group star-item position-relative  col-12 col-md-9 col-lg-6">
                                 <label class=" text-capitalize "
                                     for="description"><?php echo lang("itemDescription"); ?></label>
                                 <textarea title="Description must be at least 10 Characters" required
@@ -119,14 +119,14 @@ if (isset($_SESSION['userFront'])) {
                             </div>
 
                             <!-- price  -->
-                            <div class="form-group position-relative  col-12 col-md-9 col-lg-6">
+                            <div class="form-group star-item position-relative  col-12 col-md-9 col-lg-6">
                                 <label class=" text-capitalize " for="price"><?php echo lang("itemPrice"); ?></label>
                                 <input required type="text" class=" form-control form-control-lg" id="price"
                                     name="price">
                             </div>
 
                             <!-- country of origin( made in)  -->
-                            <div class="form-group  position-relative  col-12 col-md-9 col-lg-6">
+                            <div class="form-group star-item position-relative  col-12 col-md-9 col-lg-6">
                                 <label class=" text-capitalize " for="made_in"><?php echo lang("itemMadeIn"); ?></label>
                                 <input required pattern=".{2,}" title="Country of origin must be at least 2 characters"
                                     type="text" class=" form-control form-control-lg" id="made_in" name="made_in">
