@@ -7,8 +7,9 @@ $pageTitle = "Dashboard";
 if (isset($_SESSION['username'])) {
     include "init.php";
     $latestUsersLimiter = 6;
-    $latestUsers = getLatestRecord("*", "users", "userID", $latestUsersLimiter, "groupID != 1");
+    $latestUsers = getLatestRecord("*", "users", "userID", $latestUsersLimiter, "groupID  = 0");
     $latestItem = getLatestRecord("*", "items", "item_id", $latestUsersLimiter);
+    $latestSellers = getLatestRecord("*", "users", "userID", $latestUsersLimiter, "groupID  = 2");
     include  $dashboardPages . 'dashboardManage.php';
 
 

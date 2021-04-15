@@ -184,6 +184,35 @@
                        </div>
                    </div>
                </div>
+
+               <!-- newly registered users -->
+               <div class="col-lg-6 mb-4">
+                   <div class="card">
+                       <div class="card-header">
+                           <span class="text-capitalize"><i class="fas fa-building mr-1">
+                               </i>latest <?php echo $latestUsersLimiter; ?> Registered Sellers</span>
+                           <span class="hideList float-right px-3">
+                               <i class="fas fa-plus fa-lg fa-fw"></i>
+                           </span>
+                       </div>
+                       <div class="card-body hideItem">
+                           <ul class="list-group list-group-flush">
+                               <?php
+                                if (!empty($latestSellers)) {
+                                    foreach ($latestSellers as $user) {
+                                        echo "<li class='list-group-item'>";
+                                        echo $user['username'];
+                                        include  $dashboardPages . "buttons.php";
+                                        echo "</li>";
+                                    }
+                                } else {
+                                    echo "There are no new users";
+                                }
+                                ?>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
            </div>
        </div>
    </section>
