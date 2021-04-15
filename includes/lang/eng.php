@@ -64,6 +64,22 @@ function lang($phrase)
         'itemStatusEmpty' => 'item status can\'t be <strong>empty</strong>',
         'itemMemberEmpty' => 'Member can\'t be <strong>empty</strong>',
         'itemCategoryEmpty' => 'Category can\'t be <strong>empty</strong>',
+        // profile edit
+        'edit_username_profile' => 'Username',
+        'edit_password_profile' => 'Password',
+        'edit_email_profile' => 'Email',
+        'edit_fullName_profile' => 'Full Name',
+        'edit_save_profile' => 'Save',
+        'edit_password_empty' => 'don\'t want to change? leave it blank',
+        // profile edit
+        'update_profile' => "Update Profile",
+        'update_recordChange' => 'Record Updated',
+        'update_username_greater' => 'username can\'t be <strong>more than 15 letters</strong>',
+        'update_username_less' => 'username can\'t be <strong>less than 4 letters</strong>',
+        'update_username_empty' => 'username can\'t be <strong>empty</strong>',
+        'update_fullName_empty' => 'fullName can\'t be <strong>empty</strong>',
+        'update_fullName_less' => 'fullName can\'t be <strong>less than 4 letters</strong>',
+        'update_email_empty' => 'email can\'t be <strong>empty</strong>',
     );
     return $language[$phrase];
 }

@@ -96,6 +96,22 @@ body {
   transform: translate(-50%, -50%);
   top: 50%;
 }
+.form-group.edit_fix .show__eye {
+  color: black;
+  position: absolute;
+  font-size: 1.5rem;
+  right: 25px;
+  transform: translate(-50%, -50%);
+  top: 70%;
+}
+.form-group.edit_fix > span {
+  color: red;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 18px;
+  transform: translate(-50%, -50%);
+  top: 70%;
+}
 
 .form-group.star-fix .show__eye {
   color: rgba(0, 0, 0, 0.8);
