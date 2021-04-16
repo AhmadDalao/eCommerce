@@ -14,6 +14,10 @@ $total_row = $stmt->rowCount();
 if ($total_row > 0) {
     $row = $stmt->fetch();
 }
+$group_id = '';
+if (isset($_SESSION['userFrontGroupID'])) {
+    $group_id = $_SESSION['userFrontGroupID'];
+}
 ?>
 
 
@@ -22,7 +26,7 @@ if ($total_row > 0) {
         <h1 class='text-center header_color text-capitalize my-5'>
             <?php echo str_replace("-", " ", $_GET['cateName']); ?>
         </h1>
-        <?php if (!empty($row)) {
+        <?php if (!empty($row) && $group_id == 2) {
             echo "<p class='alert alert-info'>adding items to this category is disabled </p>";
         } ?>
         <div class="card-holder">
