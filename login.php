@@ -115,10 +115,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <section class="login-section">
     <div class="container">
         <div class="nav nav-pills justify-content-center" id="nav-tab" role="tablist">
-            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-                aria-controls="nav-home" aria-selected="true">Login</a>
-            <a class="nav-link sign-up" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                aria-controls="nav-profile" aria-selected="false">Signup</a>
+            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Login</a>
+            <a class="nav-link sign-up" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Signup</a>
         </div>
         <div class="tab-content" id="nav-tabContent">
 
@@ -127,16 +125,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-12 col-md-8 col-lg-6 ">
                         <form class="login mt-5" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
                             <div class="form-group position-relative">
-                                <input class="form-control form-control-lg" type="text" autocomplete="off"
-                                    name="username" placeholder="username">
+                                <input class="form-control form-control-lg" type="text" autocomplete="off" name="username" placeholder="username">
                             </div>
                             <div class="form-group position-relative ">
-                                <input class="form-control form-control-lg password" type="password" autocomplete="off"
-                                    name="password" placeholder="password">
+                                <input class="form-control form-control-lg password" type="password" autocomplete="off" name="password" placeholder="password">
                                 <span class="show__eye"><i class="fas fa-eye "></i></span>
                             </div>
-                            <input class="btn btn-block btn-lg btn-primary text-capitalize" name="login" type="submit"
-                                value="login">
+                            <input class="btn btn-block btn-lg btn-primary text-capitalize" name="login" type="submit" value="login">
                         </form>
                     </div>
                 </div>
@@ -147,27 +142,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-12 col-md-8 col-lg-6 ">
                         <form class="login mt-5" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
                             <div class="form-group star-fix position-relative">
-                                <input class="form-control form-control-lg " required type="text"
-                                    title="Username must be at least 4 character" pattern=".{4,}" autocomplete="off"
-                                    name="username" placeholder="Username">
+                                <input class="form-control form-control-lg " required type="text" title="Username must be at least 4 character" pattern=".{4,}" autocomplete="off" name="username" placeholder="Username">
                             </div>
                             <div class="form-group star-fix position-relative ">
-                                <input minlength="4" class="form-control form-control-lg  password" required
-                                    type="password" autocomplete="off" name="password" placeholder="Password">
+                                <input minlength="4" class="form-control form-control-lg  password" required type="password" autocomplete="off" name="password" placeholder="Password">
                                 <span class="show__eye"><i class="fas fa-eye "></i></span>
                             </div>
                             <div class="form-group star-fix position-relative ">
-                                <input minlength="4" class="form-control form-control-lg  password" required
-                                    type="password" autocomplete="off" name="confirm__password"
-                                    placeholder="Confirm Password">
+                                <input minlength="4" class="form-control form-control-lg  password" required type="password" autocomplete="off" name="confirm__password" placeholder="Confirm Password">
                                 <span class="show__eye"><i class="fas fa-eye "></i></span>
                             </div>
                             <div class="form-group star-fix position-relative">
-                                <input class="form-control form-control-lg" type="email" required autocomplete="off"
-                                    name="email" placeholder="Email">
+                                <input class="form-control form-control-lg" type="email" required autocomplete="off" name="email" placeholder="Email">
                             </div>
-                            <input class="btn btn-block btn-lg btn-success text-capitalize" name="signup" type="submit"
-                                value="signup">
+                            <input class="btn btn-block btn-lg btn-success text-capitalize" name="signup" type="submit" value="signup">
                             <a class="mt-3 py-2 d-block" href="signupSeller.php">Signup as a seller ?</a>
                         </form>
                     </div>
@@ -176,19 +164,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </div>
         <?php if (!empty($formErrors)) { ?>
-        <div class="row justify-content-center">
-            <div class="errorHolder mt-4 text-center col-12 col-md-8 col-lg-6 ">
-                <?php formErrorsPrint($formErrors); ?>
+            <div class="row justify-content-center">
+                <div class="errorHolder mt-4 text-center col-12 col-md-8 col-lg-6 ">
+                    <?php formErrorsPrint($formErrors); ?>
+                </div>
             </div>
-        </div>
         <?php } ?>
 
         <?php if (!empty($successMessage)) { ?>
-        <div class="row justify-content-center">
-            <div class="errorHolder mt-4 text-center col-12 col-md-8 col-lg-6 ">
-                <?php echo $successMessage; ?>
+            <div class="row justify-content-center">
+                <div class="errorHolder mt-4 text-center col-12 col-md-8 col-lg-6 ">
+                    <?php echo $successMessage; ?>
+                </div>
             </div>
-        </div>
         <?php } ?>
 
 

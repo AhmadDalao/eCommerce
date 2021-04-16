@@ -2,7 +2,19 @@
 ob_start();
 session_start();
 $pageTitle = "Categories";
-include "init.php"; ?>
+include "init.php";
+
+// select data from database based on the item_id I got from $_GET.
+$stmt = $db_connect->prepare("SELECT * FROM categories  WHERE ID = ? AND allow_ads = 1 LIMIT 1 ");
+// execute query
+$stmt->execute(array($_GET['cateID']));
+// $row will be an array since fetch retrieve information as an array.
+
+$total_row = $stmt->rowCount();
+if ($total_row > 0) {
+    $row = $stmt->fetch();
+}
+?>
 
 
 <section class="userCategory py-5">
@@ -10,6 +22,9 @@ include "init.php"; ?>
         <h1 class='text-center header_color text-capitalize my-5'>
             <?php echo str_replace("-", " ", $_GET['cateName']); ?>
         </h1>
+        <?php if (!empty($row)) {
+            echo "<p class='alert alert-info'>adding items to this category is disabled </p>";
+        } ?>
         <div class="card-holder">
             <div class="row">
                 <?php

@@ -156,10 +156,21 @@ if (isset($_SESSION['userFront'])) {
                                     <option class="text-capitalize" value="0">
                                         <?php echo lang("itemSelectCategory") ?> </option>
                                     <?php
-                                        foreach (getRecordFrom("*", "categories", "ID", "", "", "ASC") as $category) {
-                                            echo "<option value='" .  $category['ID'] . "'>" .  $category['name']  . "</option>";
-                                        }
-                                        ?>
+                                        if ($_SESSION['userFrontGroupID'] != 1) {
+                                            foreach (getRecordFrom("*", "categories", "ID", "WHERE visibility = 0", "", "ASC") as $category) { ?>
+                                    <option <?php if ($category['allow_ads'] == 1 && $_SESSION['frontUserID'] != 1) {
+                                                            echo "disabled";
+                                                        } ?> value="<?php echo $category['ID']; ?>">
+                                        <?php echo $category['name']; ?>
+                                    </option>
+                                    <?php  }
+                                        } else {
+                                            foreach (getRecordFrom("*", "categories", "ID", "", "", "ASC") as $category) { ?>
+                                    <option value="<?php echo $category['ID']; ?>">
+                                        <?php echo $category['name']; ?>
+
+                                        <?php }
+                                        }  ?>
                                 </select>
                             </div>
                             <div class="form-group col-12 col-md-9 col-lg-6">

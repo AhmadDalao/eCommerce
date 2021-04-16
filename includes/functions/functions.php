@@ -53,6 +53,7 @@ function getItems($where, $value, $and = null)
     global $db_connect;
     $stmt = $db_connect->prepare("SELECT items.* , categories.name AS category_name 
     , categories.ID AS category_id ,
+    categories.allow_ads ,
     users.username ,
     users.groupID AS g_id
      FROM items 

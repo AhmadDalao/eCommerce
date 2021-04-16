@@ -1,4 +1,15 @@
-<?php $activePage = basename($_SERVER['PHP_SELF'], ".php"); ?>
+<?php $activePage = basename($_SERVER['PHP_SELF'], ".php");
+$stmt = $db_connect->prepare("SELECT groupID FROM users WHERE groupID = ? LIMIT 1");
+$group_id = '';
+if (isset($_SESSION['userFrontGroupID'])) {
+    $group_id = $_SESSION['userFrontGroupID'];
+}
+$stmt->execute(array($group_id));
+$total_row = $stmt->rowCount();
+if ($total_row > 0) {
+    $rows = $stmt->fetch();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,11 +46,21 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="categoriesDropDown">
                             <?php
-                            foreach (getRecordFrom("*", "categories", "ID", "", "", "ASC") as $category) { ?>
+                            if ($rows['groupID'] == 1) {
+                                foreach (getRecordFrom("*", "categories", "ID", "", "", "ASC") as $category) {
+                            ?>
                             <a class="dropdown-item text-capitalize"
                                 href="categories.php?cateID=<?php echo $category["ID"]; ?>&cateName=<?php echo str_replace(" ", "-", $category['name']); ?>">
                                 <?php echo $category['name'] ?></a>
-                            <?php   }  ?>
+                            <?php
+                                }
+                            } else {
+                                foreach (getRecordFrom("*", "categories", "ID", "WHERE visibility = 0", "", "ASC") as $category) { ?>
+                            <a class="dropdown-item text-capitalize"
+                                href="categories.php?cateID=<?php echo $category["ID"]; ?>&cateName=<?php echo str_replace(" ", "-", $category['name']); ?>">
+                                <?php echo $category['name'] ?></a>
+                            <?php  }
+                            } ?>
                         </div>
                     </li>
                 </ul>
