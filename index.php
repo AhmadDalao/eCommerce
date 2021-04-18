@@ -2,11 +2,7 @@
 ob_start();
 session_start();
 $pageTitle = "Home page";
-include "init.php"; // if session is registered direct user to dashboard page
-// if (isset($_SESSION['userFront'])) {
-// header("Location: index.php");
-// exit();
-// }
+include "init.php";
 ?>
 <main id="main" class="main">
     <div id="carouselExampleControls" class="carousel slide carousel-fade position-relative" data-ride="carousel">
@@ -45,14 +41,162 @@ include "init.php"; // if session is registered direct user to dashboard page
         </div>
     </section> -->
 
-    <section class="py-5">
+    <?php if (!empty(getItems("cate_id", 14, "AND approve = 1"))) { ?>
+    <section class="py-5 latest__handmade">
         <div class="container">
-            <h2 class="text-center"></h2>
-            <div class="row">
-
+            <h2 class="text-left">hand made</h2>
+            <div class="card-holder">
+                <div class="row">
+                    <?php
+                        foreach (getItems("cate_id", 14, "AND approve = 1") as $item) { ?>
+                    <!-- echo $item['name']; -->
+                    <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
+                        <div class="card ">
+                            <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid" alt="placeHolder">
+                            <div class="card-body">
+                                <h5 class="card-title"><a
+                                        href="items.php?item_id=<?php echo $item['item_id'] ?>"><?php echo $item['name']; ?>
+                                    </a></h5>
+                                <p class="card-text user_card-description">
+                                    <?php echo $item['description']; ?></p>
+                                <div class="mb-3 d-flex align-items-center price_holder">
+                                    <i class="fas fa-tags  fa-xs mr-1"></i>
+                                    <span class="d-d-inline-block category_price"><?php echo $item['price']; ?>$</span>
+                                </div>
+                                <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span>
+                                </p>
+                                <p class="card-text">Seller<span class="ml-1 text-capitalize"><a class=""
+                                            href="profile.php?profileName=<?php echo $item['username']; ?>"><?php echo $item['username']; ?></a></span>
+                                </p>
+                                <a class="btn btn-primary" href="items.php?item_id=<?php echo $item['item_id'] ?>">Read
+                                    More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </section>
+    <?php } ?>
+
+    <?php if (!empty(getItems("cate_id", 15, "AND approve = 1"))) { ?>
+    <section class="py-5 latest__Computers">
+        <div class="container">
+            <h2 class="text-left">Computers</h2>
+            <div class="card-holder">
+                <div class="row">
+                    <?php
+                        foreach (getItems("cate_id", 15, "AND approve = 1") as $item) { ?>
+                    <!-- echo $item['name']; -->
+                    <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
+                        <div class="card ">
+                            <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid" alt="placeHolder">
+                            <div class="card-body">
+                                <h5 class="card-title"><a
+                                        href="items.php?item_id=<?php echo $item['item_id'] ?>"><?php echo $item['name']; ?>
+                                    </a></h5>
+                                <p class="card-text user_card-description"><?php echo $item['description']; ?></p>
+                                <div class="mb-3 d-flex align-items-center price_holder">
+                                    <i class="fas fa-tags  fa-xs mr-1"></i>
+                                    <span class="d-d-inline-block category_price"><?php echo $item['price']; ?>$</span>
+                                </div>
+                                <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span>
+                                </p>
+                                <p class="card-text">Seller<span class="ml-1 text-capitalize"><a class=""
+                                            href="profile.php?profileName=<?php echo $item['username']; ?>"><?php echo $item['username']; ?></a></span>
+                                </p>
+                                <a class="btn btn-primary" href="items.php?item_id=<?php echo $item['item_id'] ?>">Read
+                                    More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php } ?>
+
+    <?php if (!empty(getItems("cate_id", 16, "AND approve = 1"))) { ?>
+    <section class="py-5 latest__PC_parts">
+        <div class="container">
+            <h2 class="text-left">PC parts</h2>
+            <div class="card-holder">
+                <div class="row">
+                    <?php
+                        foreach (getItems("cate_id", 16, "AND approve = 1") as $item) { ?>
+                    <!-- echo $item['name']; -->
+                    <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
+                        <div class="card ">
+                            <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid" alt="placeHolder">
+                            <div class="card-body">
+                                <h5 class="card-title"><a
+                                        href="items.php?item_id=<?php echo $item['item_id'] ?>"><?php echo $item['name']; ?>
+                                    </a></h5>
+                                <p class="card-text user_card-description"><?php echo $item['description']; ?></p>
+                                <div class="mb-3 d-flex align-items-center price_holder">
+                                    <i class="fas fa-tags  fa-xs mr-1"></i>
+                                    <span class="d-d-inline-block category_price"><?php echo $item['price']; ?>$</span>
+                                </div>
+                                <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span>
+                                </p>
+                                <p class="card-text">Seller<span class="ml-1 text-capitalize"><a class=""
+                                            href="profile.php?profileName=<?php echo $item['username']; ?>"><?php echo $item['username']; ?></a></span>
+                                </p>
+                                <a class="btn btn-primary" href="items.php?item_id=<?php echo $item['item_id'] ?>">Read
+                                    More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php } ?>
+
+    <?php if (!empty(getItems("cate_id", 17, "AND approve = 1"))) { ?>
+    <section class="py-5 latest__electronics">
+        <div class="container">
+            <h2 class="text-left">Electronics</h2>
+            <div class="card-holder">
+                <div class="row">
+                    <?php
+                        foreach (getItems("cate_id", 17, "AND approve = 1") as $item) { ?>
+                    <!-- echo $item['name']; -->
+                    <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
+                        <div class="card ">
+                            <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid" alt="placeHolder">
+                            <div class="card-body">
+                                <h5 class="card-title"><a
+                                        href="items.php?item_id=<?php echo $item['item_id'] ?>"><?php echo $item['name']; ?>
+                                    </a></h5>
+                                <p class="card-text user_card-description"><?php echo $item['description']; ?></p>
+                                <div class="mb-3 d-flex align-items-center price_holder">
+                                    <i class="fas fa-tags  fa-xs mr-1"></i>
+                                    <span class="d-d-inline-block category_price"><?php echo $item['price']; ?>$</span>
+                                </div>
+                                <p class="card-text">Add Date:<span class="ml-1"><?php echo $item['add_date']; ?></span>
+                                </p>
+                                <p class="card-text">Seller<span class="ml-1 text-capitalize"><a class=""
+                                            href="profile.php?profileName=<?php echo $item['username']; ?>"><?php echo $item['username']; ?></a></span>
+                                </p>
+                                <a class="btn btn-primary" href="items.php?item_id=<?php echo $item['item_id'] ?>">Read
+                                    More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php } ?>
 </main>
 
 

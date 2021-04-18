@@ -63,6 +63,29 @@ if ($total_row > 0) {
                             } ?>
                         </div>
                     </li>
+
+
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-capitalize" href="#" id="itemsFilter" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter items
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="itemsFilter">
+                            <a class="dropdown-item text-capitalize" href="categories.php?item_status=1">
+                                New
+                            </a>
+                            <a class="dropdown-item text-capitalize" href="categories.php?item_status=2">
+                                Like New
+                            </a>
+                            <a class="dropdown-item text-capitalize" href="categories.php?item_status=3">
+                                Second Hand
+                            </a>
+                            <a class="dropdown-item text-capitalize" href="categories.php?item_status=4">
+                                Old
+                            </a>
+                        </div>
+                    </li>
+
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <?php if (isset($_SESSION['userFront'])) { ?>

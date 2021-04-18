@@ -54,6 +54,7 @@ function getItems($where, $value, $and = null)
     $stmt = $db_connect->prepare("SELECT items.* , categories.name AS category_name 
     , categories.ID AS category_id ,
     categories.allow_ads ,
+    categories.visibility,
     users.username ,
     users.groupID AS g_id
      FROM items 
