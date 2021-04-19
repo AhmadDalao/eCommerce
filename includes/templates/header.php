@@ -103,7 +103,9 @@ if ($total_row > 0) {
                                 href="profile.php?profileName=<?php echo $_SESSION['userFront']; ?>">Profile</a>
                             <?php if (isset($_SESSION['userFrontGroupID']) && ($_SESSION['userFrontGroupID'] == 2 || $_SESSION['userFrontGroupID'] == 1)) { ?>
                             <a class="dropdown-item text-capitalize" href="newAdd.php">Add Item</a>
-                            <a class="dropdown-item text-capitalize" href="profile.php#userAds">My Items</a>
+                            <a class="dropdown-item text-capitalize"
+                                href="profile.php?profileName=<?php echo $_SESSION['userFront']; ?>#userAds">My
+                                Items</a>
                             <?php } ?>
                             <a class="dropdown-item text-capitalize"
                                 href="#"><?php echo lang("navbar_settings_dashboard"); ?></a>

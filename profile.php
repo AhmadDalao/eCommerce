@@ -324,12 +324,12 @@ if ($action == "manage") {
             class="edit__form row flex-column align-items-center justify-content-center">
             <input type="text" name="edit_userID" value="<?php echo $userID ?>" hidden>
             <!-- Username -->
-            <div class="form-group edit_fix position-relative  col-12 col-md-9 col-lg-6 ">
+            <!-- <div class="form-group edit_fix position-relative  col-12 col-md-9 col-lg-6 ">
                 <label class=" text-capitalize"
                     for="exampleInputUsername"><?php echo lang("edit_username_profile"); ?></label>
                 <input value="<?php echo $row['username']; ?>" type="text" class="form-control form-control-lg"
                     name="edit_username" id=" exampleInputUsername" autocomplete="off" required>
-            </div>
+            </div> -->
             <!-- Password -->
             <div class="form-group edit_fix col-12 col-md-9 col-lg-6">
                 <label class=" text-capitalize "
