@@ -80,7 +80,7 @@ if ($action == "manage") {
                         <div class="row">
                             <?php
                                         if (!empty(getItems("user_id", $user_id))) {
-                                            foreach (getItems("user_id", $row['userID']) as $item) { ?>
+                                            foreach (getItems("user_id", $user_id) as $item) { ?>
                             <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
                                 <div class="card position-relative overflow-hidden <?php if ($item['approve'] == 0) {
                                                                                                             echo "strapItem";
@@ -127,7 +127,7 @@ if ($action == "manage") {
             </div>
             <?php } ?>
 
-            <div class="userComments col-12">
+            <div class="userComments col-12 mb-5">
                 <div class="card">
                     <div class="card-header">
                         <span class="text-capitalize"><i class="fas fa-comment mr-2"></i>User latest comments</span>
@@ -151,6 +151,49 @@ if ($action == "manage") {
                     </div>
                 </div>
             </div>
+
+            <?php if (isset($_SESSION['userFrontGroupID']) && ($_SESSION['userFrontGroupID'] == 2 || $_SESSION['userFrontGroupID'] == 1)) { ?>
+            <div class="latestCommentsItems col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="text-capitalize"><i class="fas fa-comment mr-2"></i>latest comments on items</span>
+                        <span class="hideList float-right px-3">
+                            <i class="fas fa-plus fa-lg fa-fw"></i>
+                        </span>
+                    </div>
+                    <div class="card-body hideItem">
+                        <?php
+                                    $userSession = $_SESSION['frontUserID'];
+                                    // select all comments.
+                                    $stmt = $db_connect->prepare("SELECT comments.* ,
+                                        users.userID as userID,
+                                        users.username As username
+                                    FROM comments
+                                    INNER JOIN users ON users.userID = comments.user_id
+                                    WHERE users.userID != $userSession ORDER BY comment_id DESC");
+                                    // execute the SQL above
+                                    $stmt->execute();
+                                    // assign result from the SQL statement into a variable.
+                                    $comments = $stmt->fetchAll();
+                                    // loop over the $row and print all of it's data
+
+                                    if (!empty($comments)) { ?>
+                        <ul class="comments-list list-group list-group-flush">
+                            <?php
+                                            foreach ($comments as $comment) { ?>
+                            <li class='list-group-item'>
+                                <small class="font-weight-bold"> <?php echo $comment['username']; ?> </small>
+                                <p> <?php echo $comment['comment']; ?></p>
+                            </li>
+                            <?php   }
+                                        } else {
+                                            echo "<p class='alert alert-info'>No comments to show</p>";
+                                        } ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
         </div>
     </div>
 </section>
@@ -373,7 +416,6 @@ if ($action == "manage") {
 
         $recordChange = '';
         $update_userID = $_POST['edit_userID'];
-        $update_username = $_POST['edit_username'];
         $update_email = $_POST['edit_email'];
         $update_fullName = $_POST['edit_fullName'];
         $update_old_password = $_POST['edit_old_password'];
@@ -384,20 +426,6 @@ if ($action == "manage") {
 
         // validate the form before updating the database
         $formErrors = array();
-        if (strlen($update_username) > 15) {
-            // adding form error to array so I can show it later to user.
-            $formErrors[] = lang("update_username_greater");
-        }
-
-        if (strlen($update_username) < 4) {
-            // adding form error to array so I can show it later to user.
-            $formErrors[] = lang("update_username_less");
-        }
-
-        if (empty($update_username)) {
-            // adding form error to array so I can show it later to user.
-            $formErrors[] = lang("update_username_empty");
-        }
 
         if (empty($update_fullName)) {
             // adding form error to array so I can show it later to user.
@@ -417,7 +445,7 @@ if ($action == "manage") {
         if (empty($formErrors)) {
 
             $stmt2 = $db_connect->prepare('SELECT * FROM users WHERE username = ? AND userID != ? ');
-            $stmt2->execute(array($update_username, $update_userID));
+            $stmt2->execute(array($_SESSION['userFront'], $update_userID));
             $count = $stmt2->rowCount();
 
             if ($count == 1) {
@@ -426,8 +454,8 @@ if ($action == "manage") {
                 redirectHome($message, "back", 2);
             } else {
                 // update the data base with the data I receive from the form in edit page.
-                $stmt = $db_connect->prepare('UPDATE users SET username = ? , email = ? , fullName = ? , password = ? WHERE userID = ?');
-                $stmt->execute(array($update_username, $update_email, $update_fullName, $update_password, $update_userID));
+                $stmt = $db_connect->prepare('UPDATE users SET  email = ? , fullName = ? , password = ? WHERE userID = ?');
+                $stmt->execute(array($update_email, $update_fullName, $update_password, $update_userID));
                 // print this message if there was a change in the record
                 $recordChange = $stmt->rowCount() . ' ' .  lang("update_recordChange");
                 $message =  "<div class='mb-4 alert alert-success'><div class='container'> <div> Profile Updated</div>  </div></div>";
