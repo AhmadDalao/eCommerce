@@ -100,6 +100,8 @@ if ($total_row > 0) {
                                                 <p class="alert alert-success font-weight-bold">Your comment has been added successfully.</p>
                                             </div>
                                     </div>';
+                                    header("refresh:0.5;url=items.php?item_id=$item_id");
+                                    exit();
                                 }
                             } else {
                                 echo '<div class="row  align-items-center justify-content-center">

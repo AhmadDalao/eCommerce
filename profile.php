@@ -136,16 +136,40 @@ if ($action == "manage") {
                     </div>
                     <div class="card-body hideItem">
                         <?php
-                                $comments = getRecordFrom("comment", "comments", "comment_id", "WHERE user_id = $user_id ", "");
+                                // select all comments.
+                                $userSession = $_SESSION['frontUserID'];
+                                $stmt = $db_connect->prepare("SELECT comments.*,
+                                users.userID   AS userID,
+                                users.username AS username,
+                                items.name,
+                                items.item_id
+                                FROM   comments
+                                    INNER JOIN users
+                                            ON users.userID = comments.user_id
+                                    INNER JOIN items
+                                            ON items.item_id = comments.item_id
+                                    WHERE  users.userID = $user_id AND comments.status = 1 ");
+                                // execute the SQL above
+                                $stmt->execute();
+                                // assign result from the SQL statement into a variable.
+                                $comments = $stmt->fetchAll();
                                 if (!empty($comments)) { ?>
                         <ul class="comments-list list-group list-group-flush">
                             <?php
-                                    foreach ($comments as $comment) {
-                                        echo "<li class='list-group-item'>" . $comment['comment'] . "</li>";
-                                    }
-                                } else {
-                                    echo "<p class='alert alert-info'>No comments to show</p>";
-                                } ?>
+                                        foreach ($comments as $comment) { ?>
+                            <li class='list-group-item'>
+                                <a class="font-weight-bold"
+                                    href="items.php?item_id=<?php echo $comment['item_id']; ?>"><?php echo $comment['name']; ?></a>
+                                <h6 class="font-weight-bold mb-0 text-capitalize mt-2">
+                                    You
+                                </h6>
+                                <small class="text-muted"><?php echo $comment['comment_date']; ?></small>
+                                <p class="mb-0"> <?php echo $comment['comment']; ?></p>
+                            </li>
+                            <?php  }
+                                    } else {
+                                        echo "<p class='alert alert-info'>No comments to show</p>";
+                                    } ?>
                         </ul>
                     </div>
                 </div>
@@ -267,6 +291,7 @@ if ($action == "manage") {
                 </div>
             </div>
 
+            <?php if (!$row['groupID'] == 0) { ?>
             <div class="userAds col-12 mb-5" id="userAds">
                 <div class="card">
                     <div class="card-header">
@@ -278,15 +303,16 @@ if ($action == "manage") {
                     <div class="card-body hideItem">
                         <div class="row">
                             <?php
-                                        if (!empty(getItems("user_id", $user_id, "AND approve = 1"))) {
-                                            foreach (getItems("user_id", $row['userID'], "AND approve = 1") as $item) { ?>
+
+                                            if (!empty(getItems("user_id", $user_id, "AND approve = 1"))) {
+                                                foreach (getItems("user_id", $row['userID'], "AND approve = 1") as $item) { ?>
                             <div class="card-wrapper__user col-12 col-md-6 col-lg-4 p-3">
                                 <div class="card position-relative overflow-hidden <?php if ($item['approve'] == 0) {
-                                                                                                            echo "strapItem";
-                                                                                                        } ?>"
+                                                                                                                echo "strapItem";
+                                                                                                            } ?>"
                                     data-itemIsApprove="<?php if ($item['approve'] == 0) {
-                                                                                                                                        echo "Waiting Approval";
-                                                                                                                                    } ?>">
+                                                                                                                                            echo "Waiting Approval";
+                                                                                                                                        } ?>">
                                     <img src="./layout/images/placeHolder.png" class="card-img-top img-fluid"
                                         alt="placeHolder">
                                     <div class="card-body">
@@ -314,13 +340,14 @@ if ($action == "manage") {
                                 </div>
                             </div>
                             <?php }
-                                        } else { ?>
+                                            } else { ?>
                             <div class="col-12 alert alert-info">There are no items to show</div>
                             <?php } ?>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php } ?>
 
 
             <div class="userComments col-12">
@@ -333,16 +360,40 @@ if ($action == "manage") {
                     </div>
                     <div class="card-body hideItem">
                         <?php
-                                    $comments = getRecordFrom("comment", "comments", "comment_id", "WHERE user_id = $user_id ", "");
+                                    $stmt = $db_connect->prepare("SELECT comments.*,
+                                users.userID   AS userID,
+                                users.username AS username,
+                                items.name,
+                                items.item_id
+                                FROM   comments
+                                    INNER JOIN users
+                                            ON users.userID = comments.user_id
+                                    INNER JOIN items
+                                            ON items.item_id = comments.item_id
+                                    WHERE  users.userID = $user_id AND comments.status = 1 ORDER BY comments.comment_id DESC");
+                                    // execute the SQL above
+                                    $stmt->execute();
+                                    // assign result from the SQL statement into a variable.
+                                    $comments = $stmt->fetchAll();
+
+                                    // $comments = getRecordFrom("*", "comments", "comment_id", "WHERE user_id = $user_id ", "");
                                     if (!empty($comments)) { ?>
                         <ul class="comments-list list-group list-group-flush">
                             <?php
-                                        foreach ($comments as $comment) {
-                                            echo "<li class='list-group-item'>" . $comment['comment'] . "</li>";
-                                        }
-                                    } else {
-                                        echo "<p class='alert alert-info'>No comments to show</p>";
-                                    } ?>
+                                            foreach ($comments as $comment) { ?>
+                            <li class='list-group-item'>
+                                <a class="font-weight-bold"
+                                    href="items.php?item_id=<?php echo $comment['item_id']; ?>"><?php echo $comment['name']; ?></a>
+                                <h6 class="font-weight-bold mb-0 text-capitalize mt-2">
+                                    <?php echo $comment['username']; ?>
+                                </h6>
+                                <small class="text-muted"><?php echo $comment['comment_date']; ?></small>
+                                <p class="mb-0"> <?php echo $comment['comment']; ?></p>
+                            </li>
+                            <?php     }
+                                        } else {
+                                            echo "<p class='alert alert-info'>No comments to show</p>";
+                                        } ?>
                         </ul>
                     </div>
                 </div>
