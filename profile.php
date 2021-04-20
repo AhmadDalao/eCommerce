@@ -66,8 +66,7 @@ if ($action == "manage") {
                     </div>
                 </div>
             </div>
-
-            <?php if (isset($_SESSION['userFrontGroupID']) && ($_SESSION['userFrontGroupID'] == 2 || $_SESSION['userFrontGroupID'] == 1)) { ?>
+            <?php if ((isset($_SESSION['userFrontGroupID']) && $_SESSION['userFrontGroupID'] == 2) ||  (isset($_SESSION['userFrontGroupID']) && $_SESSION['userFrontGroupID'] == 1)) { ?>
             <div class="userAds col-12 mb-5" id="userAds">
                 <div class="card">
                     <div class="card-header">
@@ -152,7 +151,7 @@ if ($action == "manage") {
                 </div>
             </div>
 
-            <?php if (isset($_SESSION['userFrontGroupID']) && ($_SESSION['userFrontGroupID'] == 2 || $_SESSION['userFrontGroupID'] == 1)) { ?>
+            <?php if ((isset($_SESSION['userFrontGroupID']) && $_SESSION['userFrontGroupID'] == 2) ||  (isset($_SESSION['userFrontGroupID']) && $_SESSION['userFrontGroupID'] == 1)) { ?>
             <div class="latestCommentsItems col-12">
                 <div class="card">
                     <div class="card-header">
@@ -165,12 +164,22 @@ if ($action == "manage") {
                         <?php
                                     $userSession = $_SESSION['frontUserID'];
                                     // select all comments.
-                                    $stmt = $db_connect->prepare("SELECT comments.* ,
-                                        users.userID as userID,
-                                        users.username As username
-                                    FROM comments
-                                    INNER JOIN users ON users.userID = comments.user_id
-                                    WHERE users.userID != $userSession ORDER BY comment_id DESC");
+                                    $stmt = $db_connect->prepare("SELECT comments.*,
+                                users.userID   AS userID,
+                                users.username AS username,
+                                items.name,
+                                items.item_id
+                                FROM   comments
+                                    INNER JOIN users
+                                            ON users.userID = comments.user_id
+                                    INNER JOIN items
+                                            ON items.item_id = comments.item_id
+                                    WHERE  users.userID != $userSession
+                                    AND items.item_id IN (SELECT items.item_id
+                                    FROM   items
+                                    INNER JOIN users
+                                            ON users.userID = items.user_id
+                                WHERE  user_id = $user_id) ");
                                     // execute the SQL above
                                     $stmt->execute();
                                     // assign result from the SQL statement into a variable.
@@ -182,8 +191,13 @@ if ($action == "manage") {
                             <?php
                                             foreach ($comments as $comment) { ?>
                             <li class='list-group-item'>
-                                <small class="font-weight-bold"> <?php echo $comment['username']; ?> </small>
-                                <p> <?php echo $comment['comment']; ?></p>
+                                <a class="font-weight-bold"
+                                    href="items.php?item_id=<?php echo $comment['item_id']; ?>"><?php echo $comment['name']; ?></a>
+                                <h6 class="font-weight-bold mb-0 text-capitalize mt-2">
+                                    <?php echo $comment['username']; ?>
+                                </h6>
+                                <small class="text-muted"><?php echo $comment['comment_date']; ?></small>
+                                <p class="mb-0"> <?php echo $comment['comment']; ?></p>
                             </li>
                             <?php   }
                                         } else {
