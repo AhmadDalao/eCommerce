@@ -86,7 +86,7 @@ if ($total_row > 0) {
                             if (!empty($comment)) {
                                 $stmt = $db_connect->prepare("INSERT INTO
                              comments (comment , status , comment_date, item_id , user_id)
-                              VALUES (:comment , 0, NOW(),:item_id, :user_id )");
+                              VALUES (:comment , 1, NOW(),:item_id, :user_id )");
 
                                 $stmt->execute(array(
                                     "comment" => $comment,
