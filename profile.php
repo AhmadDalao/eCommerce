@@ -203,7 +203,7 @@ if ($action == "manage") {
                                     FROM   items
                                     INNER JOIN users
                                             ON users.userID = items.user_id
-                                WHERE  user_id = $user_id) ");
+                                WHERE  items.user_id = $user_id) ");
                                     // execute the SQL above
                                     $stmt->execute();
                                     // assign result from the SQL statement into a variable.
