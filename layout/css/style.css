@@ -312,6 +312,12 @@ body {
 .items_details-list li:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.03);
 }
+.latest_item_comments > a {
+  color: #212529;
+}
+.comments-list li:hover .latest_item_comments > a {
+  color: #28a745;
+}
 
 /* 
 *================================================================

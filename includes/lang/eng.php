@@ -80,6 +80,21 @@ function lang($phrase)
         'update_fullName_empty' => 'fullName can\'t be <strong>empty</strong>',
         'update_fullName_less' => 'fullName can\'t be <strong>less than 4 letters</strong>',
         'update_email_empty' => 'email can\'t be <strong>empty</strong>',
+        // update item
+        'update_recordChangeItem' => 'Item has been updated',
+        // insert item
+        'insert_item' => 'Insert Item',
+        'inserted_recordChangeItem' => 'Item Inserted',
+        'itemName_greater' => 'item name can\'t be <strong>more than 15 letters</strong>',
+        'itemName_less' => 'item name can\'t be <strong>less than 4 letters</strong>',
+        'itemName_empty' => 'name can\'t be <strong>empty</strong>',
+        'itemDescriptionEmpty' => 'Description can\'t be <strong>empty</strong>',
+        'itemPriceEmpty' => 'Price can\'t be <strong>empty</strong>',
+        'itemMadeInEmpty' => 'Country of origin can\'t be <strong>empty</strong>',
+        'itemStatusEmpty' => 'item status can\'t be <strong>empty</strong>',
+        'itemMemberEmpty' => 'Member can\'t be <strong>empty</strong>',
+        'itemCategoryEmpty' => 'Category can\'t be <strong>empty</strong>',
+
     );
     return $language[$phrase];
 }

@@ -56,6 +56,20 @@ if ($total_row > 0) {
                         Seller:<span class="ml-2 font-weight-bold"><a
                                 href="profile.php?profileName=<?php echo $row['username']; ?>"><?php echo $row['username']; ?></a></span>
                     </li>
+                    <li class="list-group-item"><i class="fas fa-tag fa-xs mr-2"></i>
+                        item status:<span class="ml-2 font-weight-bold">
+                            <?php if ($row['status'] == 1) {
+                                    echo "<span class='ml-2 font-weight-bold'>New</span>";
+                                } elseif ($row['status'] == 2) {
+                                    echo "<span class='ml-2 font-weight-bold'>Like New</span>";
+                                } elseif ($row['status'] == 3) {
+                                    echo "<span class='ml-2 font-weight-bold'>Second Hand</span>";
+                                } elseif ($row['status'] == 4) {
+                                    echo "<span class='ml-2 font-weight-bold'>Old</span>";
+                                } ?>
+
+                        </span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -144,7 +158,9 @@ if ($total_row > 0) {
                     <img class="comment-img  My-2" src="./layout/images/avatar5.png" class="img-fluid"
                         alt="placeHolder">
                     <div class="comment-details">
-                        <h6 id="name" class="pl-2 mb-0 text-capitalize"><?php echo $comment['username']; ?></h6>
+                        <h6 id="name" class="pl-2 mb-0 text-capitalize"><a
+                                href="profile.php?profileName=<?php echo $comment['username']; ?>"><?php echo $comment['username']; ?></a>
+                        </h6>
                         <small id="name"
                             class="pl-2 form-text text-muted"><?php echo $comment['comment_date']; ?></small>
                         <p class="px-2 mb-0 user-comment"><?php echo $comment['comment']; ?></p>
