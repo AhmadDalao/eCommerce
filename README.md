@@ -14,7 +14,7 @@ https://github.com/AhmadDalao/eCommerce
 admin account works in both the admin page and user website: <br>
 admin <br>
 123
-<br>
+<br><br><br><br>
 sellers accounts:
 sasa <br>
 SoSo <br>
@@ -22,12 +22,12 @@ Sami <br>
 lolo <br>
 testEdit <br>
 password for sellers: 123
-<br>
+<br><br><br>
 more sellers accounts:
 sellerTest <br>
 AhmadTest <br>
 password: 1234
-<br>
+<br><br><br>
 regular user:
 ahmod123 <br>
 testEdit <br>
