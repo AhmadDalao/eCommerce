@@ -14,7 +14,7 @@ https://github.com/AhmadDalao/eCommerce
 admin account works in both the admin page and user website: <br>
 admin <br>
 123
-<br><br><br><br>
+<br><br>
 sellers accounts: <br>
 sasa <br>
 SoSo <br>
